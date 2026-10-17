@@ -34,6 +34,8 @@ jobs:
           uv sync --frozen --python 3.12 --project services/corpus
       - name: Lint
         run: .venv/bin/ruff check src services scripts tests
+      - name: Start the corpus role fixture on this ephemeral runner
+        run: docker compose up -d --wait graph
       - name: Complete isolated test manifest
         run: .venv/bin/python scripts/test_all.py
       - name: Retain test evidence
@@ -60,6 +62,11 @@ jobs:
           node-version: '26'
           cache: npm
           cache-dependency-path: ${{ matrix.directory }}/package-lock.json
+      - uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff # v6
+        if: matrix.directory == 'web'
+      - name: Install the inert local operator API for browser tests
+        if: matrix.directory == 'web'
+        run: uv sync --frozen --extra dev --extra simulator --python 3.12 --project ..
       - run: npm ci
       - run: npm run typecheck
       - run: npm test

@@ -6,7 +6,7 @@
 
 [Product site](https://witness-fleet.vercel.app) · [Simulation demo](https://witness-fleet-guglxni.eastus.cloudapp.azure.com/demo) · [Architecture](docs/guide/architecture.md) · [Judge guide](docs/submission/JUDGE_GUIDE.md)
 
-> **Launch deployment is being verified.** The links above are the configured targets; use the local quick start until the deployment verification section records a passing hosted run. This is a synthetic MuJoCo demonstration, not a physical robot controller, human identity system or safety certification.
+> **Live simulation, not real hardware.** The Vercel site and Azure HTTPS demo are deployed. A real cloud run completed all seven tasks, recovery, explicit synthetic release and native delivery; request replay returned the same result. This is not a physical robot controller, human identity system or safety certification.
 
 ![Witness Fleet system boundaries](docs/diagrams/system-boundaries.svg)
 
@@ -90,6 +90,7 @@ git clone --filter=blob:none --no-checkout \
 git -C .research/vendor/FalkorDB--GraphRAG-SDK checkout --detach \
   35e67a0b27fdcc7f2c28508b09e86169851a8187
 uv sync --frozen --project services/corpus
+docker compose up -d --wait graph
 .venv/bin/python scripts/test_all.py
 npm --prefix web test
 npm --prefix web run typecheck
@@ -97,7 +98,7 @@ npm --prefix web run build
 npm --prefix web run test:e2e
 ```
 
-The [Verification workflow](.github/workflows/verify.yml) runs tests against isolated databases. The [Azure deployment workflow](.github/workflows/deploy-azure.yml) consumes a successful tested revision using GitHub OIDC, pushes the image to ACR, deploys by digest and checks the public revision. Vercel builds `site/` from the connected GitHub repository. A configured workflow is not a passed run; consult actual Actions and deployment evidence.
+The [Verification workflow](.github/workflows/verify.yml) runs tests against isolated databases. The [Azure deployment workflow](.github/workflows/deploy-azure.yml) consumes a successful tested revision using GitHub OIDC, pushes the image to ACR, deploys by digest and checks the public revision. Vercel builds `site/` from the connected GitHub repository. Consult the [actual Actions runs](https://github.com/guglxni/witness-fleet/actions) and [verification status](BUILD_STATUS.md); a configured workflow is not by itself a passed run.
 
 ## Read the system
 
@@ -132,7 +133,7 @@ docs/diagrams/        editable draw.io, Mermaid, Excalidraw and rendered preview
 
 ## Media, licenses and publication
 
-The launch-film workflow uses HyperFrames, recorded native MuJoCo footage and ElevenLabs narration. The prior film was produced through OpenDesign Motion. See media provenance for exact source assets and versions once the new film is finalized. Original diagrams are explanatory, not fabricated sensor output.
+The finished **86-second, 1080p narrated film** uses HyperFrames, recorded native MuJoCo footage, an OpenDesign Motion excerpt and ElevenLabs Sarah. [Watch/download the film](site/public/media/launch.mp4), inspect [sanitized provenance](site/public/media/provenance.json), or edit the [HTML motion project](media/launch/README.md). Original diagrams are explanatory, not fabricated sensor output.
 
 See [third-party notices](THIRD_PARTY.md) and [publication scope](PUBLICATION.md). FalkorDB server uses SSPL; GSAP uses its Standard License; ElevenLabs is a proprietary service. Do not label the entire stack OSI FOSS. Complete third-party papers/web captures, vendor clones, credentials, machine reports and retained databases are not redistributed.
 

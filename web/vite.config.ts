@@ -7,7 +7,7 @@ export default defineConfig({
     host: '127.0.0.1',
     port: 5173,
     strictPort: true,
-    proxy: { '/api': 'http://127.0.0.1:8090' },
+    proxy: { '/api': `http://127.0.0.1:${process.env.WITNESS_E2E_API_PORT || '8090'}` },
   },
   build: { emptyOutDir: false },
   test: { include: ['tests/**/*.test.ts', 'tests/**/*.test.tsx'], environment: 'jsdom', setupFiles: ['./tests/setup.ts'] },
