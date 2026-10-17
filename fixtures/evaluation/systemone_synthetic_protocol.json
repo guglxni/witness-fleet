@@ -1,0 +1,41 @@
+{
+  "fixture_kind": "synthetic_protocol_test",
+  "warning": "This fixture is invented for adapter-contract tests. It is not a Microsoft response, provider measurement, labeled benchmark, or calibration data.",
+  "request": {
+    "request_id": "fixture-synthetic-request-001",
+    "family_id": "F-001",
+    "question_schema_version": "f001-v1",
+    "projection_version": "synthetic-projection-v1",
+    "graph_version": 1,
+    "policy_epoch": 1,
+    "evidence_dependencies": [["fixture-span-001", "fixture-revision-001"]],
+    "input_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "state": "CLAIM: Synthetic test claim. QUOTED SOURCE: Synthetic test source.",
+    "questions": [
+      {
+        "id": "relation",
+        "type": "choice",
+        "instructions": "Classify only the semantic relation.",
+        "options": ["supports", "contradicts", "irrelevant", "insufficient"]
+      }
+    ],
+    "allowed_provider": "microsoft",
+    "requested_model": "synthetic-deployment-alias"
+  },
+  "synthetic_response": {
+    "model": "synthetic-deployment-alias",
+    "answers": {
+      "relation": {
+        "choice": "supports",
+        "confidence": 0.8,
+        "probabilities": {
+          "supports": 0.7,
+          "contradicts": 0.1,
+          "irrelevant": 0.1,
+          "insufficient": 0.1
+        }
+      }
+    },
+    "usage": {"input_tokens": 14}
+  }
+}

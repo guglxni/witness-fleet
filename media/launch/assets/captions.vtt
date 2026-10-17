@@ -1,0 +1,97 @@
+WEBVTT
+
+00:00:00.060 --> 00:00:02.100
+A robot shouldn't move just because an
+
+00:00:02.100 --> 00:00:03.560
+AI sounds confident.
+
+00:00:03.670 --> 00:00:05.980
+It should move when the evidence says
+
+00:00:06.010 --> 00:00:06.440
+it can.
+
+00:00:06.510 --> 00:00:09.880
+Meet Witness Fleet, evidence before motion, a
+
+00:00:09.880 --> 00:00:13.770
+blocked corridor, a waiting delivery, three robots
+
+00:00:13.770 --> 00:00:16.870
+with different jobs and one question, who
+
+00:00:16.870 --> 00:00:19.080
+has the authority to move?
+
+00:00:19.150 --> 00:00:21.880
+Witness Fleet connects the answer in Falkor
+
+00:00:21.880 --> 00:00:25.280
+DB, the source, the policy, the owner,
+
+00:00:25.350 --> 00:00:27.720
+the observation, and the command.
+
+00:00:27.790 --> 00:00:31.070
+Language model suggestions are advisory, they don't
+
+00:00:31.090 --> 00:00:31.980
+get the keys.
+
+00:00:32.070 --> 00:00:34.900
+Now watch the actual simulation, the scout
+
+00:00:34.980 --> 00:00:38.430
+inspects, the recovery robot clears the obstruction,
+
+00:00:38.550 --> 00:00:42.200
+physical observations are retained, not guessed, and
+
+00:00:42.200 --> 00:00:44.830
+the courier still waits because a clear
+
+00:00:44.830 --> 00:00:47.120
+path is not the same as permission.
+
+00:00:47.310 --> 00:00:50.400
+This recorded run uses an explicit, configured
+
+00:00:50.400 --> 00:00:53.230
+demo owner release, then the courier checks
+
+00:00:53.230 --> 00:00:55.220
+the route with fresh evidence of its
+
+00:00:55.220 --> 00:00:57.400
+own and makes the delivery.
+
+00:00:57.470 --> 00:01:01.120
+Every completed task leaves a command-bound receipt.
+
+00:01:01.190 --> 00:01:03.240
+If a command's outcome is unknown, the
+
+00:01:03.240 --> 00:01:04.310
+fleet holds.
+
+00:01:04.390 --> 00:01:06.630
+It doesn't guess and send it again.
+
+00:01:06.710 --> 00:01:09.900
+Seven tasks, one traceable mission.
+
+00:01:10.030 --> 00:01:12.370
+This is a simulation-first system, not a
+
+00:01:12.370 --> 00:01:14.720
+claim of production robot safety.
+
+00:01:14.790 --> 00:01:17.860
+Explore the evidence, try the demo, read
+
+00:01:17.860 --> 00:01:18.680
+the code.
+
+00:01:18.750 --> 00:01:21.760
+Witness Fleet, motion you can account for.

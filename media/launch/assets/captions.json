@@ -1,0 +1,162 @@
+[
+  {
+    "start": 0.06,
+    "end": 2.1,
+    "text": "A robot shouldn't move just because an"
+  },
+  {
+    "start": 2.1,
+    "end": 3.56,
+    "text": "AI sounds confident."
+  },
+  {
+    "start": 3.67,
+    "end": 5.98,
+    "text": "It should move when the evidence says"
+  },
+  {
+    "start": 6.01,
+    "end": 6.44,
+    "text": "it can."
+  },
+  {
+    "start": 6.51,
+    "end": 9.88,
+    "text": "Meet Witness Fleet, evidence before motion, a"
+  },
+  {
+    "start": 9.88,
+    "end": 13.77,
+    "text": "blocked corridor, a waiting delivery, three robots"
+  },
+  {
+    "start": 13.77,
+    "end": 16.87,
+    "text": "with different jobs and one question, who"
+  },
+  {
+    "start": 16.87,
+    "end": 19.08,
+    "text": "has the authority to move?"
+  },
+  {
+    "start": 19.15,
+    "end": 21.88,
+    "text": "Witness Fleet connects the answer in Falkor"
+  },
+  {
+    "start": 21.88,
+    "end": 25.28,
+    "text": "DB, the source, the policy, the owner,"
+  },
+  {
+    "start": 25.35,
+    "end": 27.72,
+    "text": "the observation, and the command."
+  },
+  {
+    "start": 27.79,
+    "end": 31.07,
+    "text": "Language model suggestions are advisory, they don't"
+  },
+  {
+    "start": 31.09,
+    "end": 31.98,
+    "text": "get the keys."
+  },
+  {
+    "start": 32.07,
+    "end": 34.9,
+    "text": "Now watch the actual simulation, the scout"
+  },
+  {
+    "start": 34.98,
+    "end": 38.43,
+    "text": "inspects, the recovery robot clears the obstruction,"
+  },
+  {
+    "start": 38.55,
+    "end": 42.2,
+    "text": "physical observations are retained, not guessed, and"
+  },
+  {
+    "start": 42.2,
+    "end": 44.83,
+    "text": "the courier still waits because a clear"
+  },
+  {
+    "start": 44.83,
+    "end": 47.12,
+    "text": "path is not the same as permission."
+  },
+  {
+    "start": 47.31,
+    "end": 50.4,
+    "text": "This recorded run uses an explicit, configured"
+  },
+  {
+    "start": 50.4,
+    "end": 53.23,
+    "text": "demo owner release, then the courier checks"
+  },
+  {
+    "start": 53.23,
+    "end": 55.22,
+    "text": "the route with fresh evidence of its"
+  },
+  {
+    "start": 55.22,
+    "end": 57.4,
+    "text": "own and makes the delivery."
+  },
+  {
+    "start": 57.47,
+    "end": 61.12,
+    "text": "Every completed task leaves a command-bound receipt."
+  },
+  {
+    "start": 61.19,
+    "end": 63.24,
+    "text": "If a command's outcome is unknown, the"
+  },
+  {
+    "start": 63.24,
+    "end": 64.31,
+    "text": "fleet holds."
+  },
+  {
+    "start": 64.39,
+    "end": 66.63,
+    "text": "It doesn't guess and send it again."
+  },
+  {
+    "start": 66.71,
+    "end": 69.9,
+    "text": "Seven tasks, one traceable mission."
+  },
+  {
+    "start": 70.03,
+    "end": 72.37,
+    "text": "This is a simulation-first system, not a"
+  },
+  {
+    "start": 72.37,
+    "end": 74.72,
+    "text": "claim of production robot safety."
+  },
+  {
+    "start": 74.79,
+    "end": 77.86,
+    "text": "Explore the evidence, try the demo, read"
+  },
+  {
+    "start": 77.86,
+    "end": 78.68,
+    "text": "the code."
+  },
+  {
+    "start": 78.75,
+    "end": 81.76,
+    "text": "Witness Fleet, motion you can account for."
+  }
+]

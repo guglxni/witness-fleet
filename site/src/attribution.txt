@@ -1,0 +1,2 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>Witness Fleet browser acceptance</title></head>

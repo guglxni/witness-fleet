@@ -1,0 +1,163 @@
+[
+  {
+    "repository": "FalkorDB/FalkorDB",
+    "expected": "7b7b4d1ed23fe78e69fa5da0c9e4f2ea2e73f3e9",
+    "verified": true,
+    "url": "https://github.com/FalkorDB/FalkorDB/commit/7b7b4d1ed23fe78e69fa5da0c9e4f2ea2e73f3e9",
+    "error": null
+  },
+  {
+    "repository": "FalkorDB/falkordb-py",
+    "expected": "31f63f44a5745b9bec65969a1db706906718cb82",
+    "verified": true,
+    "url": "https://github.com/FalkorDB/falkordb-py/commit/31f63f44a5745b9bec65969a1db706906718cb82",
+    "error": null
+  },
+  {
+    "repository": "FalkorDB/GraphRAG-SDK",
+    "expected": "35e67a0b27fdcc7f2c28508b09e86169851a8187",
+    "verified": true,
+    "url": "https://github.com/FalkorDB/GraphRAG-SDK/commit/35e67a0b27fdcc7f2c28508b09e86169851a8187",
+    "error": null
+  },
+  {
+    "repository": "google-deepmind/mujoco",
+    "expected": "12720007ea3c98238990190dcba6d93fee0dd4c1",
+    "verified": true,
+    "url": "https://github.com/google-deepmind/mujoco/commit/12720007ea3c98238990190dcba6d93fee0dd4c1",
+    "error": null
+  },
+  {
+    "repository": "guglxni/ms-decision-provider",
+    "expected": "f82d9bf5203496eb8a9ab7a7740a7909ab2c04cc",
+    "verified": true,
+    "url": "https://github.com/guglxni/ms-decision-provider/commit/f82d9bf5203496eb8a9ab7a7740a7909ab2c04cc",
+    "error": null
+  },
+  {
+    "repository": "typesafe-ai/typesafe-sdk-python",
+    "expected": "f36e68549ceca3191e5791e5f99ea1baa1a258b5",
+    "verified": true,
+    "url": "https://github.com/typesafe-ai/typesafe-sdk-python/commit/f36e68549ceca3191e5791e5f99ea1baa1a258b5",
+    "error": null
+  },
+  {
+    "repository": "typesafe-ai/system-one-adapter-python",
+    "expected": "e1d4cc938204b22fc5a3c3aca7044072fe3f712d",
+    "verified": true,
+    "url": "https://github.com/typesafe-ai/system-one-adapter-python/commit/e1d4cc938204b22fc5a3c3aca7044072fe3f712d",
+    "error": null
+  },
+  {
+    "repository": "threefruits/HUME",
+    "expected": "c9e170887a037863a77d1d549239ad1ff9e7b55a",
+    "verified": true,
+    "url": "https://github.com/threefruits/HUME/commit/c9e170887a037863a77d1d549239ad1ff9e7b55a",
+    "error": null
+  },
+  {
+    "repository": "daniekpo/verigraph",
+    "expected": "5c07fb8f228049e228b53637e3867650f6854fa5",
+    "verified": true,
+    "url": "https://github.com/daniekpo/verigraph/commit/5c07fb8f228049e228b53637e3867650f6854fa5",
+    "error": null
+  },
+  {
+    "repository": "getzep/graphiti",
+    "expected": "aca369364226a666ca541b061ff2a1a54b80f2ff",
+    "verified": true,
+    "url": "https://github.com/getzep/graphiti/commit/aca369364226a666ca541b061ff2a1a54b80f2ff",
+    "error": null
+  },
+  {
+    "repository": "OSU-NLP-Group/HippoRAG",
+    "expected": "d5c8329422e0a0b834a15874545cb6a74b4f9b26",
+    "verified": true,
+    "url": "https://github.com/OSU-NLP-Group/HippoRAG/commit/d5c8329422e0a0b834a15874545cb6a74b4f9b26",
+    "error": null
+  },
+  {
+    "repository": "AIRI-Institute/AriGraph",
+    "expected": "e884b76d7fa5185a3a8a55e5a67393b5a43f5ef2",
+    "verified": true,
+    "url": "https://github.com/AIRI-Institute/AriGraph/commit/e884b76d7fa5185a3a8a55e5a67393b5a43f5ef2",
+    "error": null
+  },
+  {
+    "repository": "docling-project/docling",
+    "expected": "6fadbae317b09c4dd4051c0f1fc1746c6baf04bc",
+    "verified": true,
+    "url": "https://github.com/docling-project/docling/commit/6fadbae317b09c4dd4051c0f1fc1746c6baf04bc",
+    "error": null
+  },
+  {
+    "repository": "langchain-ai/langgraph",
+    "expected": "5eb60aef6f3837a1fb632a8abc6cf8e8da81785b",
+    "verified": true,
+    "url": "https://github.com/langchain-ai/langgraph/commit/5eb60aef6f3837a1fb632a8abc6cf8e8da81785b",
+    "error": null
+  },
+  {
+    "repository": "splintered-reality/py_trees",
+    "expected": "41ec377108b3786f2cfe529facb0566332691766",
+    "verified": true,
+    "url": "https://github.com/splintered-reality/py_trees/commit/41ec377108b3786f2cfe529facb0566332691766",
+    "error": null
+  },
+  {
+    "repository": "open-policy-agent/opa",
+    "expected": "89d111ce4b45c3af9b79ac1137efe2e9aab6cc92",
+    "verified": true,
+    "url": "https://github.com/open-policy-agent/opa/commit/89d111ce4b45c3af9b79ac1137efe2e9aab6cc92",
+    "error": null
+  },
+  {
+    "repository": "NandhaKishorM/laya",
+    "expected": "432312b36714d8889eba405507b37eda25257d9c",
+    "verified": true,
+    "url": "https://github.com/NandhaKishorM/laya/commit/432312b36714d8889eba405507b37eda25257d9c",
+    "error": null
+  },
+  {
+    "repository": "strands-labs/strands-decider",
+    "expected": "6039cf8b64c6074e75804000c07ac3d4cce795f7",
+    "verified": true,
+    "url": "https://github.com/strands-labs/strands-decider/commit/6039cf8b64c6074e75804000c07ac3d4cce795f7",
+    "error": null
+  },
+  {
+    "repository": "Jovian-Dsouza/awign-hackathon-2026",
+    "expected": "8adb8792204a12634b1a80f9824eebf4e5f9e993",
+    "verified": true,
+    "url": "https://github.com/Jovian-Dsouza/awign-hackathon-2026/commit/8adb8792204a12634b1a80f9824eebf4e5f9e993",
+    "error": null
+  },
+  {
+    "repository": "therohangupta/robot-fleet",
+    "expected": "67c5f724727bf25d4955fedbfb1fd63f8ec29914",
+    "verified": true,
+    "url": "https://github.com/therohangupta/robot-fleet/commit/67c5f724727bf25d4955fedbfb1fd63f8ec29914",
+    "error": null
+  },
+  {
+    "repository": "AppliedMachineLearning-Lab/jev-benchmarking",
+    "expected": "87562114d23597f610754f057e5e0da8659dbcfb",
+    "verified": true,
+    "url": "https://github.com/AppliedMachineLearning-Lab/jev-benchmarking/commit/87562114d23597f610754f057e5e0da8659dbcfb",
+    "error": null
+  },
+  {
+    "repository": "xzx34/JevOut",
+    "expected": "c8ab231728abb54bd61cf3c8812cb48811aae36b",
+    "verified": true,
+    "url": "https://github.com/xzx34/JevOut/commit/c8ab231728abb54bd61cf3c8812cb48811aae36b",
+    "error": null
+  },
+  {
+    "repository": "nokia-applied-research/AnyJev",
+    "expected": "b03158e9ba18e84c01054aaa393481925088db07",
+    "verified": true,
+    "url": "https://github.com/nokia-applied-research/AnyJev/commit/b03158e9ba18e84c01054aaa393481925088db07",
+    "error": null
+  }
+]

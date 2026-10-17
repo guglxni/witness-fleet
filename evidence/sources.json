@@ -1,0 +1,1037 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": 1,
+      "url": "https://docs.falkordb.com/llms.txt",
+      "title": "FalkorDB Docs",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 2,
+      "url": "https://docs.falkordb.com/_llms/falkor-db.txt",
+      "title": "FalkorDB Docs: FalkorDB",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 3,
+      "url": "https://docs.falkordb.com/_llms/falkor-db/documentation.txt",
+      "title": "FalkorDB Docs: FalkorDB Documentation",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 4,
+      "url": "https://docs.falkordb.com/cypher/cypher-support.md",
+      "title": "OpenCypher Standard Compatibility and Feature Coverage",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 5,
+      "url": "https://docs.falkordb.com/cypher/known-limitations.md",
+      "title": "Cypher Query Limitations and Unsupported Features",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 6,
+      "url": "https://docs.falkordb.com/design/concurrency.md",
+      "title": "Atomicity and Concurrency Control in FalkorDB",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 7,
+      "url": "https://docs.falkordb.com/design/index.md",
+      "title": "FalkorDB Architecture and Design Principles",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 8,
+      "url": "https://docs.falkordb.com/getting-started/configuration.md",
+      "title": "FalkorDB Server Configuration Parameters Reference",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 9,
+      "url": "https://docs.falkordb.com/commands/acl.md",
+      "title": "ACL: FalkorDB Access Control List Command Reference",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 10,
+      "url": "https://docs.falkordb.com/commands/graph.constraint-create.md",
+      "title": "GRAPH.CONSTRAINT CREATE: Creating Graph Constraints in FalkorDB",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 11,
+      "url": "https://docs.falkordb.com/operations/durability/index.md",
+      "title": "FalkorDB Durability and Data Persistence Guide",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 12,
+      "url": "https://docs.falkordb.com/operations/durability/persistence.md",
+      "title": "Configuring RDB & AOF Data Persistence in Docker",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 13,
+      "url": "https://docs.falkordb.com/operations/replication.md",
+      "title": "FalkorDB Replication: High Availability and Read Replicas",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 14,
+      "url": "https://docs.falkordb.com/operations/cluster.md",
+      "title": "FalkorDB Cluster Deployment: Horizontal Scaling & Sharding",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 15,
+      "url": "https://docs.falkordb.com/commands/graph.ro-query.md",
+      "title": "GRAPH.RO_QUERY: Read-Only Cypher Queries in FalkorDB",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 16,
+      "url": "https://docs.falkordb.com/commands/graph.query.md",
+      "title": "GRAPH.QUERY: Executing Cypher Queries in FalkorDB",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 17,
+      "url": "https://docs.falkordb.com/algorithms/astar.md",
+      "title": "algo.AStar",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 18,
+      "url": "https://docs.falkordb.com/cypher/indexing/cch-index.md",
+      "title": "CCH Indexing: Fast Point-to-Point Shortest Paths on Weighted Graphs",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 19,
+      "url": "https://docs.falkordb.com/cypher/indexing/range-index.md",
+      "title": "Range Indexing: Fast Equality and Range Lookups",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 20,
+      "url": "https://docs.falkordb.com/cypher/indexing/fulltext-index.md",
+      "title": "Full-Text Indexing: Fast Fuzzy and Text Search in FalkorDB",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 21,
+      "url": "https://docs.falkordb.com/cypher/indexing/vector-index.md",
+      "title": "Vector Indexing: Fast Similarity Search for GraphRAG",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 22,
+      "url": "https://docs.falkordb.com/algorithms/sppath.md",
+      "title": "Shortest Paths Between Nodes (algo.SPpaths) Graph Algorithm",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 23,
+      "url": "https://docs.falkordb.com/algorithms/bfs.md",
+      "title": "Breadth-First Search (BFS) Graph Algorithm",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 24,
+      "url": "https://docs.falkordb.com/cypher/procedures.md",
+      "title": "Cypher Procedures: Built-in Graph Management and Utilities",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 25,
+      "url": "https://docs.falkordb.com/commands/graph.explain.md",
+      "title": "GRAPH.EXPLAIN: Inspecting Cypher Query Execution Plans",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 26,
+      "url": "https://docs.falkordb.com/commands/graph.profile.md",
+      "title": "GRAPH.PROFILE: Profiling Cypher Query Performance",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 27,
+      "url": "https://docs.falkordb.com/operations/opentelemetry.md",
+      "title": "OpenTelemetry Integration: Distributed Tracing for FalkorDB",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 28,
+      "url": "https://docs.falkordb.com/commands/graph.copy.md",
+      "title": "GRAPH.COPY: Duplicating Graphs in FalkorDB",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 29,
+      "url": "https://docs.falkordb.com/udfs/index.md",
+      "title": "User Defined Functions (UDFs) in FalkorDB: Custom Logic in Cypher",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 30,
+      "url": "https://docs.falkordb.com/references/license.md",
+      "title": "FalkorDB License: Server Side Public License (SSPLv1)",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 31,
+      "url": "https://redis.io/docs/latest/develop/using-commands/transactions",
+      "title": "Transactions | Docs",
+      "accessed": "2026-10-15",
+      "quotes": [
+        {
+          "text": "Redis does not support rollbacks of transactions since supporting rollbacks\nwould have a significant impact on the simplicity and performance of Redis.\nDiscarding the command queue\nDISCARD",
+          "added": "2026-10-15"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "url": "https://docs.falkordb.com/graphrag/architecture.md",
+      "title": "GraphRAG SDK Pipeline Architecture",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 33,
+      "url": "https://docs.falkordb.com/graphrag/graph-schema.md",
+      "title": "Graph Schema",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 34,
+      "url": "https://docs.falkordb.com/graphrag/incremental-updates.md",
+      "title": "Incremental Updates",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 35,
+      "url": "https://docs.falkordb.com/graphrag/reliability-and-grounding.md",
+      "title": "Reliability and Grounding",
+      "accessed": "2026-10-15",
+      "quotes": [
+        {
+          "text": "| Confidence thresholds | `filter_facts_by_relevance(min_score=0.25, ...)`, `chunk_top_k`, `rel_top_k`, `top_k` on vector search, `CosineReranker(top_k=...)` |\n| Abstention behavior | Prompt-level only (system prompt rule 6); enforce programmatically with `retrieve()` + a score gate — see [Reducing LLM Hallucinations](/graphrag/reducing-llm-hallucinations#defining-an-abstention-path) |\n| Unsupported claims | `completion(return_context=True)` gives the exact evidence an answer may be checked against |\n| Retrieval validation | `GraphRAG.retrieve()` / `retrieve_sync()` — context without generation |\n| Factual accuracy | [GraphRAG-Bench results](/graphrag/benchmark) — ACC, ROUGE-L, Coverage, Faithfulness |",
+          "added": "2026-10-15"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "url": "https://docs.typesafe.ai/models",
+      "title": "Models - TypeSafe",
+      "accessed": "2026-10-15",
+      "quotes": [
+        {
+          "text": "Text\nJev 1.14 is the newest Jev release, available from October 14, 2026.\nPrice:\nYou pay per input token. Output tokens are free. A Btok is a billion tokens and an Mtok is a million tokens.\nContext length:\nTwo limits, the per-request context and the per-question context. See",
+          "added": "2026-10-15"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "url": "https://docs.typesafe.ai/model-jaggedness/jev-1.13",
+      "title": "Jev 1.13 jaggedness - TypeSafe",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 38,
+      "url": "https://platform.openai.com/api/docs/guides/decisions",
+      "title": "OpenAI Platform",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 39,
+      "url": "https://www.wemakedevs.org/hackathons/falkordb/rules",
+      "title": "Rules | Graph Hacks: Context for AI Agents | WeMakeDevs",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 40,
+      "url": "https://www.wemakedevs.org/hackathons/falkordb",
+      "title": "Graph Hacks: Context for AI Agents | WeMakeDevs",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 41,
+      "url": "https://developers.openai.com/api/docs/guides/decisions",
+      "title": "Decisions | OpenAI API",
+      "accessed": "2026-10-15",
+      "quotes": [
+        {
+          "text": "to experiment with questions and inputs before writing code.\nThe Decisions API is in public beta, and we expect to GA in the coming weeks.\ngpt-6-luna\nis the only model currently available. Use the dedicated\nPOST   /v1/decisions\nendpoint.",
+          "added": "2026-10-15"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-microsoft-decision",
+      "title": "Deploy and use Microsoft-Decision-1 in Microsoft Foundry - Microsoft Foundry | Microsoft Learn",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 43,
+      "url": "https://docs.typesafe.ai/llms.txt",
+      "title": "TypeSafe",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 44,
+      "url": "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+      "title": "Introducing System One Models & Jev - TypeSafe AI Blog",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 45,
+      "url": "https://docs.typesafe.ai/confidence.md",
+      "title": "Confidence",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 46,
+      "url": "https://docs.typesafe.ai/images.md",
+      "title": "Images",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 47,
+      "url": "https://docs.typesafe.ai/primitives/box.md",
+      "title": "Box",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 48,
+      "url": "https://docs.typesafe.ai/api.md",
+      "title": "API reference",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 49,
+      "url": "https://docs.typesafe.ai/cookbooks/entity_alignment.md",
+      "title": "Knowledge graph entity alignment",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 50,
+      "url": "https://docs.typesafe.ai/cookbooks/rerank_typesafe.md",
+      "title": "Re-ranking",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 51,
+      "url": "https://docs.falkordb.com/graphrag/benchmark.md",
+      "title": "GraphRAG-Bench Methodology and Reproduction",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 52,
+      "url": "https://commandline.microsoft.com/microsoft-decision-1-model-foundry",
+      "title": "Microsoft-Decision-1: Our model for fast decision-making",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 53,
+      "url": "https://openai.com/index/devday-2026-recap",
+      "title": "DevDay 2026 Recap | OpenAI",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 54,
+      "url": "https://docs.falkordb.com/getting-started/clients.md",
+      "title": "FalkorDB Client Libraries: Python, JavaScript, Java, Go, Rust",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 55,
+      "url": "https://docs.falkordb.com/operations/durability/acl-persistence.md",
+      "title": "Managing Persistent ACL Users and Permissions on Docker",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 56,
+      "url": "https://github.com/FalkorDB/FalkorDB/releases/tag/v6.0.2",
+      "title": "FalkorDB v6.0.2 release",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 57,
+      "url": "https://github.com/FalkorDB/FalkorDB/blob/7b7b4d1ed23fe78e69fa5da0c9e4f2ea2e73f3e9/src/query_session.rs",
+      "title": "FalkorDB v6.0.2: src/query_session.rs",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 58,
+      "url": "https://github.com/FalkorDB/FalkorDB/blob/7b7b4d1ed23fe78e69fa5da0c9e4f2ea2e73f3e9/graph/src/runtime/functions/procedures.rs",
+      "title": "FalkorDB v6.0.2: graph/src/runtime/functions/procedures.rs",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 59,
+      "url": "https://github.com/FalkorDB/FalkorDB/blob/7b7b4d1ed23fe78e69fa5da0c9e4f2ea2e73f3e9/graph/src/runtime/ops/node_by_vector_scan.rs",
+      "title": "FalkorDB v6.0.2: graph/src/runtime/ops/node_by_vector_scan.rs",
+      "accessed": "2026-10-15",
+      "quotes": [
+        {
+          "text": "//! batch. The matched node binds to the node variable and, when a score yield\n//! variable is present, the distance binds to it as a float column. Results are\n//! ordered by ascending distance — RediSearch's `RediSearch_CreateVecSimNode`\n//! defaults to `BY_SCORE` ordering, which the graph index layer preserves.\n\nuse std::sync::Arc;",
+          "added": "2026-10-15"
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "url": "https://github.com/FalkorDB/FalkorDB/blob/7b7b4d1ed23fe78e69fa5da0c9e4f2ea2e73f3e9/src/graph_core.rs",
+      "title": "FalkorDB v6.0.2: src/graph_core.rs",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 61,
+      "url": "https://github.com/FalkorDB/GraphRAG-SDK/blob/35e67a0b27fdcc7f2c28508b09e86169851a8187/graphrag_sdk/pyproject.toml",
+      "title": "GraphRAG SDK pinned: graphrag_sdk/pyproject.toml",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 62,
+      "url": "https://github.com/FalkorDB/GraphRAG-SDK/blob/35e67a0b27fdcc7f2c28508b09e86169851a8187/graphrag_sdk/src/graphrag_sdk/api/main.py",
+      "title": "GraphRAG SDK pinned: graphrag_sdk/src/graphrag_sdk/api/main.py",
+      "accessed": "2026-10-15",
+      "quotes": [
+        {
+          "text": "Runs exactly the Cypher you pass, with no rewriting and no read-only\n        enforcement, so treat it the way you would treat a database console: fine\n        for your own queries, not a place to interpolate untrusted input. Use\n        ``params`` for values rather than formatting them into the string.",
+          "added": "2026-10-15"
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "url": "https://github.com/FalkorDB/GraphRAG-SDK/blob/35e67a0b27fdcc7f2c28508b09e86169851a8187/graphrag_sdk/src/graphrag_sdk/core/connection.py",
+      "title": "GraphRAG SDK pinned: graphrag_sdk/src/graphrag_sdk/core/connection.py",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 64,
+      "url": "https://github.com/FalkorDB/GraphRAG-SDK/blob/35e67a0b27fdcc7f2c28508b09e86169851a8187/graphrag_sdk/src/graphrag_sdk/retrieval/router.py",
+      "title": "GraphRAG SDK pinned: graphrag_sdk/src/graphrag_sdk/retrieval/router.py",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 65,
+      "url": "https://arxiv.org/html/1706.04599v2",
+      "title": "On Calibration of Modern Neural Networks",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 66,
+      "url": "https://arxiv.org/html/1705.08500v2",
+      "title": "Selective Classification for Deep Neural Networks",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 67,
+      "url": "https://arxiv.org/html/2403.12031v1",
+      "title": "RouterBench: A Benchmark for Multi-LLM Routing System",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 68,
+      "url": "https://huggingface.co/h2oai/h2o-lightning-4b/raw/main/README.md",
+      "title": "H2O-Lightning-4B",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 69,
+      "url": "https://github.com/FalkorDB/GraphRAG-SDK/blob/35e67a0b27fdcc7f2c28508b09e86169851a8187/graphrag_sdk/src/graphrag_sdk/core/models.py",
+      "title": "GraphRAG SDK: provenance and document models",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 70,
+      "url": "https://github.com/strands-labs/strands-decider/tree/6039cf8b64c6074e75804000c07ac3d4cce795f7",
+      "title": "Strands Decider pinned source",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 71,
+      "url": "https://huggingface.co/StrandsAgents/strands-decider-2B-qwen3.5-v1-2610/tree/216d1ccb46a9e9b036eb9187b248db98480f77d4",
+      "title": "Strands Decider model card and adapter",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 72,
+      "url": "https://huggingface.co/h2oai/h2o-lightning-4b/tree/03b06b677b071d762d19757ac84662ba05f90349",
+      "title": "H2O-Lightning-4B pinned model",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 73,
+      "url": "https://github.com/FalkorDB/FalkorDB/blob/7b7b4d1ed23fe78e69fa5da0c9e4f2ea2e73f3e9/LICENSE",
+      "title": "FalkorDB v6.0.2 license",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 74,
+      "url": "https://github.com/typesafe-ai/typesafe-sdk-python/tree/f36e68549ceca3191e5791e5f99ea1baa1a258b5",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 75,
+      "url": "https://github.com/typesafe-ai/system-one-adapter-python/tree/e1d4cc938204b22fc5a3c3aca7044072fe3f712d",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 76,
+      "url": "https://github.com/NandhaKishorM/laya/tree/432312b36714d8889eba405507b37eda25257d9c",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 77,
+      "url": "https://huggingface.co/convaiinnovations/laya/tree/7b928d828b7b0e022f929d9bd2e44165aa270148",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 78,
+      "url": "https://github.com/FalkorDB/GraphRAG-SDK/blob/35e67a0b27fdcc7f2c28508b09e86169851a8187/graphrag_sdk/src/graphrag_sdk/ingestion/structured_pipeline.py",
+      "title": "GraphRAG SDK: deterministic structured pipeline",
+      "accessed": "2026-10-15",
+      "quotes": [
+        {
+          "text": "Executes a fixed sequence, none of which consults a model:\n\n    1. **Load** — parse the source into a re-openable record stream\n    2. **Validate** — check the mapping against the source's real header\n    3. **Lexical graph** — a Document, and one Chunk per record",
+          "added": "2026-10-15"
+        }
+      ]
+    },
+    {
+      "id": 79,
+      "url": "https://github.com/FalkorDB/GraphRAG-SDK/blob/35e67a0b27fdcc7f2c28508b09e86169851a8187/graphrag_sdk/src/graphrag_sdk/ingestion/extraction_strategies/graph_extraction.py",
+      "title": "GraphRAG SDK: span extraction and propagation",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 80,
+      "url": "https://github.com/FalkorDB/GraphRAG-SDK/blob/35e67a0b27fdcc7f2c28508b09e86169851a8187/graphrag_sdk/src/graphrag_sdk/ingestion/chunking_strategies/fixed_size.py",
+      "title": "GraphRAG SDK: fixed-size chunk offsets",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 81,
+      "url": "https://github.com/FalkorDB/GraphRAG-SDK/blob/35e67a0b27fdcc7f2c28508b09e86169851a8187/graphrag_sdk/src/graphrag_sdk/ingestion/chunking_strategies/sentence_token_cap.py",
+      "title": "GraphRAG SDK: default chunk metadata",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 82,
+      "url": "https://github.com/FalkorDB/GraphRAG-SDK/blob/35e67a0b27fdcc7f2c28508b09e86169851a8187/graphrag_sdk/src/graphrag_sdk/core/providers/base.py",
+      "title": "GraphRAG SDK: provider contracts",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 83,
+      "url": "https://mujoco.readthedocs.io/en/stable/python.html",
+      "title": "Python - MuJoCo Documentation",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 84,
+      "url": "https://arxiv.org/html/2609.37647v1",
+      "title": "Evaluating and Benchmarking the System One Model Jev",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 85,
+      "url": "https://arxiv.org/html/2609.30243v2",
+      "title": "JevOut: Natural Context Can Flip Decision Models",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 86,
+      "url": "https://arxiv.org/html/2602.04129v2",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 87,
+      "url": "https://arxiv.org/html/2411.10446v3",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 88,
+      "url": "https://arxiv.org/pdf/2307.06135v2",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 89,
+      "url": "https://arxiv.org/html/2401.14554v4",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 90,
+      "url": "https://arxiv.org/html/2509.05397v1",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 91,
+      "url": "https://github.com/daniekpo/verigraph/blob/5c07fb8f228049e228b53637e3867650f6854fa5/verigraph/core/simple_plan_checker.py",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 92,
+      "url": "https://github.com/daniekpo/verigraph/blob/5c07fb8f228049e228b53637e3867650f6854fa5/verigraph/core/iterative_planner.py",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 93,
+      "url": "https://github.com/daniekpo/verigraph/blob/5c07fb8f228049e228b53637e3867650f6854fa5/README.md",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 94,
+      "url": "https://github.com/MIT-REALM/gcbfplus/tree/fb449907bdbf981aa10f0edfecca02663ddc8037",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 95,
+      "url": "https://github.com/MIT-REALM/VLM_gcbfplus/tree/65d87c2968f31a70f8e16bcdccff122cbd64ea14",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 96,
+      "url": "https://arxiv.org/html/2304.13487v1",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 97,
+      "url": "https://docs.falkordb.com/commands/graph.copy",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 98,
+      "url": "https://docs.falkordb.com/algorithms/sppath",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 99,
+      "url": "https://arxiv.org/html/2606.09919v1",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 100,
+      "url": "https://arxiv.org/html/2604.26988v1",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 101,
+      "url": "https://arxiv.org/html/2607.06501v1",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 102,
+      "url": "https://arxiv.org/html/2404.06413v2",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 103,
+      "url": "https://co-glance.github.io",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 104,
+      "url": "https://vap-tamp.github.io/vap-tamp",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 105,
+      "url": "https://arxiv.org/html/2410.21040v1",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 106,
+      "url": "https://arxiv.org/html/2309.10062v2",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 107,
+      "url": "https://github.com/threefruits/HUME/tree/c9e170887a037863a77d1d549239ad1ff9e7b55a",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 108,
+      "url": "https://openbelief-nav.github.io",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 109,
+      "url": "https://github.com/threefruits/HUME/blob/c9e170887a037863a77d1d549239ad1ff9e7b55a/hume/planning/block_processing/symbolic.py",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 110,
+      "url": "https://github.com/threefruits/HUME/blob/c9e170887a037863a77d1d549239ad1ff9e7b55a/hume/planning/mobile_manipulation/verification.py",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 111,
+      "url": "https://github.com/threefruits/HUME/blob/c9e170887a037863a77d1d549239ad1ff9e7b55a/pyproject.toml",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 112,
+      "url": "https://github.com/co-glance/co-glance.github.io",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 113,
+      "url": "https://github.com/SMARTlab-Purdue/SMART-LLM/tree/be42930050f7d4d8f2fad027aff14a699c3300aa",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 114,
+      "url": "https://www.wemakedevs.org/hackathons/falkordb/resources",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 115,
+      "url": "https://arxiv.org/html/2501.13956v1",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 116,
+      "url": "https://arxiv.org/html/2411.11323v1",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 117,
+      "url": "https://arxiv.org/html/2502.14802v1",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 118,
+      "url": "https://arxiv.org/html/2407.04363v3",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 119,
+      "url": "https://docs.falkordb.com/agentic-memory/graphiti",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 120,
+      "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 121,
+      "url": "https://opensource.org/blog/the-sspl-is-not-an-open-source-license",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 122,
+      "url": "https://saycomply.github.io",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 123,
+      "url": "https://github.com/AIRI-Institute/AriGraph/tree/e884b76d7fa5185a3a8a55e5a67393b5a43f5ef2",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 124,
+      "url": "https://github.com/FalkorDB/FalkorDB/tree/b080a44c135e8b938732f155785992f39adcb41c",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 125,
+      "url": "https://github.com/FalkorDB/GraphRAG-SDK/tree/35e67a0b27fdcc7f2c28508b09e86169851a8187",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 126,
+      "url": "https://github.com/OSU-NLP-Group/HippoRAG/tree/d5c8329422e0a0b834a15874545cb6a74b4f9b26",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 127,
+      "url": "https://github.com/docling-project/docling/tree/6fadbae317b09c4dd4051c0f1fc1746c6baf04bc",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 128,
+      "url": "https://github.com/getzep/graphiti/tree/aca369364226a666ca541b061ff2a1a54b80f2ff",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 129,
+      "url": "https://github.com/guglxni/chronos/tree/da2afe633f89bd3311ed5d00e5670fc88440505e",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 130,
+      "url": "https://github.com/langchain-ai/langgraph/tree/5eb60aef6f3837a1fb632a8abc6cf8e8da81785b",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 131,
+      "url": "https://github.com/open-policy-agent/opa/tree/89d111ce4b45c3af9b79ac1137efe2e9aab6cc92",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 132,
+      "url": "https://github.com/splintered-reality/py_trees/tree/41ec377108b3786f2cfe529facb0566332691766",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 133,
+      "url": "https://github.com/topoteretes/cognee/tree/f154b32a9e544dac73e7ddf2010327cf9988edcd",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 134,
+      "url": "https://arxiv.org/html/2606.03787v3",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 135,
+      "url": "https://arxiv.org/html/2303.11366v4",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 136,
+      "url": "https://arxiv.org/html/2603.04639v1",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 137,
+      "url": "https://arxiv.org/html/2609.36720v1",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 138,
+      "url": "https://www.openpolicyagent.org/docs/rest-api",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 139,
+      "url": "https://docs.langchain.com/oss/python/langgraph/fault-tolerance",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 140,
+      "url": "https://github.com/getzep/graphiti/blob/aca369364226a666ca541b061ff2a1a54b80f2ff/graphiti_core/driver/falkordb_driver.py",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 141,
+      "url": "https://github.com/FalkorDB/GraphRAG-SDK/blob/35e67a0b27fdcc7f2c28508b09e86169851a8187/graphrag_sdk/src/graphrag_sdk/storage/graph_store.py",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 142,
+      "url": "https://github.com/guglxni/chronos/blob/da2afe633f89bd3311ed5d00e5670fc88440505e/chronos/graphiti_client.py",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 143,
+      "url": "https://github.com/guglxni/chronos/blob/da2afe633f89bd3311ed5d00e5670fc88440505e/chronos/agent/nodes/persist_trace.py",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 144,
+      "url": "https://github.com/topoteretes/cognee/blob/f154b32a9e544dac73e7ddf2010327cf9988edcd/cognee/infrastructure/databases/graph/get_graph_engine.py",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 145,
+      "url": "https://github.com/topoteretes/cognee/blob/f154b32a9e544dac73e7ddf2010327cf9988edcd/cognee/modules/provenance/models/ProvenanceEntry.py",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 146,
+      "url": "https://github.com/Jovian-Dsouza/awign-hackathon-2026/tree/8adb8792204a12634b1a80f9824eebf4e5f9e993",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 147,
+      "url": "https://github.com/FalkorDB/FalkorDB/blob/b080a44c135e8b938732f155785992f39adcb41c/LICENSE",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 148,
+      "url": "https://arxiv.org/html/2510.10379v1",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 149,
+      "url": "https://github.com/therohangupta/robot-fleet/tree/67c5f724727bf25d4955fedbfb1fd63f8ec29914",
+      "title": "",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 150,
+      "url": "https://arxiv.org/html/2204.07447v2",
+      "title": "Stretching Sentence-pair NLI Models to Reason over Long Documents and Clusters (SENTLI)",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 151,
+      "url": "https://proceedings.mlr.press/v205/ichter23a/ichter23a.pdf",
+      "title": "Do As I Can, Not As I Say: Grounding Language in Robotic Affordances (SayCan)",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 152,
+      "url": "https://proceedings.mlr.press/v229/ren23a.html",
+      "title": "Robots That Ask For Help: Uncertainty Alignment for Large Language Model Planners (KnowNo)",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 153,
+      "url": "https://arxiv.org/html/2406.18665v4",
+      "title": "RouteLLM: Learning to Route LLMs from Preference Data",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 154,
+      "url": "https://arxiv.org/pdf/2305.05176",
+      "title": "FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 155,
+      "url": "https://arxiv.org/pdf/2102.12981",
+      "title": "The Black-Box Simplex Architecture for Runtime Assurance of Autonomous CPS",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 156,
+      "url": "https://arxiv.org/html/2609.26532v1",
+      "title": "REFLEX with Jev for Efficient Selective Control in LLM Agents",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 157,
+      "url": "https://arxiv.org/html/2610.00831v1",
+      "title": "AnyJev Technical Report",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 158,
+      "url": "https://github.com/AppliedMachineLearning-Lab/jev-benchmarking",
+      "title": "Jev benchmarking author code",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 159,
+      "url": "https://github.com/xzx34/JevOut",
+      "title": "JevOut author code",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 160,
+      "url": "https://github.com/google-research/google-research/tree/master/saycan",
+      "title": "SayCan official author code path",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 161,
+      "url": "https://github.com/patrickhaoy/KnowNo",
+      "title": "KnowNo author repository",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 162,
+      "url": "https://github.com/lm-sys/RouteLLM",
+      "title": "RouteLLM author framework",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 163,
+      "url": "https://github.com/stanford-futuredata/FrugalGPT",
+      "title": "FrugalGPT author code",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 164,
+      "url": "https://github.com/nokia-applied-research/AnyJev",
+      "title": "AnyJev author implementation",
+      "accessed": "2026-10-15"
+    },
+    {
+      "id": 165,
+      "url": "https://www.sciencedirect.com/science/article/pii/0004370200000680",
+      "title": "Monitoring and control of anytime algorithms: A dynamic programming approach",
+      "accessed": "2026-10-15"
+    }
+  ]
+}

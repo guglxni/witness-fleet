@@ -1,0 +1,9 @@
+# Local-only synthetic development roles. No production authentication claim.
+# Redis socket is published only on 127.0.0.1; app never accepts a caller's graph key.
+user default off resetpass resetkeys -@all
+user wf_admin on nopass resetkeys +ping +acl|load +acl|getuser +client|setinfo +client|setname
+user wf_health on nopass resetkeys +ping +client|setinfo +client|setname
+user wf_ops on nopass ~wf:demo:ops +ping +info +graph.constraint +graph.query +graph.ro_query +graph.explain +graph.profile +client|setinfo +client|setname
+user wf_read on nopass ~wf:demo:ops +ping +info +graph.ro_query +client|setinfo +client|setname
+user wf_corpus on nopass ~wf:demo:corpus ~wf:demo:corpus_ontology +ping +info +graph.query +graph.ro_query +graph.list +client|setinfo +client|setname
+user wf_other on nopass ~wf:other:ops +ping +info +graph.constraint +graph.query +graph.ro_query +client|setinfo +client|setname

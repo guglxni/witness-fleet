@@ -1,0 +1,15 @@
+{
+  "source_id": "restriction-decision-r1",
+  "kind": "scoped_restriction",
+  "incident": "incident-c-17",
+  "corridor": "corridor-c",
+  "actor_scope": "loaded_courier",
+  "state": "staged",
+  "approved": false,
+  "allowed_actions": ["inspect", "recover"],
+  "restriction": "Loaded courier travel is paused on Corridor C after the carton incident.",
+  "effective_from": "tick:120",
+  "effective_to": null,
+  "supersedes": null,
+  "source_quote": "Loaded courier travel is paused on Corridor C after the carton incident."
+}

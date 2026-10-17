@@ -1,0 +1,3 @@
+import { useEffect, useState } from 'react';
+import { useReducedMotion } from './useReducedMotion';
+export function MotionPause(){const[paused,setPaused]=useState(false);const reduced=useReducedMotion();useEffect(()=>{const shell=document.querySelector<HTMLElement>('.site-shell');shell?.classList.toggle('motion-paused',paused||reduced);return()=>shell?.classList.remove('motion-paused');},[paused,reduced]);return <button className="motion-switch" type="button" aria-label={paused?'Resume all motion':'Pause all motion'} aria-pressed={paused} onClick={()=>setPaused(value=>!value)}>{paused?'Resume motion':'Pause motion'}</button>;}

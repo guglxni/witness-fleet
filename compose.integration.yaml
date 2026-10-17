@@ -1,0 +1,17 @@
+name: witness-fleet-integration
+services:
+  graph:
+    image: falkordb/falkordb@sha256:107455e862a824e45e8e9f5a7fbfdf5e00a08b14e13eae2577c72fd9e3f59ba6
+    container_name: witness-fleet-integration-graph
+    environment:
+      BROWSER: "0"
+      REDIS_ARGS: "--appendonly yes --appendfsync always --aclfile /etc/witness/roles.acl"
+    ports:
+      - "127.0.0.1:6382:6379"
+    volumes:
+      - integration-graph-data:/var/lib/falkordb/data
+      - ./config:/etc/witness:ro
+    restart: unless-stopped
+volumes:
+  integration-graph-data:
+    name: witness-fleet-integration-graph-data

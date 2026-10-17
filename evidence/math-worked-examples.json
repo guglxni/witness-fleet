@@ -1,0 +1,40 @@
+{
+  "status": "illustrative synthetic arithmetic, not a project benchmark",
+  "clearance": {
+    "gap_m": 1.1,
+    "uncertainty_m": 0.05,
+    "lower_gap_m": 1.05,
+    "courier_width_m": 0.9,
+    "margin_each_side_m": 0.1,
+    "required_width_m": 1.1,
+    "passes": false
+  },
+  "brier_example": {
+    "probabilities": [
+      0.9,
+      0.6,
+      0.2,
+      0.8
+    ],
+    "labels": [
+      1,
+      0,
+      0,
+      1
+    ],
+    "binary_brier": 0.1125
+  },
+  "value_of_computation": {
+    "q_fast": 0.8,
+    "q_fallback": 0.94,
+    "wrong_label_loss": 1,
+    "extra_compute_cost": 0.04,
+    "latency_cost": 0.02,
+    "net_value": 0.07999999999999989
+  },
+  "zero_failure_iid_upper_example": {
+    "n": 100,
+    "confidence": 0.95,
+    "one_sided_upper": 0.029513049607039932
+  }
+}

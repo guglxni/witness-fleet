@@ -1,0 +1,74 @@
+<mujoco model="witness_facility">
+  <compiler angle="radian" autolimits="true"/>
+  <option timestep="0.01" integrator="implicitfast" gravity="0 0 -9.81" iterations="80" tolerance="1e-10"/>
+  <size njmax="2000" nconmax="500"/>
+  <default>
+    <joint damping="2" armature="0.02" limited="true"/>
+    <geom friction="0.9 0.02 0.002" condim="3" solref="0.03 1" solimp="0.95 0.99 0.001"/>
+    <position kp="80" kv="18" ctrllimited="true"/>
+  </default>
+  <worldbody>
+    <light name="ceiling" pos="0 0 5" diffuse="0.8 0.8 0.8"/>
+    <geom name="floor" type="plane" pos="0 0 0" size="12 8 0.1" rgba="0.7 0.72 0.74 1"/>
+    <!-- C corridor: 1.4m declared clear width between walls at y=+/-0.7. -->
+    <geom name="corridor_south_wall" type="box" pos="0 -0.81 0.6" size="8 0.11 0.6" rgba="0.35 0.39 0.44 1"/>
+    <!-- An opening in the north wall connects to the recovery bay around x=0. -->
+    <geom name="corridor_north_wall_west" type="box" pos="-4.7 0.81 0.6" size="3.3 0.11 0.6" rgba="0.35 0.39 0.44 1"/>
+    <geom name="corridor_north_wall_east" type="box" pos="4.7 0.81 0.6" size="3.3 0.11 0.6" rgba="0.35 0.39 0.44 1"/>
+    <geom name="west_wall" type="box" pos="-8.1 0 0.6" size="0.1 1 0.6" rgba="0.35 0.39 0.44 1"/>
+    <geom name="east_wall" type="box" pos="8.1 0 0.6" size="0.1 1 0.6" rgba="0.35 0.39 0.44 1"/>
+    <site name="south_staging" pos="-4 -2.5 0.02" size="0.06" rgba="0.1 0.8 0.2 1"/>
+    <site name="north_staging" pos="4 -2.5 0.02" size="0.06" rgba="0.1 0.2 0.9 1"/>
+    <site name="recovery_bay" pos="1.4 -0.2 0.02" size="0.06" rgba="0.9 0.6 0.1 1"/>
+    <site name="delivery_zone" pos="4 0 0.03" size="0.45" rgba="0.1 0.8 0.2 0.35"/>
+    <geom name="scenario_occluder" type="box" pos="10 5 0.5" size="0.08 0.8 0.55" rgba="0.18 0.2 0.24 1" contype="0" conaffinity="0" group="1"/>
+    <body name="scout" pos="0 0 0.18">
+      <joint name="scout_x" type="slide" axis="1 0 0" range="-7 7"/>
+      <joint name="scout_y" type="slide" axis="0 1 0" range="-3 3"/>
+      <joint name="scout_yaw" type="hinge" axis="0 0 1" range="-3.14 3.14" damping="3"/>
+      <geom name="scout_chassis" type="cylinder" size="0.11 0.13" mass="8" rgba="0.15 0.55 0.85 1"/>
+      <site name="scout_sensor" pos="0.20 0 0.03" size="0.025" rgba="1 1 0 1"/>
+    </body>
+    <body name="recovery" pos="0 0 0.2">
+      <joint name="recovery_x" type="slide" axis="1 0 0" range="-7 7"/>
+      <joint name="recovery_y" type="slide" axis="0 1 0" range="-3 3"/>
+      <joint name="recovery_yaw" type="hinge" axis="0 0 1" range="-3.14 3.14" damping="3"/>
+      <geom name="recovery_chassis" type="cylinder" size="0.19 0.16" mass="24" rgba="0.9 0.4 0.1 1"/>
+      <geom name="recovery_pusher" type="box" pos="0.20 0 0" size="0.02 0.34 0.10" mass="1" rgba="0.65 0.25 0.05 1" friction="0.05 0.001 0.001" solref="0.08 1" solimp="0.8 0.9 0.01"/>
+      <site name="recovery_sensor" pos="0.20 0 0.03" size="0.025" rgba="1 1 0 1"/>
+    </body>
+    <body name="courier" pos="0 0 0.24">
+      <joint name="courier_x" type="slide" axis="1 0 0" range="-7 7"/>
+      <joint name="courier_y" type="slide" axis="0 1 0" range="-3 3"/>
+      <joint name="courier_yaw" type="hinge" axis="0 0 1" range="-3.14 3.14" damping="3"/>
+      <geom name="courier_chassis" type="box" size="0.25 0.25 0.18" mass="30" rgba="0.35 0.65 0.25 1"/>
+      <site name="courier_sensor" pos="0.30 0 0.03" size="0.025" rgba="1 1 0 1"/>
+    </body>
+    <body name="carton" pos="0 0 0.18">
+      <freejoint name="carton_free"/>
+      <geom name="carton_geom" type="box" size="0.34 0.27 0.18" mass="2" rgba="0.65 0.43 0.2 1" friction="0.8 0.03 0.003"/>
+    </body>
+    <body name="heavy_box" pos="0 0 0.22">
+      <freejoint name="heavy_box_free"/>
+      <geom name="heavy_box_geom" type="box" size="0.34 0.27 0.22" mass="260" rgba="0.25 0.28 0.3 1" friction="1.2 0.04 0.004"/>
+    </body>
+    <body name="parcel" pos="-6 0 0.48">
+      <freejoint name="parcel_free"/>
+      <geom name="parcel_geom" type="box" size="0.18 0.16 0.12" mass="2" rgba="0.2 0.3 0.9 1" friction="0.8 0.03 0.003"/>
+    </body>
+    <body name="alternate_route_block" pos="5 0 0.15">
+      <geom name="alternate_block_geom" type="box" size="0.5 0.5 0.15" mass="0" rgba="0.5 0.35 0.3 1"/>
+    </body>
+  </worldbody>
+  <actuator>
+    <position name="scout_x_motor" joint="scout_x" ctrlrange="-7 7" forcelimited="true" forcerange="-90 90"/>
+    <position name="scout_y_motor" joint="scout_y" ctrlrange="-3 3" forcelimited="true" forcerange="-90 90"/>
+    <position name="scout_yaw_motor" joint="scout_yaw" ctrlrange="-3.14 3.14" forcelimited="true" forcerange="-25 25"/>
+    <position name="recovery_x_motor" kp="120" kv="80" joint="recovery_x" ctrlrange="-7 7" forcelimited="true" forcerange="-30 30"/>
+    <position name="recovery_y_motor" kp="120" kv="80" joint="recovery_y" ctrlrange="-3 3" forcelimited="true" forcerange="-30 30"/>
+    <position name="recovery_yaw_motor" joint="recovery_yaw" ctrlrange="-3.14 3.14" forcelimited="true" forcerange="-35 35"/>
+    <position name="courier_x_motor" joint="courier_x" ctrlrange="-7 7" forcelimited="true" forcerange="-180 180"/>
+    <position name="courier_y_motor" joint="courier_y" ctrlrange="-3 3" forcelimited="true" forcerange="-180 180"/>
+    <position name="courier_yaw_motor" joint="courier_yaw" ctrlrange="-3.14 3.14" forcelimited="true" forcerange="-35 35"/>
+  </actuator>
+</mujoco>

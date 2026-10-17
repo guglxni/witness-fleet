@@ -1,0 +1,45 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#F6F5F1","primaryColor":"#E7F1EF","primaryTextColor":"#263238","primaryBorderColor":"#137C75","lineColor":"#52616B","secondaryColor":"#EAF1F7","tertiaryColor":"#F7F1E5","actorBkg":"#EAF1F7","actorBorder":"#3976A8","actorTextColor":"#263238","signalColor":"#3976A8","signalTextColor":"#263238","labelBoxBkgColor":"#F7F1E5","labelBoxBorderColor":"#B6893F","labelTextColor":"#263238","noteBkgColor":"#FFF6DF","noteBorderColor":"#B6893F","noteTextColor":"#263238","activationBkgColor":"#DCEFEB","activationBorderColor":"#137C75","sequenceNumberColor":"#263238","fontFamily":"Inter, Arial, sans-serif"}}}%%
+sequenceDiagram
+    autonumber
+    actor Op as Local operator
+    participant API as Mission API / coordinator
+    participant DB as FalkorDB ops graph
+    participant Auth as Deterministic authorizer
+    participant Sim as MuJoCo service + journal
+    participant Sense as S0 sensors / outcome verifier
+
+    Note over Op,Sim: SC-001 is opt-in and local. The model/corpus lane is disabled and cannot authorize motion.
+    Op->>API: Run with stable event ID
+    API->>DB: Reserve intent before native work
+    DB-->>API: Same intent retained / new request reserved
+    API->>DB: Claim task + resource, install fences, read current versions
+    API->>DB: Validate source-backed governance snapshot
+    DB-->>API: Complete witness + versions + ordered outbox state
+    API->>Auth: Exact proposal + claim + evidence + policy snapshot
+    Auth->>Auth: Check scope, release, freshness, versions and required predicates
+    alt Not authorized or evidence unknown/stale
+        Auth-->>API: DENY / NEEDS_APPROVAL / NEEDS_EVIDENCE / STALE
+        API-->>Op: No dispatch, retain reason, HOLD if execution uncertainty exists
+    else Exact proposal allowed
+        Auth-->>API: Immutable ALLOW receipt bound to exact payload and versions
+        API->>DB: Atomic intent + dispatch event at next sequence
+        DB-->>API: Durable sequence / event identity
+        API->>Sim: Typed hash-bound event in order
+        Sim->>Sim: Journal identity, fence, epoch and sequence before running
+        Sim-->>API: Applied receipt (not physical outcome)
+        Sim->>Sim: Advance bounded native controller on one world clock
+        Sim->>Sense: Project fresh scoped observations and measured effects
+        Sense-->>API: Evidence-backed postconditions or unresolved result
+        alt Postconditions verified
+            API->>DB: Retain observations + atomically mark task outcome verified
+            DB-->>API: Verified task and current graph versions
+            API-->>Op: Outcome verified, continue dependency DAG
+        else Timeout, mismatch, gap or unknown effect
+            API->>Sim: Latch admissions HOLD, do not resend motion
+            Sim-->>API: HOLD / UNKNOWN with last known state and reason
+            API->>DB: Retain unresolved reconciliation state
+            API-->>Op: Stop new work, inspect exact event/receipt and reconcile explicitly
+        end
+    end
+
+    Note over Op,Sim: Controller completion, applied event receipt, source hash and graph ALLOW are each weaker than a verified physical postcondition.

@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "witness-fleet"
+version = "0.1.0"
+description = "Graph-grounded evidence and authority for a simulation-first robot fleet"
+requires-python = ">=3.12,<3.14"
+dependencies = ["fastapi>=0.115,<1", "uvicorn[standard]>=0.32,<1", "pydantic>=2.10,<3", "httpx>=0.28,<1", "falkordb>=1,<2", "numpy>=2,<3", "networkx>=3.4,<4", "scipy>=1.15,<2", "typer>=0.15,<1"]
+
+[project.optional-dependencies]
+simulator = ["mujoco>=3.3,<4", "pillow>=11,<13", "imageio[ffmpeg]>=2.37,<3"]
+dev = ["pytest>=8,<10", "pytest-asyncio>=0.25,<2", "pytest-cov>=6,<8", "ruff>=0.11,<1", "mypy>=1.15,<2", "hypothesis>=6,<7", "types-redis", "httpx2"]
+
+[project.scripts]
+witness-fleet = "witness_fleet.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/witness_fleet", "services"]
+exclude = ["services/corpus/**"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "src", "tests/unit", "tests/integration", "tests/contract", "services/corpus"]
+addopts = "-ra --strict-markers"
+asyncio_mode = "auto"
+markers = ["integration: requires isolated FalkorDB", "simulation: executes MuJoCo", "contract: protocol contract", "live_model: paid provider requests, explicitly enabled", "e2e: complete incident integration"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+check_untyped_defs = true

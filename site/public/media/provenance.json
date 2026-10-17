@@ -1,0 +1,101 @@
+{
+  "scenario": "SC-001",
+  "captured_at": "2026-10-17T13:14:41.390863Z",
+  "native_video_sha256": "eb6d492ecba72f2323db5bda78d1fa9abb92eb2d6625f47a55fa05769ca7f9c6",
+  "source_sha256": {
+    "scripts/capture_fleet_demo.py": "377f3327ef2fd4d3fcbb6eb072d71cae56ccdf7e8afd391d28bf2cefe9c90269",
+    "services/simulator/assets/facility.xml": "6c182142bc2763623d7ef6ef1c27874122378f6f00857c70943e4b035223dae7",
+    "services/simulator/journal.py": "3f6c2470c9b66d02f618628e31f45eac304fb85d1d6b9e231cbe53968a4b5298",
+    "services/simulator/sensors.py": "7ffce3cce4a39403e6e47ee0cafc6d9ad55fc7c6f79206ee4197cc8aa9a9cdeb",
+    "services/simulator/service.py": "e8bcf5bf80dc0f25cb31aa3683cd7ddf1aa6cee8e9b3d0eee086374e35ee9e9f",
+    "services/simulator/stability.py": "ccf73a3b96203e234e54080c8dad32cd7efb0d663f8ce9bfd75babbac3d86b27",
+    "services/simulator/world.py": "9fa4599cddbf89da7064178e869c546caa39f0aa88391d4dcb8f5baab26e6329",
+    "src/witness_fleet/api/app.py": "381c5dede844a515df3c643381b461865009beabc6f199788fdbff50057ad3c7",
+    "src/witness_fleet/api/local.py": "16733d3ef1c215d471586f79cca5957037f3f9b92825b8731ec093e6eaa47a8e",
+    "src/witness_fleet/api/mission.py": "b75d580f5df47a68267d0e97444b5ded1d6045d3a1ad8342fe7b6459db8b0f8a",
+    "src/witness_fleet/domain.py": "e9c8d15052402afad95274bca30aa77c33faf22a250ee3e025874a2737178b51",
+    "src/witness_fleet/graph/governance.py": "6e710f74a54247ecae8658845cf9f27e6e1f37dba64d379c5fff4a39221d5183",
+    "src/witness_fleet/graph/migrations.py": "eca2be760e737da3dd244af59f7be35832afad9cea7e7cc735250e7026ba48ab",
+    "src/witness_fleet/graph/store.py": "fb69a851039d7bf1e6df9254d7a37b43922bfc77018e403fe8e3e29a88c2c59c",
+    "src/witness_fleet/ingestion/source_store.py": "eed8d1fb4bd341807c64c6da8b7bcd0c6c79c3da72179a83652ecfa9c6314cdc",
+    "src/witness_fleet/policy/authorizer.py": "3851473c14e395161c94ee7456b1a606c713682268299a11c7e6d3bb6a9c05b3",
+    "src/witness_fleet/runtime/approval.py": "804ae4a155856c0d9721568d7df33378715f0908a7aae44ed93b82b304742844",
+    "src/witness_fleet/runtime/approval_writer.py": "5a03610bee29c0b71d94c4335bdce4dd444ea84cf34997c634fd0c9bfc1e5475",
+    "src/witness_fleet/runtime/bootstrap.py": "c96eaeb1aea4cf72465429151057651c7164e451ede9f537f7e93609c55d1acc",
+    "src/witness_fleet/runtime/command_effects.py": "4ed71f9a4a4e0d39280ce10e18ce2812b06f0ace9ce2ce3a83d0246adc573461",
+    "src/witness_fleet/runtime/coordinator.py": "efb7561e20dfdb65f06188d5f8db8787eb03bdc46e0e347b9afaa7aa77bf53d0",
+    "src/witness_fleet/runtime/effects.py": "c0a0b075127323d73301a464f5d66bb8a13e1373e8fe5c674afd2f569bed8f0a",
+    "src/witness_fleet/runtime/execution.py": "b13a31dfbfd42e1a2d3c9003109b3ab214893e1de02323b9436ce15dcaa3c2cf",
+    "src/witness_fleet/runtime/local_adapter.py": "7479cd589ea35771805f5fa915faba4824eb3116bc1e24d52eb1f2a147e0421b",
+    "src/witness_fleet/runtime/mission.py": "54b949c3e3dca5e564a71e1530ae32d935138f8f639ad070cfc2b61894ab72b0",
+    "src/witness_fleet/runtime/observation_store.py": "47a5431ee029cdc3675a4ab959a18cadb2a0a2ef5db22ce396d49f6395b00e9a",
+    "src/witness_fleet/runtime/outcomes.py": "81c92be61aef24b46f9a06fd82e0e2d000d327ba9ca9473f07c7070406c13800",
+    "src/witness_fleet/runtime/sensing.py": "28f262d3880bc4db738ea202dea41c3c638cf562707ffb523a9f887b4e79b44d",
+    "src/witness_fleet/runtime/storage.py": "18653103c424253e40931271d3c9f01aa4bb2642ea30903682452f73ee913993"
+  },
+  "tasks": [
+    {
+      "command_id": "command-2a50c30e758d4732b182a85a695930ee",
+      "kind": "inspect",
+      "state": "OUTCOME_VERIFIED",
+      "world_tick": 1
+    },
+    {
+      "command_id": "command-c146305e9e4f4ee4a1aeff83baaa56bc",
+      "kind": "recover",
+      "state": "OUTCOME_VERIFIED",
+      "world_tick": 1403
+    },
+    {
+      "command_id": "command-779e86946d8a4a8695df5914b882927d",
+      "kind": "travel",
+      "state": "OUTCOME_VERIFIED",
+      "world_tick": 1737
+    },
+    {
+      "command_id": "command-3f4d5bd2e71e43908ea09b4329ecb4fc",
+      "kind": "verify",
+      "state": "OUTCOME_VERIFIED",
+      "world_tick": 1747
+    },
+    {
+      "command_id": "command-f4836d20e9ac47dcb9c1bb270fdc94fc",
+      "kind": "travel",
+      "state": "OUTCOME_VERIFIED",
+      "world_tick": 3230
+    },
+    {
+      "command_id": "command-12dee9024db344b980728aba8ffc0eab",
+      "kind": "verify",
+      "state": "OUTCOME_VERIFIED",
+      "world_tick": 3240
+    },
+    {
+      "command_id": "command-974485c2a0fa45909dac06e726f59722",
+      "kind": "deliver",
+      "state": "OUTCOME_VERIFIED",
+      "world_tick": 4855
+    }
+  ],
+  "metrics": {
+    "delivery_completed": 1,
+    "recovery_verified": 1,
+    "unauthorized_executed": null
+  },
+  "simulation_only": true,
+  "human_authenticated_owner": false,
+  "voice": {
+    "provider": "ElevenLabs",
+    "voice": "Sarah",
+    "model": "eleven_v3",
+    "duration_seconds": 81.76
+  },
+  "caption_timing_note": "HyperFrames whisper base.en approximate timing; final cue clamped to decoded audio duration81.76s from ASR81.84s",
+  "composition_seconds": 86,
+  "music": "original algorithmic underscore; generator retained",
+  "tools": {
+    "hyperframes": "0.8.169",
+    "gsap": "3.15.0",
+    "opendesign_motion": "b016900d9ee92fc2d3e4dc520359cc8999d2ed4e"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "source_id": "release-decision-r1",
+  "restriction_id": "restriction-decision-r1",
+  "corridor": "corridor-c",
+  "actor_scope": "loaded_courier",
+  "state": "staged",
+  "approved": false,
+  "effective_from": "tick:180",
+  "conditions": ["named owner approval event", "post-inspection verification"],
+  "source_quote": "This release remains staged until a named owner approval event and post-inspection verification."
+}

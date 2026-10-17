@@ -1,0 +1,332 @@
+{
+  "ledger_version": 1,
+  "snapshot_date": "2026-10-15",
+  "note": "URL-keyed source ledger for System One sub-study. IDs used in the two Markdown reports. Primary HTML/PDF texts were fetched over direct HTTP into snapshots/. Direct full methods read for S01-S08, S11-S12. Classic calibration/selective work S13-S14 extend the existing reports. No code was installed or run and no model inference/benchmark was performed. Parent may remap IDs.",
+  "sources": {
+    "https://arxiv.org/html/2609.37647v1": {
+      "id": "S01",
+      "title": "Evaluating and Benchmarking the System One Model Jev",
+      "authors": [
+        "Tobias Deu\u00dfer",
+        "Lorenz Sparrenberg",
+        "Rafet Sifa"
+      ],
+      "version": "arXiv:2609.37647v1",
+      "type": "primary empirical paper",
+      "full_text_fetched": true,
+      "related_urls": [
+        "https://arxiv.org/abs/2609.37647",
+        "https://github.com/AppliedMachineLearning-Lab/jev-benchmarking",
+        "https://doi.org/10.5281/zenodo.23039006"
+      ],
+      "claim_scope": "Independent zero-shot evaluation of Jev 1.13.0 on 37 public datasets and 346,009 requests; Choice/Noul/Score calibration and selective metrics. Reported paper results, not fleet measurements.",
+      "code_status": "Author repository verified via GitHub API at 87562114d23597f610754f057e5e0da8659dbcfb; MIT repository license verified; README describes frozen templates, harness, analyses, and raw Zenodo responses. No install or execution here."
+    },
+    "https://arxiv.org/html/2609.30243v2": {
+      "id": "S02",
+      "title": "JevOut: Natural Context Can Flip Decision Models",
+      "authors": [
+        "Zixiang Xu",
+        "Zirui Song",
+        "Chiyu Zhang",
+        "Xiuying Chen",
+        "Xi Liu",
+        "Xiyang Hu",
+        "Yue Zhao"
+      ],
+      "version": "arXiv:2609.30243v2",
+      "type": "primary empirical / adversarial robustness paper",
+      "full_text_fetched": true,
+      "related_urls": [
+        "https://arxiv.org/abs/2609.30243",
+        "https://github.com/xzx34/JevOut",
+        "https://xzx34.github.io/jevout/"
+      ],
+      "claim_scope": "Targeted context-redirection evaluation, not the prevalence of ordinary fleet mistakes. Paper reports finite-budget attack search and human review of sampled successful contexts.",
+      "code_status": "Author repository verified via GitHub API at c8ab231728abb54bd61cf3c8812cb48811aae36b; Apache-2.0 license verified. README announces v0.2.0 offline demo, baselines, repeatability tools, and experiment docs. No execution here."
+    },
+    "https://arxiv.org/html/2204.07447v2": {
+      "id": "S04",
+      "title": "Stretching Sentence-pair NLI Models to Reason over Long Documents and Clusters (SENTLI)",
+      "authors": [
+        "Tal Schuster",
+        "Sihao Chen",
+        "Senaka Buthpitiya",
+        "Alex Fabrikant",
+        "Donald Metzler"
+      ],
+      "version": "arXiv:2204.07447v2",
+      "type": "primary methods and evaluation paper",
+      "full_text_fetched": true,
+      "related_urls": [
+        "https://arxiv.org/pdf/2204.07447v2",
+        "https://ar5iv.labs.arxiv.org/html/2204.07447"
+      ],
+      "claim_scope": "NLI-based sentence/span retrieval, retrieve-and-rerank, document-level aggregation, and cross-document discrepancy detection; evaluation claims are benchmark-bound.",
+      "code_status": "No verified author implementation established in this review; no reproduction."
+    },
+    "https://proceedings.mlr.press/v205/ichter23a/ichter23a.pdf": {
+      "id": "S05",
+      "title": "Do As I Can, Not As I Say: Grounding Language in Robotic Affordances (SayCan)",
+      "authors": [
+        "Michael Ahn et al."
+      ],
+      "version": "CoRL 2022 / PMLR vol. 205 (2023 proceedings)",
+      "type": "primary robotics methods paper",
+      "full_text_fetched": true,
+      "related_urls": [
+        "https://arxiv.org/abs/2204.01691",
+        "https://arxiv.org/html/2204.01691v2",
+        "https://github.com/google-research/google-research/tree/master/saycan"
+      ],
+      "claim_scope": "Combines language-model task relevance with learned skill-affordance value functions; tested on authors' robotics tasks and reported by those authors.",
+      "code_status": "Official Google Research repo contains a self-contained tabletop pick/place notebook per README; repository is Apache-2.0. Partial demonstrator, not a direct fleet implementation; not run here."
+    },
+    "https://proceedings.mlr.press/v229/ren23a.html": {
+      "id": "S06",
+      "title": "Robots That Ask For Help: Uncertainty Alignment for Large Language Model Planners (KnowNo)",
+      "authors": [
+        "Allen Z. Ren",
+        "Anushri Dixit",
+        "Alexandra Bodrova",
+        "Sumeet Singh",
+        "Stephen Tu",
+        "Noah Brown",
+        "Peng Xu",
+        "Leila Takayama",
+        "Fei Xia",
+        "Jake Varley",
+        "Zhenjia Xu",
+        "Dorsa Sadigh",
+        "Andy Zeng",
+        "Anirudha Majumdar"
+      ],
+      "version": "CoRL 2023 / PMLR vol. 229",
+      "type": "primary robotics methods paper",
+      "full_text_fetched": true,
+      "related_urls": [
+        "https://arxiv.org/html/2307.01928v2",
+        "https://proceedings.mlr.press/v229/ren23a/ren23a.pdf",
+        "https://github.com/patrickhaoy/KnowNo",
+        "https://robot-help.github.io/"
+      ],
+      "claim_scope": "Conformal prediction sets over candidate plans, help/clarification for non-singleton sets, including sequence-level extension. Guarantees depend on paper sampling, calibration, human-help and sequence assumptions.",
+      "code_status": "Author repo exists at commit f7c07a840184aed7f20d325a1d46799b6c331248; README links self-contained Colab notebooks and simulation assets. GitHub API did not report a license and no root LICENSE was found; reuse license unresolved. Not run."
+    },
+    "https://arxiv.org/html/2406.18665v4": {
+      "id": "S07",
+      "title": "RouteLLM: Learning to Route LLMs from Preference Data",
+      "authors": [
+        "Isaac Ong et al."
+      ],
+      "version": "arXiv:2406.18665v4; ICLR 2025",
+      "type": "primary methods and evaluation paper",
+      "full_text_fetched": true,
+      "related_urls": [
+        "https://proceedings.iclr.cc/paper_files/paper/2025/file/5503a7c69d48a2f86fc00b3dc09de686-Paper-Conference.pdf",
+        "https://github.com/lm-sys/RouteLLM"
+      ],
+      "claim_scope": "Preference-trained binary strong/weak model router and cost/performance evaluation on public language-model benchmarks; not robot safety or authorization routing.",
+      "code_status": "Public Apache-2.0 author framework verified at commit 0b64fdafe049e596a3f5657c219329f24af24198; serving/evaluation code. Dependencies/models/data required; not installed or run."
+    },
+    "https://arxiv.org/pdf/2305.05176": {
+      "id": "S08",
+      "title": "FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance",
+      "authors": [
+        "Lingjiao Chen",
+        "Matei Zaharia",
+        "James Zou"
+      ],
+      "version": "arXiv:2305.05176v1",
+      "type": "primary methods and evaluation paper",
+      "full_text_fetched": true,
+      "related_urls": [
+        "https://arxiv.org/abs/2305.05176",
+        "https://ar5iv.labs.arxiv.org/html/2305.05176",
+        "https://github.com/stanford-futuredata/FrugalGPT"
+      ],
+      "claim_scope": "Prompt adaptation, approximation, and sequential LLM cascade with learned reliability scoring; results rely on 2023 APIs, datasets, and protocol.",
+      "code_status": "Public Apache-2.0 author repository verified via GitHub API; no install or execution here."
+    },
+    "https://arxiv.org/pdf/2102.12981": {
+      "id": "S09",
+      "title": "The Black-Box Simplex Architecture for Runtime Assurance of Autonomous CPS",
+      "authors": [
+        "Usama Mehmood",
+        "Sanaz Sheikhi",
+        "Stanley Bak",
+        "Scott A. Smolka",
+        "Scott D. Stoller"
+      ],
+      "version": "arXiv:2102.12981v3",
+      "type": "primary runtime-assurance methods paper",
+      "full_text_fetched": true,
+      "related_urls": [
+        "https://arxiv.org/html/2102.12981",
+        "https://arxiv.org/abs/2102.12981"
+      ],
+      "claim_scope": "Runtime switching/checking with candidate safe command sequences under explicit CPS/safety assumptions; not a proof about semantic policy or this fleet integration.",
+      "code_status": "No author implementation or runnable package verified in this review; method inspected, no reproduction."
+    },
+    "https://arxiv.org/html/1706.04599v2": {
+      "id": "S13",
+      "title": "On Calibration of Modern Neural Networks",
+      "authors": [
+        "Chuan Guo",
+        "Geoff Pleiss",
+        "Yu Sun",
+        "Kilian Q. Weinberger"
+      ],
+      "version": "arXiv:1706.04599v2; ICML 2017",
+      "type": "primary calibration methods paper",
+      "full_text_fetched": false,
+      "related_urls": [
+        "https://proceedings.mlr.press/v70/guo17a.html",
+        "https://arxiv.org/pdf/1706.04599.pdf"
+      ],
+      "claim_scope": "Post-hoc calibration evaluation and temperature scaling on neural classifiers; not evidence calibration transfers to Jev or robotics.",
+      "code_status": "Prior report and primary abstract/method synopsis checked; full paper not freshly fetched in this subtask. No author code status checked here."
+    },
+    "https://arxiv.org/html/1705.08500v2": {
+      "id": "S14",
+      "title": "Selective Classification for Deep Neural Networks",
+      "authors": [
+        "Yonatan Geifman",
+        "Ran El-Yaniv"
+      ],
+      "version": "arXiv:1705.08500v2; NeurIPS 2017",
+      "type": "primary selective prediction / risk-control methods paper",
+      "full_text_fetched": false,
+      "related_urls": [
+        "https://papers.nips.cc/paper/7073-selective-classification-for-deep-neural-networks",
+        "https://arxiv.org/pdf/1705.08500"
+      ],
+      "claim_scope": "Risk-coverage, reject option and finite-sample risk-control for a fixed classifier under stated assumptions; not a fleet guarantee.",
+      "code_status": "Prior report and primary abstract/method synopsis checked; full paper not freshly fetched in this subtask. No author code status checked here."
+    },
+    "https://arxiv.org/html/2609.26532v1": {
+      "id": "S11",
+      "title": "REFLEX with Jev for Efficient Selective Control in LLM Agents",
+      "authors": [
+        "Tiantong Wu",
+        "Wei Yang Bryan Lim"
+      ],
+      "version": "arXiv:2609.26532v1",
+      "type": "primary Jev agent selective-control paper",
+      "full_text_fetched": true,
+      "related_urls": [
+        "https://arxiv.org/abs/2609.26532"
+      ],
+      "claim_scope": "Author-reported frozen 100-task controlled benchmark and external BFCL/\u03c4-style evaluations of typed Jev control with generative fallback; not a robot fleet result.",
+      "code_status": "No author repository established during this review. Paper methods/results text fetched and read."
+    },
+    "https://arxiv.org/html/2610.00831v1": {
+      "id": "S12",
+      "title": "AnyJev Technical Report",
+      "authors": [
+        "Jiamu Zhang",
+        "Tianze Yang",
+        "Yucheng Shi",
+        "Evan Chen",
+        "Zixiang Nie",
+        "Kelly Wan",
+        "Liangjie Hong",
+        "Ninghao Liu",
+        "Liang Wu"
+      ],
+      "version": "arXiv:2610.00831v1 (early report, work in development)",
+      "type": "primary open typed-decision methods report",
+      "full_text_fetched": true,
+      "related_urls": [
+        "https://arxiv.org/abs/2610.00831",
+        "https://github.com/nokia-applied-research/AnyJev"
+      ],
+      "claim_scope": "Restricted next-token choice probabilities, label-prior correction, option rotations, unlabelled agreement-based compute reduction; not equivalent to native hosted System One inference.",
+      "code_status": "Repository verified at commit b03158e9ba18e84c01054aaa393481925088db07; Apache-2.0; README describes open Python package and serving/training paths. No install/execution here."
+    },
+    "file:///Users/aaryanguglani/.hermes/research/falkordb-systemone-20261015/deep-dive.md": {
+      "id": "S10",
+      "title": "FalkorDB, GraphRAG-SDK and System One: project enhancement audit",
+      "type": "project-specific prior research artifact, not external paper",
+      "retrieval_note": "Local prior report supplied in task context; supports graph/system integration boundary only. Parent may remap to the corresponding project source."
+    },
+    "https://github.com/AppliedMachineLearning-Lab/jev-benchmarking": {
+      "id": "C01",
+      "title": "Jev benchmarking author code",
+      "type": "author code / reproducibility artifact",
+      "verified": true,
+      "commit": "87562114d23597f610754f057e5e0da8659dbcfb",
+      "license": "MIT",
+      "retrieval_note": "GitHub API metadata plus raw README and LICENSE fetched."
+    },
+    "https://github.com/xzx34/JevOut": {
+      "id": "C02",
+      "title": "JevOut author code",
+      "type": "author code / adversarial testing artifact",
+      "verified": true,
+      "commit": "c8ab231728abb54bd61cf3c8812cb48811aae36b",
+      "license": "Apache-2.0",
+      "retrieval_note": "GitHub API metadata plus raw README and LICENSE fetched."
+    },
+    "https://github.com/google-research/google-research/tree/master/saycan": {
+      "id": "C03",
+      "title": "SayCan official author code path",
+      "type": "author code / partial tabletop notebook",
+      "verified": true,
+      "repository_license": "Apache-2.0",
+      "retrieval_note": "Official repo README/search text specifies a self-contained tabletop environment and notebook; not executed."
+    },
+    "https://github.com/patrickhaoy/KnowNo": {
+      "id": "C04",
+      "title": "KnowNo author repository",
+      "type": "author code / Colab and simulation artifacts",
+      "verified": true,
+      "commit": "f7c07a840184aed7f20d325a1d46799b6c331248",
+      "license": "not found at root / unresolved",
+      "retrieval_note": "GitHub API root contents and README inspected; no root LICENSE or API license metadata."
+    },
+    "https://github.com/lm-sys/RouteLLM": {
+      "id": "C05",
+      "title": "RouteLLM author framework",
+      "type": "author code / serving and evaluation framework",
+      "verified": true,
+      "commit": "0b64fdafe049e596a3f5657c219329f24af24198",
+      "license": "Apache-2.0",
+      "retrieval_note": "GitHub API metadata plus README and LICENSE fetched."
+    },
+    "https://github.com/stanford-futuredata/FrugalGPT": {
+      "id": "C06",
+      "title": "FrugalGPT author code",
+      "type": "author code / cascade implementation",
+      "verified": true,
+      "license": "Apache-2.0",
+      "retrieval_note": "GitHub API repository metadata and top-level contents inspected; no commit pin captured here."
+    },
+    "https://github.com/nokia-applied-research/AnyJev": {
+      "id": "C07",
+      "title": "AnyJev author implementation",
+      "type": "author code / restricted-next-token typed-decision baseline",
+      "verified": true,
+      "commit": "b03158e9ba18e84c01054aaa393481925088db07",
+      "license": "Apache-2.0",
+      "retrieval_note": "GitHub API metadata plus raw README and LICENSE fetched."
+    },
+    "https://www.sciencedirect.com/science/article/pii/0004370200000680": {
+      "id": "S15",
+      "title": "Monitoring and control of anytime algorithms: A dynamic programming approach",
+      "authors": [
+        "Eric A. Hansen",
+        "Shlomo Zilberstein"
+      ],
+      "version": "Artificial Intelligence 126 (2001), 139\u2013157; DOI 10.1016/S0004-3702(00)00068-0",
+      "type": "primary methods paper / metalevel anytime control",
+      "full_text_fetched": true,
+      "related_urls": [
+        "https://doi.org/10.1016/S0004-3702(00)00068-0",
+        "http://rbr.cs.umass.edu/shlomo/papers/HZaij01a.pdf"
+      ],
+      "claim_scope": "Develops a dynamic-programming framework for monitoring and control of anytime algorithms under uncertainty about algorithm performance, operating domain, and monitoring cost; not a fleet-specific routing benefit result.",
+      "code_status": "No runnable author implementation checked or required; full paper PDF fetched over HTTP and extracted locally; method not reproduced."
+    }
+  }
+}

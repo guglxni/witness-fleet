@@ -1,0 +1,9 @@
+{
+  "source_id": "owner-roster-r1",
+  "tenant_id": "demo",
+  "owners": [
+    {"owner_id": "owner-maintenance", "role": "maintenance_owner", "scope": ["corridor-c"], "actions": ["inspect", "recover"], "approved": false},
+    {"owner_id": "operator-readonly", "role": "operator_read_only", "scope": ["corridor-c"], "actions": ["observe"], "approved": false}
+  ],
+  "source_quote": "The maintenance-owner role has bounded authority for Corridor C."
+}

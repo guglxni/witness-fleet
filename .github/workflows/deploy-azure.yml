@@ -1,0 +1,71 @@
+name: Deploy Azure demo
+on:
+  workflow_run:
+    workflows: [Verification]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: azure-production
+  cancel-in-progress: false
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_repository.full_name == github.repository && github.event.workflow_run.head_branch == 'main')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+      - uses: azure/login@8216e11d8cd9b42fe925c852af8e76311ff067ac # v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - name: Build and push the exact tested source
+        env:
+          REGISTRY: ${{ vars.AZURE_REGISTRY }}
+        run: |
+          set -euo pipefail
+          REVISION="$(git rev-parse HEAD)"
+          az acr login --name "$REGISTRY" --only-show-errors
+          IMAGE="$REGISTRY.azurecr.io/witness-fleet:sha-$REVISION"
+          docker build --label "org.opencontainers.image.revision=$REVISION" --label "org.opencontainers.image.source=https://github.com/guglxni/witness-fleet" -f deploy/Dockerfile -t "$IMAGE" .
+          docker push "$IMAGE"
+          DIGEST="$(docker inspect --format='{{index .RepoDigests 0}}' "$IMAGE")"
+          printf 'WITNESS_IMAGE=%s\nWITNESS_REVISION=%s\n' "$DIGEST" "$REVISION" >> "$GITHUB_ENV"
+      - name: Deploy without deleting retained evidence
+        env:
+          RESOURCE_GROUP: ${{ vars.AZURE_RESOURCE_GROUP }}
+          VM_NAME: ${{ vars.AZURE_VM_NAME }}
+          DEMO_HOST: ${{ vars.DEMO_HOST }}
+        run: |
+          set -euo pipefail
+          test -n "$VM_NAME"
+          test -n "$DEMO_HOST"
+          az vm run-command invoke -g "$RESOURCE_GROUP" -n "$VM_NAME" --command-id RunShellScript --scripts @deploy/azure/deploy-runtime.sh --parameters "$WITNESS_IMAGE" "$DEMO_HOST" "$WITNESS_REVISION" --query 'value[].message' -o tsv
+      - name: Verify public deployed revision
+        env:
+          DEMO_HOST: ${{ vars.DEMO_HOST }}
+        run: |
+          python - <<'PY'
+          import json, os, time, urllib.request
+          for attempt in range(12):
+              try:
+                  with urllib.request.urlopen('https://' + os.environ['DEMO_HOST'] + '/healthz', timeout=15) as response:
+                      body = json.load(response)
+                  assert body['revision'] == os.environ['WITNESS_REVISION'], body
+                  assert body['simulation_only'] is True, body
+                  print(json.dumps(body))
+                  break
+              except Exception:
+                  if attempt == 11:
+                      raise
+                  time.sleep(10)
+          PY

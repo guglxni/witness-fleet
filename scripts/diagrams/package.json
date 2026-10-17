@@ -1,0 +1,21 @@
+{
+  "name": "witness-fleet-diagram-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reproducible render and structural checks for Witness Fleet diagrams",
+  "type": "module",
+  "scripts": {
+    "render": "node render-all.mjs",
+    "render:drawio": "node render-drawio.mjs",
+    "render:mermaid": "node render-mermaid.mjs",
+    "render:excalidraw": "node render-excalidraw.mjs",
+    "check": "node check-diagrams.mjs"
+  },
+  "dependencies": {
+    "@excalidraw/utils": "0.1.5",
+    "@mermaid-js/mermaid-cli": "12.0.0",
+    "esbuild": "0.25.12",
+    "playwright": "1.64.1",
+    "sharp": "0.34.3"
+  }
+}

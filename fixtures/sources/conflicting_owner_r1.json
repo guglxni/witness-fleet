@@ -1,0 +1,11 @@
+{
+  "source_id": "conflicting-owner-r1",
+  "tenant_id": "demo",
+  "owner_claims": [
+    {"owner_id": "owner-maintenance", "scope": ["corridor-c"], "actions": ["inspect", "recover"]},
+    {"owner_id": "owner-maintenance", "scope": ["all-corridors"], "actions": ["release", "dispatch"]}
+  ],
+  "state": "review_required",
+  "approved": false,
+  "source_quote": "Conflicting owner scope claims require review; this record cannot grant release authority."
+}

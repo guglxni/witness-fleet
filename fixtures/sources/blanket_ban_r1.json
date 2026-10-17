@@ -1,0 +1,11 @@
+{
+  "source_id": "blanket-ban-r1",
+  "kind": "blanket_restriction",
+  "hazard": "severe simulated spill",
+  "corridor": "corridor-c",
+  "actor_scope": "all_entry",
+  "state": "staged",
+  "approved": false,
+  "actions_blocked": ["scout", "recovery", "loaded_courier"],
+  "source_quote": "All entry to Corridor C is paused during the simulated severe spill, including scout, recovery, and loaded-courier entry."
+}

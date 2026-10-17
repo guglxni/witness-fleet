@@ -1,0 +1,1148 @@
+[
+  {
+    "text": "A",
+    "start": 0.06,
+    "end": 0.07,
+    "id": "w0"
+  },
+  {
+    "text": "robot",
+    "start": 0.07,
+    "end": 0.39,
+    "id": "w1"
+  },
+  {
+    "text": "shouldn't",
+    "start": 0.39,
+    "end": 0.98,
+    "id": "w2"
+  },
+  {
+    "text": "move",
+    "start": 0.98,
+    "end": 1.23,
+    "id": "w3"
+  },
+  {
+    "text": "just",
+    "start": 1.25,
+    "end": 1.5,
+    "id": "w4"
+  },
+  {
+    "text": "because",
+    "start": 1.58,
+    "end": 1.96,
+    "id": "w5"
+  },
+  {
+    "text": "an",
+    "start": 1.98,
+    "end": 2.1,
+    "id": "w6"
+  },
+  {
+    "text": "AI",
+    "start": 2.1,
+    "end": 2.23,
+    "id": "w7"
+  },
+  {
+    "text": "sounds",
+    "start": 2.23,
+    "end": 2.63,
+    "id": "w8"
+  },
+  {
+    "text": "confident.",
+    "start": 2.63,
+    "end": 3.56,
+    "id": "w9"
+  },
+  {
+    "text": "It",
+    "start": 3.67,
+    "end": 3.75,
+    "id": "w10"
+  },
+  {
+    "text": "should",
+    "start": 3.75,
+    "end": 4.22,
+    "id": "w11"
+  },
+  {
+    "text": "move",
+    "start": 4.25,
+    "end": 4.53,
+    "id": "w12"
+  },
+  {
+    "text": "when",
+    "start": 4.53,
+    "end": 4.83,
+    "id": "w13"
+  },
+  {
+    "text": "the",
+    "start": 4.83,
+    "end": 5.07,
+    "id": "w14"
+  },
+  {
+    "text": "evidence",
+    "start": 5.07,
+    "end": 5.7,
+    "id": "w15"
+  },
+  {
+    "text": "says",
+    "start": 5.7,
+    "end": 5.98,
+    "id": "w16"
+  },
+  {
+    "text": "it",
+    "start": 6.01,
+    "end": 6.16,
+    "id": "w17"
+  },
+  {
+    "text": "can.",
+    "start": 6.16,
+    "end": 6.44,
+    "id": "w18"
+  },
+  {
+    "text": "Meet",
+    "start": 6.51,
+    "end": 6.83,
+    "id": "w19"
+  },
+  {
+    "text": "Witness",
+    "start": 6.83,
+    "end": 7.51,
+    "id": "w20"
+  },
+  {
+    "text": "Fleet,",
+    "start": 7.51,
+    "end": 8.16,
+    "id": "w21"
+  },
+  {
+    "text": "evidence",
+    "start": 8.16,
+    "end": 8.75,
+    "id": "w22"
+  },
+  {
+    "text": "before",
+    "start": 8.81,
+    "end": 9.3,
+    "id": "w23"
+  },
+  {
+    "text": "motion,",
+    "start": 9.3,
+    "end": 9.8,
+    "id": "w24"
+  },
+  {
+    "text": "a",
+    "start": 9.87,
+    "end": 9.88,
+    "id": "w25"
+  },
+  {
+    "text": "blocked",
+    "start": 9.88,
+    "end": 10.5,
+    "id": "w26"
+  },
+  {
+    "text": "corridor,",
+    "start": 10.5,
+    "end": 11.4,
+    "id": "w27"
+  },
+  {
+    "text": "a",
+    "start": 11.4,
+    "end": 11.44,
+    "id": "w28"
+  },
+  {
+    "text": "waiting",
+    "start": 11.51,
+    "end": 12.18,
+    "id": "w29"
+  },
+  {
+    "text": "delivery,",
+    "start": 12.18,
+    "end": 13,
+    "id": "w30"
+  },
+  {
+    "text": "three",
+    "start": 13.07,
+    "end": 13.33,
+    "id": "w31"
+  },
+  {
+    "text": "robots",
+    "start": 13.37,
+    "end": 13.77,
+    "id": "w32"
+  },
+  {
+    "text": "with",
+    "start": 13.77,
+    "end": 14.05,
+    "id": "w33"
+  },
+  {
+    "text": "different",
+    "start": 14.05,
+    "end": 14.63,
+    "id": "w34"
+  },
+  {
+    "text": "jobs",
+    "start": 14.71,
+    "end": 15,
+    "id": "w35"
+  },
+  {
+    "text": "and",
+    "start": 15,
+    "end": 15.31,
+    "id": "w36"
+  },
+  {
+    "text": "one",
+    "start": 15.33,
+    "end": 15.63,
+    "id": "w37"
+  },
+  {
+    "text": "question,",
+    "start": 15.69,
+    "end": 16.59,
+    "id": "w38"
+  },
+  {
+    "text": "who",
+    "start": 16.67,
+    "end": 16.87,
+    "id": "w39"
+  },
+  {
+    "text": "has",
+    "start": 16.87,
+    "end": 17.1,
+    "id": "w40"
+  },
+  {
+    "text": "the",
+    "start": 17.16,
+    "end": 17.41,
+    "id": "w41"
+  },
+  {
+    "text": "authority",
+    "start": 17.41,
+    "end": 18.23,
+    "id": "w42"
+  },
+  {
+    "text": "to",
+    "start": 18.23,
+    "end": 18.41,
+    "id": "w43"
+  },
+  {
+    "text": "move?",
+    "start": 18.43,
+    "end": 19.08,
+    "id": "w44"
+  },
+  {
+    "text": "Witness",
+    "start": 19.15,
+    "end": 19.49,
+    "id": "w45"
+  },
+  {
+    "text": "Fleet",
+    "start": 19.49,
+    "end": 19.78,
+    "id": "w46"
+  },
+  {
+    "text": "connects",
+    "start": 19.78,
+    "end": 20.25,
+    "id": "w47"
+  },
+  {
+    "text": "the",
+    "start": 20.25,
+    "end": 20.31,
+    "id": "w48"
+  },
+  {
+    "text": "answer",
+    "start": 20.43,
+    "end": 20.8,
+    "id": "w49"
+  },
+  {
+    "text": "in",
+    "start": 20.8,
+    "end": 21.02,
+    "id": "w50"
+  },
+  {
+    "text": "Falcord",
+    "start": 21.04,
+    "end": 21.88,
+    "id": "w51"
+  },
+  {
+    "text": "DB,",
+    "start": 21.88,
+    "end": 22.36,
+    "id": "w52"
+  },
+  {
+    "text": "the",
+    "start": 22.47,
+    "end": 22.66,
+    "id": "w53"
+  },
+  {
+    "text": "source,",
+    "start": 22.66,
+    "end": 23.35,
+    "id": "w54"
+  },
+  {
+    "text": "the",
+    "start": 23.35,
+    "end": 23.61,
+    "id": "w55"
+  },
+  {
+    "text": "policy,",
+    "start": 23.61,
+    "end": 24.32,
+    "id": "w56"
+  },
+  {
+    "text": "the",
+    "start": 24.32,
+    "end": 24.6,
+    "id": "w57"
+  },
+  {
+    "text": "owner,",
+    "start": 24.6,
+    "end": 25.28,
+    "id": "w58"
+  },
+  {
+    "text": "the",
+    "start": 25.35,
+    "end": 25.5,
+    "id": "w59"
+  },
+  {
+    "text": "observation,",
+    "start": 25.5,
+    "end": 26.48,
+    "id": "w60"
+  },
+  {
+    "text": "and",
+    "start": 26.48,
+    "end": 26.7,
+    "id": "w61"
+  },
+  {
+    "text": "the",
+    "start": 26.7,
+    "end": 26.92,
+    "id": "w62"
+  },
+  {
+    "text": "command.",
+    "start": 26.99,
+    "end": 27.72,
+    "id": "w63"
+  },
+  {
+    "text": "Language",
+    "start": 27.79,
+    "end": 28.29,
+    "id": "w64"
+  },
+  {
+    "text": "model",
+    "start": 28.37,
+    "end": 28.68,
+    "id": "w65"
+  },
+  {
+    "text": "suggestions",
+    "start": 28.68,
+    "end": 29.5,
+    "id": "w66"
+  },
+  {
+    "text": "are",
+    "start": 29.5,
+    "end": 29.72,
+    "id": "w67"
+  },
+  {
+    "text": "advisory,",
+    "start": 29.72,
+    "end": 30.48,
+    "id": "w68"
+  },
+  {
+    "text": "they",
+    "start": 30.55,
+    "end": 30.75,
+    "id": "w69"
+  },
+  {
+    "text": "don't",
+    "start": 30.75,
+    "end": 31.07,
+    "id": "w70"
+  },
+  {
+    "text": "get",
+    "start": 31.09,
+    "end": 31.28,
+    "id": "w71"
+  },
+  {
+    "text": "the",
+    "start": 31.28,
+    "end": 31.48,
+    "id": "w72"
+  },
+  {
+    "text": "keys.",
+    "start": 31.48,
+    "end": 31.98,
+    "id": "w73"
+  },
+  {
+    "text": "Now",
+    "start": 32.07,
+    "end": 32.23,
+    "id": "w74"
+  },
+  {
+    "text": "watch",
+    "start": 32.23,
+    "end": 32.57,
+    "id": "w75"
+  },
+  {
+    "text": "the",
+    "start": 32.61,
+    "end": 32.84,
+    "id": "w76"
+  },
+  {
+    "text": "actual",
+    "start": 32.84,
+    "end": 33.22,
+    "id": "w77"
+  },
+  {
+    "text": "simulation,",
+    "start": 33.35,
+    "end": 34.24,
+    "id": "w78"
+  },
+  {
+    "text": "the",
+    "start": 34.24,
+    "end": 34.5,
+    "id": "w79"
+  },
+  {
+    "text": "scout",
+    "start": 34.5,
+    "end": 34.9,
+    "id": "w80"
+  },
+  {
+    "text": "inspects,",
+    "start": 34.98,
+    "end": 35.8,
+    "id": "w81"
+  },
+  {
+    "text": "the",
+    "start": 35.87,
+    "end": 36.01,
+    "id": "w82"
+  },
+  {
+    "text": "recovery",
+    "start": 36.01,
+    "end": 36.57,
+    "id": "w83"
+  },
+  {
+    "text": "robot",
+    "start": 36.57,
+    "end": 36.92,
+    "id": "w84"
+  },
+  {
+    "text": "clears",
+    "start": 36.92,
+    "end": 37.27,
+    "id": "w85"
+  },
+  {
+    "text": "the",
+    "start": 37.38,
+    "end": 37.55,
+    "id": "w86"
+  },
+  {
+    "text": "obstruction,",
+    "start": 37.55,
+    "end": 38.43,
+    "id": "w87"
+  },
+  {
+    "text": "physical",
+    "start": 38.55,
+    "end": 38.98,
+    "id": "w88"
+  },
+  {
+    "text": "observations",
+    "start": 39.13,
+    "end": 39.71,
+    "id": "w89"
+  },
+  {
+    "text": "are",
+    "start": 39.83,
+    "end": 39.98,
+    "id": "w90"
+  },
+  {
+    "text": "retained,",
+    "start": 40.06,
+    "end": 40.68,
+    "id": "w91"
+  },
+  {
+    "text": "not",
+    "start": 40.68,
+    "end": 41.05,
+    "id": "w92"
+  },
+  {
+    "text": "guessed,",
+    "start": 41.05,
+    "end": 41.96,
+    "id": "w93"
+  },
+  {
+    "text": "and",
+    "start": 42.03,
+    "end": 42.2,
+    "id": "w94"
+  },
+  {
+    "text": "the",
+    "start": 42.2,
+    "end": 42.44,
+    "id": "w95"
+  },
+  {
+    "text": "courier",
+    "start": 42.44,
+    "end": 43.01,
+    "id": "w96"
+  },
+  {
+    "text": "still",
+    "start": 43.01,
+    "end": 43.41,
+    "id": "w97"
+  },
+  {
+    "text": "waits",
+    "start": 43.41,
+    "end": 43.84,
+    "id": "w98"
+  },
+  {
+    "text": "because",
+    "start": 43.91,
+    "end": 44.34,
+    "id": "w99"
+  },
+  {
+    "text": "a",
+    "start": 44.4,
+    "end": 44.45,
+    "id": "w100"
+  },
+  {
+    "text": "clear",
+    "start": 44.49,
+    "end": 44.83,
+    "id": "w101"
+  },
+  {
+    "text": "path",
+    "start": 44.83,
+    "end": 45.07,
+    "id": "w102"
+  },
+  {
+    "text": "is",
+    "start": 45.19,
+    "end": 45.28,
+    "id": "w103"
+  },
+  {
+    "text": "not",
+    "start": 45.28,
+    "end": 45.48,
+    "id": "w104"
+  },
+  {
+    "text": "the",
+    "start": 45.54,
+    "end": 45.74,
+    "id": "w105"
+  },
+  {
+    "text": "same",
+    "start": 45.74,
+    "end": 46.04,
+    "id": "w106"
+  },
+  {
+    "text": "as",
+    "start": 46.04,
+    "end": 46.15,
+    "id": "w107"
+  },
+  {
+    "text": "permission.",
+    "start": 46.18,
+    "end": 47.12,
+    "id": "w108"
+  },
+  {
+    "text": "This",
+    "start": 47.31,
+    "end": 47.56,
+    "id": "w109"
+  },
+  {
+    "text": "recorded",
+    "start": 47.56,
+    "end": 48.19,
+    "id": "w110"
+  },
+  {
+    "text": "run",
+    "start": 48.19,
+    "end": 48.43,
+    "id": "w111"
+  },
+  {
+    "text": "uses",
+    "start": 48.43,
+    "end": 48.74,
+    "id": "w112"
+  },
+  {
+    "text": "an",
+    "start": 48.82,
+    "end": 48.88,
+    "id": "w113"
+  },
+  {
+    "text": "explicit,",
+    "start": 48.95,
+    "end": 49.76,
+    "id": "w114"
+  },
+  {
+    "text": "configured",
+    "start": 49.76,
+    "end": 50.4,
+    "id": "w115"
+  },
+  {
+    "text": "demo",
+    "start": 50.4,
+    "end": 50.65,
+    "id": "w116"
+  },
+  {
+    "text": "owner",
+    "start": 50.98,
+    "end": 51.16,
+    "id": "w117"
+  },
+  {
+    "text": "release,",
+    "start": 51.18,
+    "end": 52.08,
+    "id": "w118"
+  },
+  {
+    "text": "then",
+    "start": 52.15,
+    "end": 52.31,
+    "id": "w119"
+  },
+  {
+    "text": "the",
+    "start": 52.31,
+    "end": 52.48,
+    "id": "w120"
+  },
+  {
+    "text": "courier",
+    "start": 52.48,
+    "end": 52.88,
+    "id": "w121"
+  },
+  {
+    "text": "checks",
+    "start": 52.88,
+    "end": 53.23,
+    "id": "w122"
+  },
+  {
+    "text": "the",
+    "start": 53.23,
+    "end": 53.31,
+    "id": "w123"
+  },
+  {
+    "text": "route",
+    "start": 53.43,
+    "end": 53.72,
+    "id": "w124"
+  },
+  {
+    "text": "with",
+    "start": 53.72,
+    "end": 53.93,
+    "id": "w125"
+  },
+  {
+    "text": "fresh",
+    "start": 53.93,
+    "end": 54.2,
+    "id": "w126"
+  },
+  {
+    "text": "evidence",
+    "start": 54.2,
+    "end": 54.64,
+    "id": "w127"
+  },
+  {
+    "text": "of",
+    "start": 54.64,
+    "end": 54.88,
+    "id": "w128"
+  },
+  {
+    "text": "its",
+    "start": 54.88,
+    "end": 55.22,
+    "id": "w129"
+  },
+  {
+    "text": "own",
+    "start": 55.22,
+    "end": 55.36,
+    "id": "w130"
+  },
+  {
+    "text": "and",
+    "start": 55.67,
+    "end": 55.84,
+    "id": "w131"
+  },
+  {
+    "text": "makes",
+    "start": 55.84,
+    "end": 56.22,
+    "id": "w132"
+  },
+  {
+    "text": "the",
+    "start": 56.25,
+    "end": 56.45,
+    "id": "w133"
+  },
+  {
+    "text": "delivery.",
+    "start": 56.5,
+    "end": 57.4,
+    "id": "w134"
+  },
+  {
+    "text": "Every",
+    "start": 57.47,
+    "end": 57.8,
+    "id": "w135"
+  },
+  {
+    "text": "completed",
+    "start": 57.8,
+    "end": 58.52,
+    "id": "w136"
+  },
+  {
+    "text": "task",
+    "start": 58.52,
+    "end": 58.84,
+    "id": "w137"
+  },
+  {
+    "text": "leaves",
+    "start": 58.84,
+    "end": 59.32,
+    "id": "w138"
+  },
+  {
+    "text": "a",
+    "start": 59.32,
+    "end": 59.4,
+    "id": "w139"
+  },
+  {
+    "text": "command-bound",
+    "start": 59.4,
+    "end": 60.43,
+    "id": "w140"
+  },
+  {
+    "text": "receipt.",
+    "start": 60.43,
+    "end": 61.12,
+    "id": "w141"
+  },
+  {
+    "text": "If",
+    "start": 61.19,
+    "end": 61.24,
+    "id": "w142"
+  },
+  {
+    "text": "a",
+    "start": 61.24,
+    "end": 61.3,
+    "id": "w143"
+  },
+  {
+    "text": "command's",
+    "start": 61.3,
+    "end": 61.84,
+    "id": "w144"
+  },
+  {
+    "text": "outcome",
+    "start": 61.86,
+    "end": 62.28,
+    "id": "w145"
+  },
+  {
+    "text": "is",
+    "start": 62.28,
+    "end": 62.35,
+    "id": "w146"
+  },
+  {
+    "text": "unknown,",
+    "start": 62.39,
+    "end": 63,
+    "id": "w147"
+  },
+  {
+    "text": "the",
+    "start": 63,
+    "end": 63.24,
+    "id": "w148"
+  },
+  {
+    "text": "fleet",
+    "start": 63.24,
+    "end": 63.65,
+    "id": "w149"
+  },
+  {
+    "text": "holds.",
+    "start": 63.65,
+    "end": 64.31,
+    "id": "w150"
+  },
+  {
+    "text": "It",
+    "start": 64.39,
+    "end": 64.47,
+    "id": "w151"
+  },
+  {
+    "text": "doesn't",
+    "start": 64.47,
+    "end": 64.98,
+    "id": "w152"
+  },
+  {
+    "text": "guess",
+    "start": 64.98,
+    "end": 65.35,
+    "id": "w153"
+  },
+  {
+    "text": "and",
+    "start": 65.35,
+    "end": 65.54,
+    "id": "w154"
+  },
+  {
+    "text": "send",
+    "start": 65.57,
+    "end": 65.82,
+    "id": "w155"
+  },
+  {
+    "text": "it",
+    "start": 65.9,
+    "end": 65.96,
+    "id": "w156"
+  },
+  {
+    "text": "again.",
+    "start": 66.03,
+    "end": 66.63,
+    "id": "w157"
+  },
+  {
+    "text": "Seven",
+    "start": 66.71,
+    "end": 67.12,
+    "id": "w158"
+  },
+  {
+    "text": "tasks,",
+    "start": 67.12,
+    "end": 67.79,
+    "id": "w159"
+  },
+  {
+    "text": "one",
+    "start": 67.79,
+    "end": 68.08,
+    "id": "w160"
+  },
+  {
+    "text": "traceable",
+    "start": 68.08,
+    "end": 68.95,
+    "id": "w161"
+  },
+  {
+    "text": "mission.",
+    "start": 68.95,
+    "end": 69.9,
+    "id": "w162"
+  },
+  {
+    "text": "This",
+    "start": 70.03,
+    "end": 70.25,
+    "id": "w163"
+  },
+  {
+    "text": "is",
+    "start": 70.25,
+    "end": 70.39,
+    "id": "w164"
+  },
+  {
+    "text": "a",
+    "start": 70.39,
+    "end": 70.46,
+    "id": "w165"
+  },
+  {
+    "text": "simulation-first",
+    "start": 70.61,
+    "end": 71.6,
+    "id": "w166"
+  },
+  {
+    "text": "system,",
+    "start": 71.67,
+    "end": 72.08,
+    "id": "w167"
+  },
+  {
+    "text": "not",
+    "start": 72.15,
+    "end": 72.3,
+    "id": "w168"
+  },
+  {
+    "text": "a",
+    "start": 72.3,
+    "end": 72.37,
+    "id": "w169"
+  },
+  {
+    "text": "claim",
+    "start": 72.37,
+    "end": 72.74,
+    "id": "w170"
+  },
+  {
+    "text": "of",
+    "start": 72.74,
+    "end": 72.89,
+    "id": "w171"
+  },
+  {
+    "text": "production",
+    "start": 72.89,
+    "end": 73.54,
+    "id": "w172"
+  },
+  {
+    "text": "robot",
+    "start": 73.66,
+    "end": 74.01,
+    "id": "w173"
+  },
+  {
+    "text": "safety.",
+    "start": 74.01,
+    "end": 74.72,
+    "id": "w174"
+  },
+  {
+    "text": "Explore",
+    "start": 74.79,
+    "end": 75.22,
+    "id": "w175"
+  },
+  {
+    "text": "the",
+    "start": 75.29,
+    "end": 75.42,
+    "id": "w176"
+  },
+  {
+    "text": "evidence,",
+    "start": 75.46,
+    "end": 76.2,
+    "id": "w177"
+  },
+  {
+    "text": "try",
+    "start": 76.2,
+    "end": 76.5,
+    "id": "w178"
+  },
+  {
+    "text": "the",
+    "start": 76.5,
+    "end": 76.8,
+    "id": "w179"
+  },
+  {
+    "text": "demo,",
+    "start": 76.8,
+    "end": 77.35,
+    "id": "w180"
+  },
+  {
+    "text": "read",
+    "start": 77.41,
+    "end": 77.86,
+    "id": "w181"
+  },
+  {
+    "text": "the",
+    "start": 77.86,
+    "end": 78,
+    "id": "w182"
+  },
+  {
+    "text": "code.",
+    "start": 78.46,
+    "end": 78.68,
+    "id": "w183"
+  },
+  {
+    "text": "Witness",
+    "start": 78.75,
+    "end": 79.18,
+    "id": "w184"
+  },
+  {
+    "text": "Fleet,",
+    "start": 79.33,
+    "end": 79.8,
+    "id": "w185"
+  },
+  {
+    "text": "motion",
+    "start": 79.8,
+    "end": 80.28,
+    "id": "w186"
+  },
+  {
+    "text": "you",
+    "start": 80.28,
+    "end": 80.52,
+    "id": "w187"
+  },
+  {
+    "text": "can",
+    "start": 80.52,
+    "end": 80.76,
+    "id": "w188"
+  },
+  {
+    "text": "account",
+    "start": 80.76,
+    "end": 81.31,
+    "id": "w189"
+  },
+  {
+    "text": "for.",
+    "start": 81.37,
+    "end": 81.84,
+    "id": "w190"
+  }
+]

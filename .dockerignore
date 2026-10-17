@@ -1,0 +1,15 @@
+*
+!pyproject.toml
+!uv.lock
+!src/
+!src/**
+!services/
+!services/**
+!deploy/
+!deploy/Dockerfile
+**/.venv/**
+**/__pycache__/**
+**/*.pyc
+**/.env*
+**/node_modules/**
+services/corpus/**

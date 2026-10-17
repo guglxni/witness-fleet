@@ -1,0 +1,8 @@
+[project]
+name = "witness-fleet-corpus"
+version = "0.1.0"
+requires-python = ">=3.12,<3.14"
+dependencies = ["graphrag-sdk", "fastapi>=0.115,<1", "uvicorn>=0.32,<1", "pytest>=9,<10", "pytest-asyncio>=1,<2", "httpx>=0.28,<1", "httpx2"]
+
+[tool.uv.sources]
+graphrag-sdk = {path = "../../.research/vendor/FalkorDB--GraphRAG-SDK/graphrag_sdk"}

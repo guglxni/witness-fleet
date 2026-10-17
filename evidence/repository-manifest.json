@@ -1,0 +1,1507 @@
+{
+  "schema_version": 1,
+  "audit": {
+    "date_utc": "2026-10-15",
+    "method": "Authenticated gh CLI: gh api repo metadata, commits/<ref>, git/trees/<full SHA>?recursive=1, contents/PATH?ref=<full SHA>.",
+    "scope": "Read-only repository metadata/tree/file/license verification. No large clones, application run, dependency installs, model inference, paid API use, dataset download, credentials inspected, service/infrastructure mutation, or source reuse.",
+    "repository_count": 23,
+    "canonical_full_name_verified": 23,
+    "exact_commit_verified": 23,
+    "complete_tree_verified": 23,
+    "root_license_texts_fetched": 21,
+    "user_additions": [
+      "AppliedMachineLearning-Lab/jev-benchmarking (arXiv:2609.37647v1)",
+      "xzx34/JevOut (arXiv:2609.30243v2)",
+      "nokia-applied-research/AnyJev (arXiv:2610.00831)"
+    ],
+    "limitations": [
+      "main refs were sampled only to resolve a full immutable SHA; build instructions use SHA, never moving main",
+      "package/API compatibility and runnable usage not tested",
+      "provider secrets never accessed",
+      "code, model, and data/asset rights recorded separately; model/data statuses are not blanket legal clearance",
+      "Manifest embeds verified recursive tree blob paths to audit every source/license/package path without another GitHub request."
+    ]
+  },
+  "repositories": [
+    {
+      "requested_full_name": "FalkorDB/FalkorDB",
+      "full_name": "FalkorDB/FalkorDB",
+      "url": "https://github.com/FalkorDB/FalkorDB",
+      "category": "core",
+      "decision": "core",
+      "recommendation": "Primary graph server and canonical authority/evidence graph. Pin v6.0.2; SSPL is source-available, not OSI-approved.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "7b7b4d1ed23fe78e69fa5da0c9e4f2ea2e73f3e9",
+      "commit_verified": true,
+      "commit_url": "https://github.com/FalkorDB/FalkorDB/commit/7b7b4d1ed23fe78e69fa5da0c9e4f2ea2e73f3e9",
+      "commit_date_utc": "2026-10-08T12:59:45Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 948,
+      "github_license_spdx": "NOASSERTION",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "                     Server Side Public License                      VERSION 1, OCTOBER 16, 2018                      Copyright \u00a9 2018 MongoDB, Inc.    Everyone is permitted to copy and distribute verbatim copies of this   license document, but changing it is not allowed.                         TERMS AND CONDITIONS    0. Definitions.    \u201cThis Lice",
+      "package_manifests_at_pin": [
+        "Cargo.toml",
+        "bench/pyproject.toml",
+        "fuzz/Cargo.toml",
+        "graph/Cargo.toml",
+        "native-deps/Cargo.toml",
+        "runtime-fuzz-target/Cargo.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "src/lib.rs",
+        "Cargo.toml",
+        "graph/Cargo.toml"
+      ],
+      "usage_commands": [
+        "docker run -p 6379:6379 -p 3000:3000 -it --rm -v ./data:/var/lib/falkordb/data falkordb/falkordb  # upstream example only; mutable image tag"
+      ],
+      "license_note": "Root LICENSE text is SSPL v1; server is not OSI-approved. Do not call entire stack FOSS.",
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "7b7b4d1ed23fe78e69fa5da0c9e4f2ea2e73f3e9",
+      "requested_ref_kind": "explicit_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "NOASSERTION",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": "Root LICENSE text is SSPL v1; server is not OSI-approved. Do not call entire stack FOSS."
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "FalkorDB/falkordb-py",
+      "full_name": "FalkorDB/falkordb-py",
+      "url": "https://github.com/FalkorDB/falkordb-py",
+      "category": "core",
+      "decision": "core",
+      "recommendation": "Official Python client; parameterized queries and explicit read-only retrieval seam.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "31f63f44a5745b9bec65969a1db706906718cb82",
+      "commit_verified": true,
+      "commit_url": "https://github.com/FalkorDB/falkordb-py/commit/31f63f44a5745b9bec65969a1db706906718cb82",
+      "commit_date_utc": "2026-10-14T11:52:39Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 65,
+      "github_license_spdx": "MIT",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "MIT License  Copyright (c) 2023 FalkorDB  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell co",
+      "package_manifests_at_pin": [
+        "docs/Makefile",
+        "pyproject.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "falkordb/falkordb.py",
+        "falkordb/graph.py",
+        "pyproject.toml"
+      ],
+      "usage_commands": [
+        "python -m pip install FalkorDB",
+        "from falkordb import FalkorDB; db=FalkorDB(host=\"localhost\", port=6379); graph=db.select_graph(\"fleet\"); graph.ro_query(\"MATCH (n) RETURN n LIMIT 1\")"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "main",
+      "requested_ref_kind": "default_branch_sampled_then_resolved_to_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "MIT",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "FalkorDB/GraphRAG-SDK",
+      "full_name": "FalkorDB/GraphRAG-SDK",
+      "url": "https://github.com/FalkorDB/GraphRAG-SDK",
+      "category": "core",
+      "decision": "core-optional-single-corpus",
+      "recommendation": "One optional, isolated corpus lane: deterministic TableMapping ingestion and retrieval, never canonical policy authority.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "35e67a0b27fdcc7f2c28508b09e86169851a8187",
+      "commit_verified": true,
+      "commit_url": "https://github.com/FalkorDB/GraphRAG-SDK/commit/35e67a0b27fdcc7f2c28508b09e86169851a8187",
+      "commit_date_utc": "2026-10-14T12:40:01Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 204,
+      "github_license_spdx": "Apache-2.0",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "                                  Apache License                            Version 2.0, January 2004                         http://www.apache.org/licenses/     TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION     1. Definitions.        \"License\" shall mean the terms and conditions for use, reproduction,       and distribution as defin",
+      "package_manifests_at_pin": [
+        "graphrag_sdk/pyproject.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "graphrag_sdk/src/graphrag_sdk/api/main.py",
+        "graphrag_sdk/src/graphrag_sdk/ingestion/structured_pipeline.py",
+        "graphrag_sdk/examples/11_structured_ingestion.py",
+        "graphrag_sdk/pyproject.toml"
+      ],
+      "usage_commands": [
+        "python -m pip install \"graphrag-sdk[litellm]\"  # isolate and resolve dependencies before adding",
+        "docker run -p 6379:6379 -p 3000:3000 falkordb/falkordb  # upstream latest example only"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "35e67a0b27fdcc7f2c28508b09e86169851a8187",
+      "requested_ref_kind": "explicit_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "Apache-2.0",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "google-deepmind/mujoco",
+      "full_name": "google-deepmind/mujoco",
+      "url": "https://github.com/google-deepmind/mujoco",
+      "category": "core",
+      "decision": "core",
+      "recommendation": "Original simple 3-robot MJCF simulation and one authoritative clock. No physical code reuse.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "12720007ea3c98238990190dcba6d93fee0dd4c1",
+      "commit_verified": true,
+      "commit_url": "https://github.com/google-deepmind/mujoco/commit/12720007ea3c98238990190dcba6d93fee0dd4c1",
+      "commit_date_utc": "2026-10-14T20:46:32Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 2304,
+      "github_license_spdx": "Apache-2.0",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE",
+        "python/mujoco/experimental/netimgui/LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "                                  Apache License                            Version 2.0, January 2004                         http://www.apache.org/licenses/     TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION     1. Definitions.        \"License\" shall mean the terms and conditions for use, reproduction,       and distribution as defin",
+      "package_manifests_at_pin": [
+        "CMakeLists.txt",
+        "doc/Makefile",
+        "mjx/pyproject.toml",
+        "model/CMakeLists.txt",
+        "python/pyproject.toml",
+        "python/setup.py",
+        "sample/CMakeLists.txt",
+        "simulate/CMakeLists.txt"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "python/pyproject.toml",
+        "python/mujoco/__init__.py",
+        "doc/python.rst",
+        "doc/programming/index.rst",
+        "cmake/MujocoMacOS.cmake"
+      ],
+      "usage_commands": [
+        "python -m pip install mujoco  # official Python docs",
+        "python -c \"import mujoco; print(mujoco.__version__)\"",
+        "mjpython your_viewer_script.py  # required on macOS for viewer.launch_passive"
+      ],
+      "platform_notes": {
+        "official_pinned_docs": "doc/programming/index.rst explicitly states pre-built dynamic libraries are available for x86_64 and arm64 on Windows/Linux/macOS. doc/python.rst and python/README.md state pip install mujoco and bundled library; macOS launch_passive viewer requires mjpython. Native arm64 is documented viable; no package install/test was performed.",
+        "evidence_paths": [
+          "doc/programming/index.rst",
+          "doc/python.rst",
+          "python/README.md",
+          "python/pyproject.toml"
+        ],
+        "evidence_url": "https://github.com/google-deepmind/mujoco/blob/12720007ea3c98238990190dcba6d93fee0dd4c1/doc/programming/index.rst"
+      },
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "main",
+      "requested_ref_kind": "default_branch_sampled_then_resolved_to_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "Apache-2.0",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      },
+      "simulator_scope_note": "Platform docs establish native arm64 viability; intended project world should still be original simple MJCF with 3 robots and a single simulation clock. No physical code reuse."
+    },
+    {
+      "requested_full_name": "guglxni/ms-decision-provider",
+      "full_name": "guglxni/ms-decision-provider",
+      "url": "https://github.com/guglxni/ms-decision-provider",
+      "category": "core",
+      "decision": "core-reference-adapter",
+      "recommendation": "Candidate Hermes provider for the existing Microsoft-Decision-1 endpoint; configuration and credential setup require explicit approval.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "f82d9bf5203496eb8a9ab7a7740a7909ab2c04cc",
+      "commit_verified": true,
+      "commit_url": "https://github.com/guglxni/ms-decision-provider/commit/f82d9bf5203496eb8a9ab7a7740a7909ab2c04cc",
+      "commit_date_utc": "2026-10-13T10:00:01Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 10,
+      "github_license_spdx": "MIT",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "MIT License  Copyright (c) 2026 Aaryan Guglani  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or s",
+      "package_manifests_at_pin": [],
+      "meaningful_source_entrypoints_verified": [
+        "provider.py",
+        "plugin.yaml",
+        "tests/test_security.py"
+      ],
+      "usage_commands": [
+        "gh repo clone guglxni/ms-decision-provider ~/.hermes/plugins/ms-decision-provider",
+        "hermes plugins doctor ~/.hermes/plugins/ms-decision-provider  # upstream README; do not change active user plugin state without approval"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "main",
+      "requested_ref_kind": "default_branch_sampled_then_resolved_to_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "MIT",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "typesafe-ai/typesafe-sdk-python",
+      "full_name": "typesafe-ai/typesafe-sdk-python",
+      "url": "https://github.com/typesafe-ai/typesafe-sdk-python",
+      "category": "core",
+      "decision": "optional-hosted-client",
+      "recommendation": "Hosted Jev client for evaluation only; code MIT does not license service/model.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "f36e68549ceca3191e5791e5f99ea1baa1a258b5",
+      "commit_verified": true,
+      "commit_url": "https://github.com/typesafe-ai/typesafe-sdk-python/commit/f36e68549ceca3191e5791e5f99ea1baa1a258b5",
+      "commit_date_utc": "2026-10-14T21:20:45Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 78,
+      "github_license_spdx": "MIT",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "MIT License  Copyright (c) [year] [fullname]  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sel",
+      "package_manifests_at_pin": [
+        "pyproject.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "src/typesafe_sdk/_core/client/sync/client.py",
+        "src/typesafe_sdk/_core/client/aio/client.py",
+        "pyproject.toml"
+      ],
+      "usage_commands": [
+        "python -m pip install typesafe-sdk"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "Hosted Jev is proprietary service/model. Any local checkpoint is governed by its own model card."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "f36e68549ceca3191e5791e5f99ea1baa1a258b5",
+      "requested_ref_kind": "explicit_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "MIT",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "Hosted Jev is proprietary service/model. Any local checkpoint is governed by its own model card."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "typesafe-ai/system-one-adapter-python",
+      "full_name": "typesafe-ai/system-one-adapter-python",
+      "url": "https://github.com/typesafe-ai/system-one-adapter-python",
+      "category": "core",
+      "decision": "optional-baseline",
+      "recommendation": "Generative API adapter shaped like System One; not native calibrated inference.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "e1d4cc938204b22fc5a3c3aca7044072fe3f712d",
+      "commit_verified": true,
+      "commit_url": "https://github.com/typesafe-ai/system-one-adapter-python/commit/e1d4cc938204b22fc5a3c3aca7044072fe3f712d",
+      "commit_date_utc": "2026-09-22T12:24:27Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 81,
+      "github_license_spdx": "MIT",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "MIT License  Copyright (c) 2026 TypeSafe AI  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell",
+      "package_manifests_at_pin": [
+        "pyproject.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "src/system_one_adapter/_client.py",
+        "src/system_one_adapter/providers/openai.py",
+        "pyproject.toml"
+      ],
+      "usage_commands": [
+        "python -m pip install \"system-one-adapter[openai]\"  # alternative provider extras: [anthropic], [gemini]"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "Hosted Jev is proprietary service/model. Any local checkpoint is governed by its own model card."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "e1d4cc938204b22fc5a3c3aca7044072fe3f712d",
+      "requested_ref_kind": "explicit_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "MIT",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "Hosted Jev is proprietary service/model. Any local checkpoint is governed by its own model card."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "threefruits/HUME",
+      "full_name": "threefruits/HUME",
+      "url": "https://github.com/threefruits/HUME",
+      "category": "core",
+      "decision": "research-reference",
+      "recommendation": "Hypothesis-driven planning concepts only; alpha research code, not a required dependency.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "c9e170887a037863a77d1d549239ad1ff9e7b55a",
+      "commit_verified": true,
+      "commit_url": "https://github.com/threefruits/HUME/commit/c9e170887a037863a77d1d549239ad1ff9e7b55a",
+      "commit_date_utc": "2026-07-24T04:51:58Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 799,
+      "github_license_spdx": "MIT",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "MIT License  Copyright (c) 2026 HUME Authors  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sel",
+      "package_manifests_at_pin": [
+        "pyproject.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "hume/planning/block_processing/hypotheses.py",
+        "hume/planning/block_processing/verification.py",
+        "hume/planning/model.py",
+        "pyproject.toml"
+      ],
+      "usage_commands": [
+        "uv sync --all-extras",
+        "uv run pytest -q  # upstream command, not executed"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "Third-party assets or datasets require separate rights review."
+      },
+      "requested_ref": "main",
+      "requested_ref_kind": "default_branch_sampled_then_resolved_to_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "MIT",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "Third-party assets or datasets require separate rights review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "daniekpo/verigraph",
+      "full_name": "daniekpo/verigraph",
+      "url": "https://github.com/daniekpo/verigraph",
+      "category": "core",
+      "decision": "research-reference",
+      "recommendation": "Execution-verifiable scene graph planning reference; released repo excludes its real-robot perception/grasp stack.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "5c07fb8f228049e228b53637e3867650f6854fa5",
+      "commit_verified": true,
+      "commit_url": "https://github.com/daniekpo/verigraph/commit/5c07fb8f228049e228b53637e3867650f6854fa5",
+      "commit_date_utc": "2026-04-15T19:51:40Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 38,
+      "github_license_spdx": "MIT",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "MIT License  Copyright (c) 2026 Daniel Ekpo  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell",
+      "package_manifests_at_pin": [
+        "pyproject.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "verigraph/core/graph_planner.py",
+        "verigraph/core/iterative_planner.py",
+        "verigraph/core/simple_plan_checker.py",
+        "verigraph/utils/robot_client.py",
+        "pyproject.toml"
+      ],
+      "usage_commands": [
+        "python -m pip install -e .",
+        "python -m verigraph.scripts.eval_iterative_planning task.task_name=rearrange  # external models/data needed"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "Third-party assets or datasets require separate rights review."
+      },
+      "requested_ref": "main",
+      "requested_ref_kind": "default_branch_sampled_then_resolved_to_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "MIT",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "Third-party assets or datasets require separate rights review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "getzep/graphiti",
+      "full_name": "getzep/graphiti",
+      "url": "https://github.com/getzep/graphiti",
+      "category": "optional",
+      "decision": "deferred",
+      "recommendation": "Temporal graph memory alternative; defer in favor of direct episode/task persistence.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "aca369364226a666ca541b061ff2a1a54b80f2ff",
+      "commit_verified": true,
+      "commit_url": "https://github.com/getzep/graphiti/commit/aca369364226a666ca541b061ff2a1a54b80f2ff",
+      "commit_date_utc": "2026-10-15T00:19:18Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 423,
+      "github_license_spdx": "Apache-2.0",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "                                 Apache License                            Version 2.0, January 2004                         http://www.apache.org/licenses/     TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION     1. Definitions.        \"License\" shall mean the terms and conditions for use, reproduction,       and distribution as define",
+      "package_manifests_at_pin": [
+        "Makefile",
+        "mcp_server/pyproject.toml",
+        "pyproject.toml",
+        "server/Makefile",
+        "server/pyproject.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "graphiti_core/driver/falkordb_driver.py",
+        "examples/quickstart/quickstart_falkordb.py",
+        "pyproject.toml"
+      ],
+      "usage_commands": [
+        "python -m pip install \"graphiti-core[falkordb]\"  # verify extra/driver compatibility in isolated env"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "aca369364226a666ca541b061ff2a1a54b80f2ff",
+      "requested_ref_kind": "explicit_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "Apache-2.0",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "OSU-NLP-Group/HippoRAG",
+      "full_name": "OSU-NLP-Group/HippoRAG",
+      "url": "https://github.com/OSU-NLP-Group/HippoRAG",
+      "category": "optional",
+      "decision": "deferred",
+      "recommendation": "Retrieval baseline/reference; inspected code uses igraph, not a FalkorDB backend.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "d5c8329422e0a0b834a15874545cb6a74b4f9b26",
+      "commit_verified": true,
+      "commit_url": "https://github.com/OSU-NLP-Group/HippoRAG/commit/d5c8329422e0a0b834a15874545cb6a74b4f9b26",
+      "commit_date_utc": "2026-10-06T21:03:48Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 115,
+      "github_license_spdx": "MIT",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "MIT License  Copyright (c) 2025 OSU Natural Language Processing  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sub",
+      "package_manifests_at_pin": [
+        "pyproject.toml",
+        "setup.py"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "src/hipporag/HippoRAG.py",
+        "src/hipporag/embedding_store.py",
+        "pyproject.toml"
+      ],
+      "usage_commands": [
+        "uv pip install -e .",
+        "python examples/demo_openai.py  # external model/service required"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "Third-party assets or datasets require separate rights review."
+      },
+      "requested_ref": "d5c8329422e0a0b834a15874545cb6a74b4f9b26",
+      "requested_ref_kind": "explicit_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "MIT",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "Third-party assets or datasets require separate rights review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "AIRI-Institute/AriGraph",
+      "full_name": "AIRI-Institute/AriGraph",
+      "url": "https://github.com/AIRI-Institute/AriGraph",
+      "category": "optional",
+      "decision": "deferred",
+      "recommendation": "Semantic/episodic research reference, not a verified FalkorDB adapter.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "e884b76d7fa5185a3a8a55e5a67393b5a43f5ef2",
+      "commit_verified": true,
+      "commit_url": "https://github.com/AIRI-Institute/AriGraph/commit/e884b76d7fa5185a3a8a55e5a67393b5a43f5ef2",
+      "commit_date_utc": "2024-09-10T12:41:24Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 233,
+      "github_license_spdx": "MIT",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "MIT License  Copyright (c) 2024 AIRI - Artificial Intelligence Research Institute  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publis",
+      "package_manifests_at_pin": [],
+      "meaningful_source_entrypoints_verified": [
+        "pipeline_arigraph.py",
+        "graphs/contriever_graph.py",
+        "graphs/hypergraph.py",
+        "README.md"
+      ],
+      "usage_commands": [
+        "python -m pip install -r requirements.txt  # README documents system libraries and Python >=3.11"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "Third-party assets or datasets require separate rights review."
+      },
+      "requested_ref": "e884b76d7fa5185a3a8a55e5a67393b5a43f5ef2",
+      "requested_ref_kind": "explicit_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "MIT",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "Third-party assets or datasets require separate rights review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "docling-project/docling",
+      "full_name": "docling-project/docling",
+      "url": "https://github.com/docling-project/docling",
+      "category": "optional",
+      "decision": "deferred",
+      "recommendation": "Add only if PDFs/layout parsing are needed; model downloads and runtime assets have separate terms.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "6fadbae317b09c4dd4051c0f1fc1746c6baf04bc",
+      "commit_verified": true,
+      "commit_url": "https://github.com/docling-project/docling/commit/6fadbae317b09c4dd4051c0f1fc1746c6baf04bc",
+      "commit_date_utc": "2026-10-14T12:48:43Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 1887,
+      "github_license_spdx": "MIT",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        ".agents/skills/dignified-python/LICENSE",
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "MIT License  Copyright The Docling Contributors  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or ",
+      "package_manifests_at_pin": [
+        "Makefile",
+        "packages/docling/pyproject.toml",
+        "pyproject.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "docling/document_converter.py",
+        "packages/docling/pyproject.toml",
+        "docs/getting_started/quickstart.md",
+        "LICENSE"
+      ],
+      "usage_commands": [
+        "python -m pip install docling",
+        "docling --help"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "6fadbae317b09c4dd4051c0f1fc1746c6baf04bc",
+      "requested_ref_kind": "explicit_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "MIT",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "langchain-ai/langgraph",
+      "full_name": "langchain-ai/langgraph",
+      "url": "https://github.com/langchain-ai/langgraph",
+      "category": "optional",
+      "decision": "deferred",
+      "recommendation": "Workflow/checkpoint option only if a canonical graph state machine is insufficient.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "5eb60aef6f3837a1fb632a8abc6cf8e8da81785b",
+      "commit_verified": true,
+      "commit_url": "https://github.com/langchain-ai/langgraph/commit/5eb60aef6f3837a1fb632a8abc6cf8e8da81785b",
+      "commit_date_utc": "2026-10-15T01:31:09Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 691,
+      "github_license_spdx": "MIT",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE",
+        "libs/checkpoint-postgres/LICENSE",
+        "libs/checkpoint-sqlite/LICENSE",
+        "libs/checkpoint/LICENSE",
+        "libs/cli/LICENSE",
+        "libs/cli/js-examples/LICENSE",
+        "libs/langgraph/LICENSE",
+        "libs/prebuilt/LICENSE",
+        "libs/sdk-py/LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "MIT License  Copyright (c) 2024 LangChain, Inc.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or ",
+      "package_manifests_at_pin": [
+        "Makefile",
+        "libs/checkpoint-sqlite/pyproject.toml",
+        "libs/langgraph/pyproject.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "libs/langgraph/pyproject.toml",
+        "libs/checkpoint-sqlite/pyproject.toml",
+        "LICENSE"
+      ],
+      "usage_commands": [
+        "python -m pip install langgraph",
+        "python -m pip install langgraph-checkpoint-sqlite  # optional saver"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "5eb60aef6f3837a1fb632a8abc6cf8e8da81785b",
+      "requested_ref_kind": "explicit_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "MIT",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "splintered-reality/py_trees",
+      "full_name": "splintered-reality/py_trees",
+      "url": "https://github.com/splintered-reality/py_trees",
+      "category": "optional",
+      "decision": "deferred",
+      "recommendation": "Behavior-tree primitives only; root text/manifest say BSD-3-Clause while GitHub reports NOASSERTION.",
+      "default_branch_at_audit": "devel",
+      "resolved_pin": "41ec377108b3786f2cfe529facb0566332691766",
+      "commit_verified": true,
+      "commit_url": "https://github.com/splintered-reality/py_trees/commit/41ec377108b3786f2cfe529facb0566332691766",
+      "commit_date_utc": "2026-09-17T19:46:12Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 187,
+      "github_license_spdx": "NOASSERTION",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "# Software License Agreement (BSD License) # # Copyright (c) 2020 Daniel Stonier # All rights reserved. # # Redistribution and use in source and binary forms, with or without # modification, are permitted provided that the following conditions # are met: # #    * Redistributions of source code must retain the above copyright #        notice, this l",
+      "package_manifests_at_pin": [
+        "Makefile",
+        "docs/Makefile",
+        "pyproject.toml",
+        "setup.py"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "py_trees/trees.py",
+        "py_trees/behaviour.py",
+        "pyproject.toml"
+      ],
+      "usage_commands": [
+        "python -m pip install py_trees",
+        "uv sync && uv run py-trees-demo-blackboard"
+      ],
+      "license_note": "GitHub SPDX NOASSERTION; pinned root LICENSE text and pyproject declare BSD-3-Clause.",
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "41ec377108b3786f2cfe529facb0566332691766",
+      "requested_ref_kind": "explicit_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "NOASSERTION",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": "GitHub SPDX NOASSERTION; pinned root LICENSE text and pyproject declare BSD-3-Clause."
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "open-policy-agent/opa",
+      "full_name": "open-policy-agent/opa",
+      "url": "https://github.com/open-policy-agent/opa",
+      "category": "optional",
+      "decision": "deferred",
+      "recommendation": "Policy engine if rule complexity warrants it; first use a small deterministic evaluator.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "89d111ce4b45c3af9b79ac1137efe2e9aab6cc92",
+      "commit_verified": true,
+      "commit_url": "https://github.com/open-policy-agent/opa/commit/89d111ce4b45c3af9b79ac1137efe2e9aab6cc92",
+      "commit_date_utc": "2026-10-14T20:30:42Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 7917,
+      "github_license_spdx": "Apache-2.0",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE",
+        "internal/edittree/bitvector/license.txt",
+        "internal/methodlesstemplate/LICENSE",
+        "internal/semver/LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "                                 Apache License                            Version 2.0, January 2004                         http://www.apache.org/licenses/     TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION     1. Definitions.        \"License\" shall mean the terms and conditions for use, reproduction,       and distribution as define",
+      "package_manifests_at_pin": [
+        "Makefile",
+        "docs/Makefile",
+        "docs/package.json",
+        "e2e/go.mod",
+        "go.mod",
+        "wasm/Makefile"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "server/server.go",
+        "v1/server/server.go",
+        "go.mod",
+        "LICENSE"
+      ],
+      "usage_commands": [
+        "go install github.com/open-policy-agent/opa@latest  # mutable documentation-style command; pin the binary in deployment",
+        "opa run --server  # no policy configured"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "89d111ce4b45c3af9b79ac1137efe2e9aab6cc92",
+      "requested_ref_kind": "explicit_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "Apache-2.0",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "NandhaKishorM/laya",
+      "full_name": "NandhaKishorM/laya",
+      "url": "https://github.com/NandhaKishorM/laya",
+      "category": "optional",
+      "decision": "deferred-local-model",
+      "recommendation": "Local typed decision model comparison; package Apache-2.0, checkpoint/data licensing separate.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "432312b36714d8889eba405507b37eda25257d9c",
+      "commit_verified": true,
+      "commit_url": "https://github.com/NandhaKishorM/laya/commit/432312b36714d8889eba405507b37eda25257d9c",
+      "commit_date_utc": "2026-10-14T05:25:53Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 1229,
+      "github_license_spdx": "Apache-2.0",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE",
+        "laya-ts/LICENSE",
+        "research/benchmarks/feishu_zh/LICENSE",
+        "sdk/typescript/LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "                                 Apache License                            Version 2.0, January 2004                         http://www.apache.org/licenses/     TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION     1. Definitions.        \"License\" shall mean the terms and conditions for use, reproduction,       and distribution as define",
+      "package_manifests_at_pin": [
+        "laya-go/go.mod",
+        "laya-ts/package.json",
+        "pyproject.toml",
+        "setup.py"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "examples/02_hello_world_decision.py",
+        "examples/34_calibration_temperature.py",
+        "pyproject.toml"
+      ],
+      "usage_commands": [
+        "python -m pip install laya",
+        "python -m pip install \"laya[serve]\"  # optional HTTP service"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "Model/checkpoint and possible commercial terms are separate; no weights downloaded or reviewed."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "432312b36714d8889eba405507b37eda25257d9c",
+      "requested_ref_kind": "explicit_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "Apache-2.0",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "Model/checkpoint and possible commercial terms are separate; no weights downloaded or reviewed."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "strands-labs/strands-decider",
+      "full_name": "strands-labs/strands-decider",
+      "url": "https://github.com/strands-labs/strands-decider",
+      "category": "optional",
+      "decision": "deferred-local-model",
+      "recommendation": "Local decision model comparison; Apple MLX extra exists, but defer inference from critical path; weights separate.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "6039cf8b64c6074e75804000c07ac3d4cce795f7",
+      "commit_verified": true,
+      "commit_url": "https://github.com/strands-labs/strands-decider/commit/6039cf8b64c6074e75804000c07ac3d4cce795f7",
+      "commit_date_utc": "2026-10-14T20:01:42Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 274,
+      "github_license_spdx": "Apache-2.0",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "                                  Apache License                            Version 2.0, January 2004                         http://www.apache.org/licenses/     TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION     1. Definitions.        \"License\" shall mean the terms and conditions for use, reproduction,       and distribution as defin",
+      "package_manifests_at_pin": [
+        "pyproject.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "src/strands_decider/server.py",
+        "src/strands_decider/cli.py",
+        "src/strands_decider/mlx_engine.py",
+        "pyproject.toml"
+      ],
+      "usage_commands": [
+        "python -m pip install strands-decider",
+        "python -m pip install -e \".[mlx]\"  # repo-doc workaround for Apple Silicon MLX"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "Model/checkpoint and possible commercial terms are separate; no weights downloaded or reviewed."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "6039cf8b64c6074e75804000c07ac3d4cce795f7",
+      "requested_ref_kind": "explicit_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "Apache-2.0",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "Model/checkpoint and possible commercial terms are separate; no weights downloaded or reviewed."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "Jovian-Dsouza/awign-hackathon-2026",
+      "full_name": "Jovian-Dsouza/awign-hackathon-2026",
+      "url": "https://github.com/Jovian-Dsouza/awign-hackathon-2026",
+      "category": "reference",
+      "decision": "reference-only-no-reuse",
+      "recommendation": "No root LICENSE path and GitHub license null. Only nested SO-101 asset LICENSE; reference only absent clearance.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "8adb8792204a12634b1a80f9824eebf4e5f9e993",
+      "commit_verified": true,
+      "commit_url": "https://github.com/Jovian-Dsouza/awign-hackathon-2026/commit/8adb8792204a12634b1a80f9824eebf4e5f9e993",
+      "commit_date_utc": "2026-10-11T00:53:51Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 467,
+      "github_license_spdx": null,
+      "root_license_path_at_pin": null,
+      "all_license_named_paths_at_pin": [
+        "robot-sim/assets/so101/LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": false,
+      "root_license_excerpt": null,
+      "package_manifests_at_pin": [
+        "camera-agent/pyproject.toml",
+        "frontend/package.json",
+        "overwatch/pyproject.toml",
+        "robot-sim/pyproject.toml",
+        "simulation/pyproject.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "robot-sim/src/dsr_sim/world.py",
+        "robot-sim/src/dsr_sim/run.py",
+        "robot-sim/pyproject.toml"
+      ],
+      "usage_commands": [
+        "uv sync && uv run qcw-build  # reference-only; do not reuse source or assets"
+      ],
+      "license_note": "No root LICENSE path. Awign only has a nested SO-101 third-party LICENSE. GitHub license=null; reference only.",
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "Third-party assets or datasets require separate rights review."
+      },
+      "requested_ref": "8adb8792204a12634b1a80f9824eebf4e5f9e993",
+      "requested_ref_kind": "explicit_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": null,
+          "root_text_path": null,
+          "text_fetched": false,
+          "note": "No root LICENSE path. Awign only has a nested SO-101 third-party LICENSE. GitHub license=null; reference only."
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "Third-party assets or datasets require separate rights review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "therohangupta/robot-fleet",
+      "full_name": "therohangupta/robot-fleet",
+      "url": "https://github.com/therohangupta/robot-fleet",
+      "category": "reference",
+      "decision": "reference-only-no-reuse",
+      "recommendation": "No root LICENSE path and GitHub license null despite paper claim; do not copy code without clarification.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "67c5f724727bf25d4955fedbfb1fd63f8ec29914",
+      "commit_verified": true,
+      "commit_url": "https://github.com/therohangupta/robot-fleet/commit/67c5f724727bf25d4955fedbfb1fd63f8ec29914",
+      "commit_date_utc": "2025-11-03T17:00:04Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": 76,
+      "github_license_spdx": null,
+      "root_license_path_at_pin": null,
+      "all_license_named_paths_at_pin": [],
+      "root_license_text_fetched_via_gh": false,
+      "root_license_excerpt": null,
+      "package_manifests_at_pin": [
+        "pyproject.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "robot_fleet/server/__main__.py",
+        "robot_fleet/cli/robotctl.py",
+        "pyproject.toml"
+      ],
+      "usage_commands": [
+        "pip install -e .  # license unresolved; reference-only"
+      ],
+      "license_note": "No root LICENSE path. Awign only has a nested SO-101 third-party LICENSE. GitHub license=null; reference only.",
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "67c5f724727bf25d4955fedbfb1fd63f8ec29914",
+      "requested_ref_kind": "explicit_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": null,
+          "root_text_path": null,
+          "text_fetched": false,
+          "note": "No root LICENSE path. Awign only has a nested SO-101 third-party LICENSE. GitHub license=null; reference only."
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      }
+    },
+    {
+      "requested_full_name": "AppliedMachineLearning-Lab/jev-benchmarking",
+      "full_name": "AppliedMachineLearning-Lab/jev-benchmarking",
+      "url": "https://github.com/AppliedMachineLearning-Lab/jev-benchmarking",
+      "category": "optional",
+      "decision": "optional-evaluation",
+      "recommendation": "Paper-linked Jev shadow/calibration/evaluation reference; third-party datasets and stored API response data need separate rights review.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "87562114d23597f610754f057e5e0da8659dbcfb",
+      "commit_verified": true,
+      "commit_url": "https://github.com/AppliedMachineLearning-Lab/jev-benchmarking/commit/87562114d23597f610754f057e5e0da8659dbcfb",
+      "commit_date_utc": "2026-10-07T11:43:42Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": null,
+      "github_license_spdx": "MIT",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "MIT License  Copyright (c) 2026 Tobias Deu\u00dfer, Lorenz Sparrenberg, Rafet Sifa  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, d",
+      "package_manifests_at_pin": [
+        "pyproject.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "jev_benchmarking/runner.py",
+        "jev_benchmarking/evaluate.py",
+        "jev_benchmarking/metrics.py",
+        "docs/datasets.md",
+        "pyproject.toml"
+      ],
+      "usage_commands": [
+        "uv venv && source .venv/bin/activate",
+        "uv pip install -e \".[dev,paper]\"  # do not run paid APIs or fetch gated data without approval"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "Public third-party datasets and Zenodo raw-response artifact each require their own terms; no data downloaded."
+      },
+      "requested_ref": "main",
+      "requested_ref_kind": "default_branch_sampled_then_resolved_to_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "MIT",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "Public third-party datasets and Zenodo raw-response artifact each require their own terms; no data downloaded."
+        }
+      },
+      "user_research_note": "User-prioritized optional shadow/calibration evaluation linked to arXiv:2609.37647v1; do not treat upstream metrics as project-run results."
+    },
+    {
+      "requested_full_name": "xzx34/JevOut",
+      "full_name": "xzx34/JevOut",
+      "url": "https://github.com/xzx34/JevOut",
+      "category": "optional",
+      "decision": "optional-evaluation",
+      "recommendation": "Paper-linked answer-preserving context perturbation evaluation; good bounded robustness test after baseline.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "c8ab231728abb54bd61cf3c8812cb48811aae36b",
+      "commit_verified": true,
+      "commit_url": "https://github.com/xzx34/JevOut/commit/c8ab231728abb54bd61cf3c8812cb48811aae36b",
+      "commit_date_utc": "2026-10-08T23:26:46Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": null,
+      "github_license_spdx": "Apache-2.0",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "                                 Apache License                            Version 2.0, January 2004                         http://www.apache.org/licenses/     TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION     1. Definitions.        \"License\" shall mean the terms and conditions for use, reproduction,       and distribution as define",
+      "package_manifests_at_pin": [
+        "pyproject.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "context_optimization/optimize.py",
+        "context_optimization/evaluate.py",
+        "context_optimization/repeatability.py",
+        "docs/quickstart.md",
+        "pyproject.toml"
+      ],
+      "usage_commands": [
+        "uv sync --frozen",
+        "uv run context-opt demo --output-dir outputs/demo  # documented deterministic synthetic demo; not run"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "No weights were downloaded or independently licensed in this repository audit."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "Paper datasets/benchmark inputs must be checked individually; no data fetched."
+      },
+      "requested_ref": "main",
+      "requested_ref_kind": "default_branch_sampled_then_resolved_to_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "Apache-2.0",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "No weights were downloaded or independently licensed in this repository audit."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "Paper datasets/benchmark inputs must be checked individually; no data fetched."
+        }
+      },
+      "user_research_note": "User-prioritized optional answer-preserving context perturbation evaluation linked to arXiv:2609.30243v2."
+    },
+    {
+      "requested_full_name": "nokia-applied-research/AnyJev",
+      "full_name": "nokia-applied-research/AnyJev",
+      "url": "https://github.com/nokia-applied-research/AnyJev",
+      "category": "optional",
+      "decision": "optional-probability-baseline",
+      "recommendation": "Training-free typed probabilities from open LMs. Not model-free: needs checkpoint + inference runtime; Tacit checkpoints are separate assets.",
+      "default_branch_at_audit": "main",
+      "resolved_pin": "b03158e9ba18e84c01054aaa393481925088db07",
+      "commit_verified": true,
+      "commit_url": "https://github.com/nokia-applied-research/AnyJev/commit/b03158e9ba18e84c01054aaa393481925088db07",
+      "commit_date_utc": "2026-10-12T22:15:28Z",
+      "recursive_tree_verified": true,
+      "recursive_tree_truncated": false,
+      "tree_blob_count": null,
+      "github_license_spdx": "Apache-2.0",
+      "root_license_path_at_pin": "LICENSE",
+      "all_license_named_paths_at_pin": [
+        "LICENSE"
+      ],
+      "root_license_text_fetched_via_gh": true,
+      "root_license_excerpt": "                                  Apache License                            Version 2.0, January 2004                         http://www.apache.org/licenses/     TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION     1. Definitions.        \"License\" shall mean the terms and conditions for use, reproduction,       and distribution as defin",
+      "package_manifests_at_pin": [
+        "pyproject.toml"
+      ],
+      "meaningful_source_entrypoints_verified": [
+        "anyjev/decider.py",
+        "anyjev/readout.py",
+        "anyjev/calibrate/permute.py",
+        "anyjev/calibrate/stopping.py",
+        "anyjev/backends/hf.py",
+        "pyproject.toml"
+      ],
+      "usage_commands": [
+        "python -m pip install anyjev",
+        "python -m pip install \"anyjev[hf]\"  # Torch/Transformers model runtime",
+        "python -m anyjev.serve --model morriszjm/Tacit-9B --upstream http://127.0.0.1:8000 --adaptive --port 8100  # separate server required"
+      ],
+      "model_license": {
+        "status": "Separate from repository-code license; not cleared by this audit",
+        "note": "AnyJev training-free mode still loads an open causal LM; model weights and inference runtime are separate. Tacit weights need model-card review."
+      },
+      "data_license": {
+        "status": "Not granted/cleared by repository code license",
+        "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+      },
+      "requested_ref": "main",
+      "requested_ref_kind": "default_branch_sampled_then_resolved_to_full_sha",
+      "license_classification": {
+        "code": {
+          "github_spdx": "Apache-2.0",
+          "root_text_path": "LICENSE",
+          "text_fetched": true,
+          "note": ""
+        },
+        "model": {
+          "status": "Separate from repository-code license; not cleared by this audit",
+          "note": "AnyJev training-free mode still loads an open causal LM; model weights and inference runtime are separate. Tacit weights need model-card review."
+        },
+        "data_or_assets": {
+          "status": "Not granted/cleared by repository code license",
+          "note": "No dataset licensing conclusion beyond source code; external corpora/assets need independent review."
+        }
+      },
+      "user_research_note": "User-prioritized optional probability baseline linked to arXiv:2610.00831. Training-free mode avoids training, not inference/model dependence; inspect pinned weight card and runtime terms separately."
+    }
+  ]
+}
