@@ -1,5 +1,7 @@
 # Witness Fleet
 
+[![Verification](https://github.com/guglxni/witness-fleet/actions/workflows/verify.yml/badge.svg)](https://github.com/guglxni/witness-fleet/actions/workflows/verify.yml) · [MIT](LICENSE)
+
 ## Evidence before motion.
 
 **A corridor can be physically clear—and still forbidden.** Witness Fleet puts source-backed authority, fresh physical evidence and verified outcomes into the control path of a three-robot simulation.
@@ -91,6 +93,8 @@ git -C .research/vendor/FalkorDB--GraphRAG-SDK checkout --detach \
   35e67a0b27fdcc7f2c28508b09e86169851a8187
 uv sync --frozen --project services/corpus
 docker compose up -d --wait graph
+docker compose exec -T graph redis-cli --user wf_corpus \
+  GRAPH.QUERY wf:demo:corpus 'RETURN 1'
 .venv/bin/python scripts/test_all.py
 npm --prefix web test
 npm --prefix web run typecheck
@@ -130,6 +134,10 @@ deploy/azure/         Bicep infrastructure and VM deployment script
 docs/guide/           source-grounded engineering guides
 docs/diagrams/        editable draw.io, Mermaid, Excalidraw and rendered previews
 ```
+
+## Hackathon submission
+
+The [submission brief](docs/submission/SUBMISSION_BRIEF.md) names the primary and secondary tracks, explicitly discloses AI assistance, and supplies paste-ready links. [Runtime queries](docs/submission/RUNTIME_QUERIES.md) map the actual FalkorDB reads/claims and Python graph traversal to source. Registration and the organizer's final submission are separate steps; publishing this repository does not submit the project.
 
 ## Media, licenses and publication
 
