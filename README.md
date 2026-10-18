@@ -2,34 +2,45 @@
 
 [![Verification](https://github.com/guglxni/witness-fleet/actions/workflows/verify.yml/badge.svg)](https://github.com/guglxni/witness-fleet/actions/workflows/verify.yml) · [MIT](LICENSE)
 
-## Evidence before motion.
+## Evidence before motion
 
-**A corridor can be physically clear—and still forbidden.** Witness Fleet puts source-backed authority, fresh physical evidence and verified outcomes into the control path of a three-robot simulation.
+**A corridor can be physically clear and still be forbidden.** Witness Fleet runs a three-robot MuJoCo simulation in which current company authority, fresh physical evidence, task ownership and measured outcomes stay separate.
 
-[Product site](https://witness-fleet.vercel.app) · [Simulation demo](https://witness-fleet-guglxni.eastus.cloudapp.azure.com/demo) · [Architecture](docs/guide/architecture.md) · [Judge guide](docs/submission/JUDGE_GUIDE.md)
+[Product site](https://witness-fleet.vercel.app) · [Interactive simulation](https://witness-fleet-guglxni.eastus.cloudapp.azure.com/demo) · [Three-minute demo script](docs/submission/DEMO_SCRIPT.md) · [Five-check judge walkthrough](docs/submission/JUDGE_GUIDE.md) · [Submission brief and disclosure](docs/submission/SUBMISSION_BRIEF.md)
 
-> **Live simulation, not real hardware.** The Vercel site and Azure HTTPS demo are deployed. A real cloud run completed all seven tasks, recovery, explicit synthetic release and native delivery; request replay returned the same result. This is not a physical robot controller, human identity system or safety certification.
+> This is a simulation, not hardware control or safety certification. The hosted mission uses a configured synthetic demo-owner release, not authenticated human identity. The deterministic SC-001 control path does not use live model inference.
 
 ![Witness Fleet system boundaries](docs/diagrams/system-boundaries.svg)
 
-### The moment that matters
+## Start with proof
 
-A scout observes a blocked corridor. A recovery robot clears the obstruction. The courier still waits. **Physical clearance is not company permission.** Only a source-backed configured demo-owner release, fresh courier sensing and deterministic authorization allow the loaded courier to proceed. Delivery is complete only when native observations substantiate the outcome.
+The last pinned core verification and deployment run tested source commit [`51e789d`](https://github.com/guglxni/witness-fleet/commit/51e789daf75fff7f8bb29b84523679813449aa7d). CI passed **935 main tests and 10 corpus tests**, with no failures, errors or skips; the Azure deployment job also passed and checked the public revision. That pinned run establishes the runtime baseline, not later frontend revisions. See [verification scope](BUILD_STATUS.md) and the workflow result attached to each source commit.
 
-## What is built
+The strongest observable path is the seven-task SC-001 mission: scout observation; bounded recovery; post-recovery verification; a pause at the owner-release gate; then fresh courier sensing, travel and native delivery verification. The test checks that no courier command exists before the explicit release and that the final delivery postcondition is measured. [Task manifest and assertions](docs/guide/sc-001-mission.md) · [exact execution map](docs/submission/RUNTIME_QUERIES.md) · [FalkorDB rationale and limits](docs/submission/WHY_FALKORDB.md).
 
-| Layer | What it does | What it does not claim |
+## The distinction the system enforces
+
+A scout sees an obstruction. A recovery robot moves it. That does not grant the courier permission to enter. The courier proceeds only after a source-linked configured owner release, current deterministic authorization, and fresh courier-scoped evidence. A transport acknowledgment is not a physical outcome; the final delivery claim needs native postcondition evidence.
+
+### What each part does
+
+| Part | Implemented responsibility | Boundary |
 |---|---|---|
-| **FalkorDB authority graph** | Retains typed policy, source revisions/spans, claims, task dependencies and outcomes | A pretty graph alone does not authorize anything |
-| **Deterministic authorizer** | Checks scope, authority, freshness, claims and dispatch identity | Language-model confidence cannot grant permission |
-| **Native MuJoCo fleet** | Measures rays, poses, contacts, displacement, stability and payload placement | Primitive simulation geometry is not production robotics |
-| **Durable command journal** | Preserves request identity and known/unknown outcomes across failures | No distributed exactly-once guarantee |
-| **React operator console** | Shows actual state, witnesses and explicit local demo-owner gate | A configured owner is not authenticated human IAM |
-| **Hosted simulation gateway** | Separate, bounded visitor simulation sessions and sanitized state | No public access to local operator APIs or hardware |
+| **FalkorDB operations graph** | Stores tenant-scoped tasks, dependencies, claims, typed governance, source revisions/spans, and outcomes | The graph stores connected records; Python validation and the native simulator still do their own work |
+| **Python runtime** | Reads a bounded graph snapshot, validates provenance and governance, selects eligible tasks, applies deterministic policy, coordinates commands, and checks outcomes | No model confidence or arbitrary generated query grants permission |
+| **MuJoCo simulator** | Advances the native synthetic world and reports sensor/effect evidence such as contacts, displacement, stability and payload placement | Simple simulation geometry is not production robotics or sim-to-real evidence |
+| **Command journal and graph writes** | Preserve identity, fences, receipts, known/unknown outcomes and verified task state | No distributed transaction or exactly-once guarantee across FalkorDB and the simulator |
+| **Operator interface and hosted gateway** | Show mission state, collect explicit demo actions, isolate visitor sessions and return bounded state | A configured demo owner is not human IAM; public demo sessions do not expose local operator APIs or hardware |
 
-## Run the real local mission
+See [architecture and ownership](docs/guide/architecture.md), [simulation assumptions](docs/guide/simulation.md), [security boundaries](docs/guide/security.md), and the [runtime contract](RUNTIME.md).
 
-Prerequisites: **Python 3.12+, uv, Node.js 24+, Docker, FFmpeg**. The native mission needs no cloud credentials or paid inference.
+## Try the hosted simulation
+
+Open the [interactive simulation](https://witness-fleet-guglxni.eastus.cloudapp.azure.com/demo), create one session, and run the initial tasks. The mission pauses after recovery and verification; no courier command should appear before the release. Confirm the explicitly labeled synthetic demo-owner release, then run the remaining tasks and inspect the final verified task/command states. The judge guide lists five visible conditions and recovery steps if the hosted service is unavailable.
+
+## Run the native local mission
+
+Prerequisites: **Python 3.12+, uv, Node.js 24+, Docker, FFmpeg**. The mission needs no cloud credentials or paid inference.
 
 ```bash
 git clone https://github.com/guglxni/witness-fleet.git
@@ -42,82 +53,48 @@ npm --prefix web run build
   --run-dir /tmp/witness-fleet-new-run --port 8095
 ```
 
-Open **http://127.0.0.1:8095**. Startup does not move robots. Select **Run tasks**, inspect the paused witness, explicitly submit the **local demo-owner release**, then select **Run tasks** again. The launcher allocates its own loopback FalkorDB server. On Ctrl-C it stops only that container and retains the volume and run directory. Use a fresh run directory for each demonstration; never reset retained evidence.
+Open **http://127.0.0.1:8095**. Startup does not move robots. Select **Run tasks**, inspect the pause and its witnesses, explicitly submit the local synthetic demo-owner release, then select **Run tasks** again. The launcher creates its own loopback FalkorDB server. Ctrl-C stops only that container and retains the volume and run directory. Choose a new run directory for a new demonstration; do not reset retained evidence.
 
-### Develop the product site
+## Why FalkorDB, and what it does not prove
 
-```bash
-npm --prefix site ci
-npm --prefix site run dev
-# http://127.0.0.1:5185
-npm --prefix site test
-npm --prefix site run build
-```
+The relevant data is connected: a restriction is imposed by a decision, owned by an authority, supported by an exact source span and revision, scoped to a corridor, and possibly lifted by a release; tasks also depend on one another and reserve shared resources. The runtime uses those explicit relationships as an operational record and for conditional graph writes. A relational database with foreign keys, join tables, recursive queries and suitable transaction/CAS logic could implement the same workflow. The reason for the graph here is direct representation and traversal of those relationships, not a claim that relational systems cannot do it or that a graph is automatically faster. See [WHY_FALKORDB.md](docs/submission/WHY_FALKORDB.md).
 
-The site uses original Anatomy-guided robot diagrams, Vanta, GSAP and Lenis with accessible motion controls. Recorded native footage is identified separately from illustration.
+Python materializes and validates a bounded snapshot; it does not claim a server-side graph algorithm for policy traversal. The task claim is a single conditional Cypher mutation, but snapshot reads, later authorization and simulator motion are not one database transaction. See the [exact source-linked query map](docs/submission/RUNTIME_QUERIES.md) and [graph model](docs/guide/graph-model.md).
 
-## SC-001: a complete evidence path
+## Product site and preserved media
 
-![Native fleet scenario, explanatory top view](docs/diagrams/sc-001-robotics.svg)
+The product site uses original robot diagrams, Vanta, GSAP and Lenis with accessible motion controls. Recorded native footage is identified separately from illustration. These media files remain available in the repository:
 
-1. **Observe** the obstruction with fresh scoped evidence.
-2. **Recover** using bounded physical movement and measured clearance.
-3. **Verify** that recovery actually changed the native scene.
-4. **Wait** at the source-backed owner-release gate.
-5. **Refresh** courier-owned sensing after release.
-6. **Travel** only with fresh visible fit evidence and stable arrival.
-7. **Deliver** and retain the native payload-placement result.
+- [Original 86-second narrated launch film](site/public/media/launch.mp4) · [sanitized provenance](site/public/media/provenance.json) · [editable motion project](media/launch/README.md)
+- [Campaign cut](site/public/media/campaign/product-ad.mp4) · [credits](site/public/media/campaign/CREDITS.md)
+- [Industry-view cut](site/public/media/campaign/product-ad-iv.mp4) · [credits](site/public/media/campaign/CREDITS-IV.md)
+- [FalkorDB cut](site/public/media/campaign/product-ad-falkordb.mp4) · [credits](site/public/media/campaign/CREDITS-FALKORDB.md)
+- [Alternate film cut](site/public/media/campaign/film-ii.mp4) · [campaign transcript](site/public/media/campaign/transcript.txt)
 
-See the [exact seven-task manifest and mission walkthrough](docs/guide/sc-001-mission.md). Normal mission footage does not stage process-death recovery; restart and unknown-receipt HOLD behavior are tested separately.
+The main film includes recorded MuJoCo footage, an OpenDesign Motion excerpt and ElevenLabs Sarah narration; HyperFrames produced the film. The campaign files retain their own credits. FalkorDB server uses SSPL; GSAP uses its Standard License; ElevenLabs is proprietary. Do not describe the full stack as OSI FOSS. See [third-party notices](THIRD_PARTY.md) and [publication scope](PUBLICATION.md).
 
-## Failure behavior is part of the product
+## Hackathon tracks and participant action
 
-![Command, receipt and outcome sequence](docs/diagrams/command-evidence-sequence.svg)
+- **Primary, Track 01: Agents That Act on Connected Data.** FalkorDB relationships supply current restrictions, permissions, dependencies and evidence to deterministic authorization before native actions.
+- **Secondary, Track 02: Agent Memory and Coordination.** Scoped to a centrally coordinated simulation: shared task state, claim fences, dependencies, retained command/outcome history and tested fail-closed recovery. This is not decentralized swarm consensus.
+- **Secondary, Track 03: Company Brain.** Scoped to synthetic decisions, owners, restrictions and releases linked to retained source spans. This is not a general enterprise assistant.
 
-- Unknown transport outcome is **HOLD**, not permission to repeat the command.
-- Request retries cannot silently advance to the next task.
-- Stale policy, stale evidence and conflicting ownership fail closed.
-- Recovery cannot clear a latch while the native or journal state still requires HOLD.
-- Public visitors cannot choose graph names, command targets, owner identities or release IDs.
+The [submission brief](docs/submission/SUBMISSION_BRIEF.md) preserves the AI-use disclosure and paste-ready links. Listing tracks and publishing a repository do not submit an entry; the participant must select tracks, review the disclosure and complete the organizer's form.
 
-Read [security boundaries](docs/guide/security.md), [runtime contract](RUNTIME.md) and [failure modes](FAILURE_MODES.md).
+## Verification and deeper reading
 
-## Verification
+The [Verification workflow](.github/workflows/verify.yml) runs isolated test environments. The [Azure deployment workflow](.github/workflows/deploy-azure.yml) consumes a tested revision, deploys by digest and checks the public revision; Vercel is a separate product-site deployment. A configured workflow is not proof of a passed run. Consult the pinned [CI and deployment record](BUILD_STATUS.md) and the actual [Actions history](https://github.com/guglxni/witness-fleet/actions).
 
-The full suite partitions core/native tests from the optional corpus SDK environment. Corpus installation uses the exact source revision below; it is not loaded into the robot control process.
-
-```bash
-git clone --filter=blob:none --no-checkout \
-  https://github.com/FalkorDB/GraphRAG-SDK.git .research/vendor/FalkorDB--GraphRAG-SDK
-git -C .research/vendor/FalkorDB--GraphRAG-SDK checkout --detach \
-  35e67a0b27fdcc7f2c28508b09e86169851a8187
-uv sync --frozen --project services/corpus
-docker compose up -d --wait graph
-docker compose exec -T graph redis-cli --user wf_corpus \
-  GRAPH.QUERY wf:demo:corpus 'RETURN 1'
-.venv/bin/python scripts/test_all.py
-npm --prefix web test
-npm --prefix web run typecheck
-npm --prefix web run build
-npm --prefix web run test:e2e
-```
-
-The [Verification workflow](.github/workflows/verify.yml) runs tests against isolated databases. The [Azure deployment workflow](.github/workflows/deploy-azure.yml) consumes a successful tested revision using GitHub OIDC, pushes the image to ACR, deploys by digest and checks the public revision. Vercel builds `site/` from the connected GitHub repository. Consult the [actual Actions runs](https://github.com/guglxni/witness-fleet/actions) and [verification status](BUILD_STATUS.md); a configured workflow is not by itself a passed run.
-
-## Read the system
-
-| Start with | Go deeper |
+| Start here | Implementation detail |
 |---|---|
-| [Guide index](docs/guide/README.md) | [Architecture and ownership](docs/guide/architecture.md) |
-| [SC-001 mission](docs/guide/sc-001-mission.md) | [Native simulation assumptions](docs/guide/simulation.md) |
-| [Graph/evidence model](docs/guide/graph-model.md) | [Canonical schema](GRAPH_SCHEMA.md) |
-| [Operator runbook](docs/guide/operations.md) | [Security and failure semantics](docs/guide/security.md) |
-| [Evidence and verification](docs/guide/evidence.md) | [Deployment](docs/guide/deployment.md) |
+| [Judge guide](docs/submission/JUDGE_GUIDE.md) | [SC-001 mission](docs/guide/sc-001-mission.md) |
+| [Runtime query map](docs/submission/RUNTIME_QUERIES.md) | [Graph/evidence model](docs/guide/graph-model.md), [proposed schema](GRAPH_SCHEMA.md) |
+| [Why FalkorDB](docs/submission/WHY_FALKORDB.md) | [Architecture and ownership](docs/guide/architecture.md) |
+| [Guide index](docs/guide/README.md) | [Native simulation assumptions](docs/guide/simulation.md) |
+| [Evidence and verification](docs/guide/evidence.md) | [Security and failure behavior](docs/guide/security.md), [failure modes](FAILURE_MODES.md) |
 | [Editable diagrams](docs/diagrams/README.md) | [Math and robotics](MATH.md), [robotics derivations](math/ROBOTICS.md) |
-| [Product specification](prd.md) | [Requirements](REQUIREMENTS.md), [program design](PROGRAM_DESIGN.md) |
-| [Research decisions](RESEARCH.md) | [Primary sources](SOURCES.md), [integration pins](INTEGRATIONS.md) |
 
-Original specifications document a wider design space than the implemented SC-001 path. Optional unverified provider mapping remains disabled. No live model inference is required or claimed.
+The implemented demonstration is SC-001, not the full design space in the specifications. The optional model lane is disabled for that mission. A hash proves which bytes were retained, not that arbitrary source text is true. Review [AI-use disclosure](docs/submission/SUBMISSION_BRIEF.md#ai-assistance-and-runtime-behavior) and [third-party terms](THIRD_PARTY.md) before reuse or publication.
 
 ## Repository map
 
@@ -126,25 +103,14 @@ src/witness_fleet/     graph, policy, planning, runtime, API and hosted gateway
 services/simulator/   native MuJoCo world, controllers, sensors and durable journal
 services/corpus/      isolated optional corpus SDK environment
 web/                  local operator console
-site/                 public product launch website
-fixtures/             original synthetic policies and scenarios
+site/                 public product launch website and preserved media
+fixtures/             synthetic policies and scenarios
 tests/                unit, contract, integration, adversarial and native E2E
 scripts/              setup, suite runner, capture and verification
 deploy/azure/         Bicep infrastructure and VM deployment script
 docs/guide/           source-grounded engineering guides
-docs/diagrams/        editable draw.io, Mermaid, Excalidraw and rendered previews
+docs/submission/      judge path, execution map, disclosure and packaging checklist
+docs/diagrams/        editable diagram sources and rendered previews
 ```
-
-## Hackathon submission
-
-The [submission brief](docs/submission/SUBMISSION_BRIEF.md) names the primary and secondary tracks, explicitly discloses AI assistance, and supplies paste-ready links. [Runtime queries](docs/submission/RUNTIME_QUERIES.md) map the actual FalkorDB reads/claims and Python graph traversal to source. Registration and the organizer's final submission are separate steps; publishing this repository does not submit the project.
-
-## Media, licenses and publication
-
-The original application code is available under the [MIT License](LICENSE). Third-party components and media keep their own terms.
-
-The finished **86-second, 1080p narrated film** uses HyperFrames, recorded native MuJoCo footage, an OpenDesign Motion excerpt and ElevenLabs Sarah. [Watch/download the film](site/public/media/launch.mp4), inspect [sanitized provenance](site/public/media/provenance.json), or edit the [HTML motion project](media/launch/README.md). Original diagrams are explanatory, not fabricated sensor output.
-
-See [third-party notices](THIRD_PARTY.md) and [publication scope](PUBLICATION.md). FalkorDB server uses SSPL; GSAP uses its Standard License; ElevenLabs is a proprietary service. Do not label the entire stack OSI FOSS. Complete third-party papers/web captures, vendor clones, credentials, machine reports and retained databases are not redistributed.
 
 **Agent instruction files:** the original protected-file consent timeout left `AGENTS.md`, `CLAUDE.md` and `SKILL.md` absent. They were not recreated under alternative names. The specifications are documentation, not a substitute for protected agent instructions.

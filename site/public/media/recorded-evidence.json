@@ -1,0 +1,375 @@
+{
+  "schema_version": 1,
+  "scenario": "SC-001",
+  "seed": 3,
+  "recorded_run_status": "complete",
+  "manifest_generated_at_utc": "2026-10-17T13:14:41.390863Z",
+  "source": {
+    "sha256": "5c8f3d442d54b2845488e4214628bd6625190b90be5a4347716d6bd76adf11e1",
+    "captured_source_file_hash_count": 29,
+    "source_file_hashes_currently_verified": false
+  },
+  "versions": {
+    "imageio": "2.38.1",
+    "mujoco": "3.16.0",
+    "numpy": "2.5.4",
+    "pillow": "12.3.0",
+    "python": "3.12.6"
+  },
+  "stages": [
+    {
+      "stage": "courier_delivery",
+      "recorded_phase": "courier_delivery",
+      "observation": {
+        "world_tick": 1747
+      },
+      "graph_version": 302,
+      "policy_epoch": 1,
+      "approval_required": false,
+      "held": null,
+      "task_count": 7,
+      "command_count": 4,
+      "metrics": {
+        "delivery_completed": 0,
+        "recovery_verified": 1,
+        "unauthorized_executed": null
+      },
+      "tasks": [
+        {
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-scout-inspect",
+          "robot_id": "scout",
+          "kind": "inspect",
+          "state": "VERIFIED",
+          "last_command_id": "command-2a50c30e758d4732b182a85a695930ee"
+        },
+        {
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-recovery-recover",
+          "robot_id": "recovery",
+          "kind": "recover",
+          "state": "VERIFIED",
+          "last_command_id": "command-c146305e9e4f4ee4a1aeff83baaa56bc"
+        },
+        {
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-scout-park",
+          "robot_id": "scout",
+          "kind": "travel",
+          "state": "VERIFIED",
+          "last_command_id": "command-779e86946d8a4a8695df5914b882927d"
+        },
+        {
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-scout-verify",
+          "robot_id": "scout",
+          "kind": "verify",
+          "state": "VERIFIED",
+          "last_command_id": "command-3f4d5bd2e71e43908ea09b4329ecb4fc"
+        },
+        {
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-courier-approach",
+          "robot_id": "courier",
+          "kind": "travel",
+          "state": "READY",
+          "last_command_id": null
+        },
+        {
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-courier-verify",
+          "robot_id": "courier",
+          "kind": "verify",
+          "state": "READY",
+          "last_command_id": null
+        },
+        {
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-courier-deliver",
+          "robot_id": "courier",
+          "kind": "deliver",
+          "state": "READY",
+          "last_command_id": null
+        }
+      ],
+      "commands": [
+        {
+          "command_id": "command-2a50c30e758d4732b182a85a695930ee",
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-scout-inspect",
+          "robot_id": "scout",
+          "kind": "inspect",
+          "state": "OUTCOME_VERIFIED",
+          "native_status": "done",
+          "accepted_tick": 0,
+          "started_tick": 0,
+          "completed_world_tick": 1,
+          "contact_count": 0,
+          "max_contact_force_n": null,
+          "measured_displacement_m": null,
+          "phase": null
+        },
+        {
+          "command_id": "command-c146305e9e4f4ee4a1aeff83baaa56bc",
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-recovery-recover",
+          "robot_id": "recovery",
+          "kind": "recover",
+          "state": "OUTCOME_VERIFIED",
+          "native_status": "done",
+          "accepted_tick": 1,
+          "started_tick": 1,
+          "completed_world_tick": 1403,
+          "contact_count": 1910,
+          "max_contact_force_n": 70.8870705703022,
+          "measured_displacement_m": 1.212651875310138,
+          "phase": "parked"
+        },
+        {
+          "command_id": "command-779e86946d8a4a8695df5914b882927d",
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-scout-park",
+          "robot_id": "scout",
+          "kind": "travel",
+          "state": "OUTCOME_VERIFIED",
+          "native_status": "done",
+          "accepted_tick": 1403,
+          "started_tick": 1403,
+          "completed_world_tick": 1737,
+          "contact_count": 0,
+          "max_contact_force_n": null,
+          "measured_displacement_m": null,
+          "phase": null
+        },
+        {
+          "command_id": "command-3f4d5bd2e71e43908ea09b4329ecb4fc",
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-scout-verify",
+          "robot_id": "scout",
+          "kind": "verify",
+          "state": "OUTCOME_VERIFIED",
+          "native_status": "done",
+          "accepted_tick": 1746,
+          "started_tick": 1746,
+          "completed_world_tick": 1747,
+          "contact_count": 0,
+          "max_contact_force_n": null,
+          "measured_displacement_m": null,
+          "phase": null
+        }
+      ],
+      "field_sources": {
+        "stage": "report.release_state_snapshots[0].mission_phase",
+        "observation.world_tick": "report.release_state_snapshots[0].world_tick",
+        "tasks[].task_id": "report.release_state_snapshots[0].tasks[].id",
+        "tasks[].robot_id": "report.release_state_snapshots[0].tasks[].robot_id",
+        "tasks[].kind": "report.release_state_snapshots[0].tasks[].kind",
+        "tasks[].state": "report.release_state_snapshots[0].tasks[].state",
+        "commands[].command_id": "report.release_state_snapshots[0].commands[].command_id",
+        "commands[].robot_id": "report.release_state_snapshots[0].commands[].native_receipt.robot_id",
+        "commands[].completion_world_tick": "report.release_state_snapshots[0].commands[].native_receipt.world_tick",
+        "metrics": "report.release_state_snapshots[0].metrics"
+      }
+    },
+    {
+      "stage": "complete",
+      "recorded_phase": "complete",
+      "observation": {
+        "world_tick": 4864
+      },
+      "graph_version": 329,
+      "policy_epoch": 1,
+      "approval_required": false,
+      "held": false,
+      "task_count": 7,
+      "command_count": 7,
+      "metrics": {
+        "delivery_completed": 1,
+        "recovery_verified": 1,
+        "unauthorized_executed": null
+      },
+      "tasks": [
+        {
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-scout-inspect",
+          "robot_id": "scout",
+          "kind": "inspect",
+          "state": "VERIFIED",
+          "last_command_id": "command-2a50c30e758d4732b182a85a695930ee"
+        },
+        {
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-recovery-recover",
+          "robot_id": "recovery",
+          "kind": "recover",
+          "state": "VERIFIED",
+          "last_command_id": "command-c146305e9e4f4ee4a1aeff83baaa56bc"
+        },
+        {
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-scout-park",
+          "robot_id": "scout",
+          "kind": "travel",
+          "state": "VERIFIED",
+          "last_command_id": "command-779e86946d8a4a8695df5914b882927d"
+        },
+        {
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-scout-verify",
+          "robot_id": "scout",
+          "kind": "verify",
+          "state": "VERIFIED",
+          "last_command_id": "command-3f4d5bd2e71e43908ea09b4329ecb4fc"
+        },
+        {
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-courier-approach",
+          "robot_id": "courier",
+          "kind": "travel",
+          "state": "VERIFIED",
+          "last_command_id": "command-f4836d20e9ac47dcb9c1bb270fdc94fc"
+        },
+        {
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-courier-verify",
+          "robot_id": "courier",
+          "kind": "verify",
+          "state": "VERIFIED",
+          "last_command_id": "command-12dee9024db344b980728aba8ffc0eab"
+        },
+        {
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-courier-deliver",
+          "robot_id": "courier",
+          "kind": "deliver",
+          "state": "VERIFIED",
+          "last_command_id": "command-974485c2a0fa45909dac06e726f59722"
+        }
+      ],
+      "commands": [
+        {
+          "command_id": "command-2a50c30e758d4732b182a85a695930ee",
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-scout-inspect",
+          "robot_id": "scout",
+          "kind": "inspect",
+          "state": "OUTCOME_VERIFIED",
+          "native_status": "done",
+          "accepted_tick": 0,
+          "started_tick": 0,
+          "completed_world_tick": 1,
+          "contact_count": 0,
+          "max_contact_force_n": null,
+          "measured_displacement_m": null,
+          "phase": null
+        },
+        {
+          "command_id": "command-c146305e9e4f4ee4a1aeff83baaa56bc",
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-recovery-recover",
+          "robot_id": "recovery",
+          "kind": "recover",
+          "state": "OUTCOME_VERIFIED",
+          "native_status": "done",
+          "accepted_tick": 1,
+          "started_tick": 1,
+          "completed_world_tick": 1403,
+          "contact_count": 1910,
+          "max_contact_force_n": 70.8870705703022,
+          "measured_displacement_m": 1.212651875310138,
+          "phase": "parked"
+        },
+        {
+          "command_id": "command-779e86946d8a4a8695df5914b882927d",
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-scout-park",
+          "robot_id": "scout",
+          "kind": "travel",
+          "state": "OUTCOME_VERIFIED",
+          "native_status": "done",
+          "accepted_tick": 1403,
+          "started_tick": 1403,
+          "completed_world_tick": 1737,
+          "contact_count": 0,
+          "max_contact_force_n": null,
+          "measured_displacement_m": null,
+          "phase": null
+        },
+        {
+          "command_id": "command-3f4d5bd2e71e43908ea09b4329ecb4fc",
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-scout-verify",
+          "robot_id": "scout",
+          "kind": "verify",
+          "state": "OUTCOME_VERIFIED",
+          "native_status": "done",
+          "accepted_tick": 1746,
+          "started_tick": 1746,
+          "completed_world_tick": 1747,
+          "contact_count": 0,
+          "max_contact_force_n": null,
+          "measured_displacement_m": null,
+          "phase": null
+        },
+        {
+          "command_id": "command-f4836d20e9ac47dcb9c1bb270fdc94fc",
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-courier-approach",
+          "robot_id": "courier",
+          "kind": "travel",
+          "state": "OUTCOME_VERIFIED",
+          "native_status": "done",
+          "accepted_tick": 1747,
+          "started_tick": 1747,
+          "completed_world_tick": 3230,
+          "contact_count": 0,
+          "max_contact_force_n": null,
+          "measured_displacement_m": null,
+          "phase": null
+        },
+        {
+          "command_id": "command-12dee9024db344b980728aba8ffc0eab",
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-courier-verify",
+          "robot_id": "courier",
+          "kind": "verify",
+          "state": "OUTCOME_VERIFIED",
+          "native_status": "done",
+          "accepted_tick": 3239,
+          "started_tick": 3239,
+          "completed_world_tick": 3240,
+          "contact_count": 0,
+          "max_contact_force_n": null,
+          "measured_displacement_m": null,
+          "phase": null
+        },
+        {
+          "command_id": "command-974485c2a0fa45909dac06e726f59722",
+          "task_id": "fleet-demo-2e2d1556ca374d6ba2073375c8481a2e-task-courier-deliver",
+          "robot_id": "courier",
+          "kind": "deliver",
+          "state": "OUTCOME_VERIFIED",
+          "native_status": "done",
+          "accepted_tick": 3240,
+          "started_tick": 3240,
+          "completed_world_tick": 4855,
+          "contact_count": 0,
+          "max_contact_force_n": null,
+          "measured_displacement_m": null,
+          "phase": null
+        }
+      ],
+      "field_sources": {
+        "stage": "report.mission_state.mission_phase",
+        "observation.world_tick": "report.mission_state.world_tick",
+        "tasks[].task_id": "report.mission_state.tasks[].id",
+        "tasks[].robot_id": "report.mission_state.tasks[].robot_id",
+        "tasks[].kind": "report.mission_state.tasks[].kind",
+        "tasks[].state": "report.mission_state.tasks[].state",
+        "commands[].command_id": "report.mission_state.commands[].command_id",
+        "commands[].robot_id": "report.mission_state.commands[].native_receipt.robot_id",
+        "commands[].completion_world_tick": "report.mission_state.commands[].native_receipt.world_tick",
+        "metrics": "report.mission_state.metrics"
+      }
+    }
+  ],
+  "release_action": {
+    "performed": true,
+    "human_authenticated": false,
+    "description": "Recorded configured demo-owner release; not human-authenticated."
+  },
+  "pre_release_snapshot": null,
+  "evidence_boundary": {
+    "capture_scope": "Retained recorded simulation manifest only.",
+    "live_db_reads": false,
+    "live_actions": false,
+    "current_source_revision_verified": false,
+    "pre_release_behavior": "No pre-release snapshot was retained. The pinned test contract separately verifies the awaiting-owner-release gate (four commands, zero courier commands) before release.",
+    "unauthorized_metric": "Null means unknown or not recorded; it is not a zero count."
+  },
+  "field_extraction": {
+    "manifest_generated_at_utc": "report.generated_at_utc",
+    "versions": "report.runtime_versions (allowlisted version names)",
+    "stages[].observation.world_tick": "snapshot.world_tick; observation tick is not a command completion tick",
+    "stages[].commands[].completed_world_tick": "command.world_tick and command.native_receipt.world_tick (must agree)",
+    "stages[].metrics": "snapshot.metrics; retained numeric zero and null are preserved distinctly",
+    "source.sha256": "SHA-256 of exact retained manifest bytes",
+    "source.retained_source_file_hash_count": "report.provenance.source_sha256 entry count; file names and source root omitted"
+  }
+}

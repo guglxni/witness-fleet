@@ -23,12 +23,20 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 0
+      - name: Determine whether runtime deployment is required
+        id: scope
+        env:
+          DEMO_HOST: ${{ vars.DEMO_HOST }}
+        run: python scripts/runtime_deploy_scope.py
       - uses: azure/login@8216e11d8cd9b42fe925c852af8e76311ff067ac # v2
+        if: steps.scope.outputs.deploy == 'true'
         with:
           client-id: ${{ vars.AZURE_CLIENT_ID }}
           tenant-id: ${{ vars.AZURE_TENANT_ID }}
           subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
       - name: Build and push the exact tested source
+        if: steps.scope.outputs.deploy == 'true'
         env:
           REGISTRY: ${{ vars.AZURE_REGISTRY }}
         run: |
@@ -41,6 +49,7 @@ jobs:
           DIGEST="$(docker inspect --format='{{index .RepoDigests 0}}' "$IMAGE")"
           printf 'WITNESS_IMAGE=%s\nWITNESS_REVISION=%s\n' "$DIGEST" "$REVISION" >> "$GITHUB_ENV"
       - name: Deploy without deleting retained evidence
+        if: steps.scope.outputs.deploy == 'true'
         env:
           RESOURCE_GROUP: ${{ vars.AZURE_RESOURCE_GROUP }}
           VM_NAME: ${{ vars.AZURE_VM_NAME }}
@@ -51,6 +60,7 @@ jobs:
           test -n "$DEMO_HOST"
           az vm run-command invoke -g "$RESOURCE_GROUP" -n "$VM_NAME" --command-id RunShellScript --scripts @deploy/azure/deploy-runtime.sh --parameters "$WITNESS_IMAGE" "$DEMO_HOST" "$WITNESS_REVISION" --query 'value[].message' -o tsv
       - name: Verify public deployed revision
+        if: steps.scope.outputs.deploy == 'true'
         env:
           DEMO_HOST: ${{ vars.DEMO_HOST }}
         run: |

@@ -1,0 +1,90 @@
+.value-worksheet {
+  --vw-paper: #f2eadb;
+  --vw-ink: #1b3328;
+  --vw-forest: #173d30;
+  --vw-moss: #536d59;
+  --vw-amber: #c98937;
+  --vw-rule: rgba(27, 51, 40, .24);
+  color: var(--vw-ink);
+  background: var(--vw-paper);
+  padding: clamp(2rem, 6vw, 6.5rem) clamp(1.25rem, 7vw, 7.25rem);
+  border-block: 1px solid var(--vw-rule);
+  font-family: inherit;
+}
+
+.value-worksheet *, .value-worksheet *::before, .value-worksheet *::after { box-sizing: border-box; }
+.value-worksheet__eyebrow, .value-worksheet__section-heading, .value-worksheet__field-index, .value-worksheet__field-unit, .value-worksheet__formula > span, .value-worksheet__exclusions > span {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .7rem;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.value-worksheet__eyebrow { color: var(--vw-forest); font-weight: 700; }
+.value-worksheet__eyebrow span { color: var(--vw-moss); font-weight: 400; }
+.value-worksheet__intro { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(15rem, .7fr); align-items: end; gap: clamp(2rem, 7vw, 8rem); margin: 1.6rem 0 3.1rem; }
+.value-worksheet__intro h2 { max-width: 13ch; margin: 0; color: var(--vw-forest); font-family: Georgia, 'Times New Roman', serif; font-size: clamp(2.8rem, 6.7vw, 6.6rem); font-weight: 400; letter-spacing: -.065em; line-height: .98; }
+.value-worksheet__dek { max-width: 46rem; margin: 1.4rem 0 0; color: #394d3e; font-size: clamp(1rem, 1.4vw, 1.25rem); line-height: 1.55; }
+.value-worksheet__disclaimer { grid-area: disclaimer; max-width: 27rem; margin: 0 0 .2rem; padding: 1rem 0 1rem 1.15rem; border-left: 3px solid var(--vw-amber); color: #304338; font-size: .93rem; line-height: 1.55; }
+.value-worksheet__claim-boundary { grid-area: boundary; margin: .45rem 0 0; color: #33483b; font-size: .8rem; font-weight: 700; }
+.value-worksheet__workspace { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(19rem, .98fr); gap: clamp(2.5rem, 8vw, 9rem); border-top: 1px solid var(--vw-ink); }
+.value-worksheet__section-heading { display: flex; justify-content: space-between; gap: 1rem; padding: 1.05rem 0 1.2rem; border-bottom: 1px solid var(--vw-rule); color: var(--vw-forest); }
+.value-worksheet__section-heading span + span { color: var(--vw-moss); letter-spacing: .06em; text-align: right; }
+.value-worksheet__field { display: grid; grid-template-columns: minmax(9rem, 1fr) minmax(7rem, .54fr); gap: .45rem 1.1rem; padding: 1.2rem 0 1.15rem; border-bottom: 1px solid var(--vw-rule); }
+.value-worksheet__field label { display: flex; align-items: flex-start; gap: .8rem; cursor: pointer; }
+.value-worksheet__field-index { padding-top: .18rem; color: #91611f; }
+.value-worksheet__field-copy { display: flex; flex-direction: column; gap: .32rem; }
+.value-worksheet__field-name { color: var(--vw-forest); font-size: 1.02rem; font-weight: 650; }
+.value-worksheet__field-unit { color: #536558; font-size: .64rem; letter-spacing: .07em; }
+.value-worksheet__field input { width: 100%; min-height: 2.8rem; padding: .45rem .7rem; border: 1px solid #748473; border-radius: 0; background: rgba(255, 255, 255, .35); color: #19382b; font: inherit; font-size: 1.12rem; font-variant-numeric: tabular-nums; }
+.value-worksheet__field input:focus-visible, .value-worksheet__button:focus-visible { outline: 3px solid #a26011; outline-offset: 3px; }
+.value-worksheet__field input[aria-invalid='true'] { border-color: #9a3f2d; background: #fff7ef; }
+.value-worksheet__field-help, .value-worksheet__field-error { grid-column: 1 / -1; margin: 0 0 0 2rem; color: #46594a; font-size: .78rem; line-height: 1.4; }
+.value-worksheet__field-error { color: #8c3328; font-weight: 650; }
+.value-worksheet__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem; padding-top: 1.35rem; }
+.value-worksheet__button { min-height: 2.9rem; border: 1px solid var(--vw-forest); border-radius: 0; padding: .7rem 1rem; cursor: pointer; font: inherit; font-size: .85rem; font-weight: 650; transition: background-color .15s ease, color .15s ease; }
+.value-worksheet__button--primary { background: var(--vw-forest); color: #fff9e9; }
+.value-worksheet__button--primary:hover { background: #275740; }
+.value-worksheet__button--quiet { background: transparent; color: var(--vw-forest); }
+.value-worksheet__button--quiet:hover { background: rgba(23, 61, 48, .08); }
+.value-worksheet__hypothetical { max-width: 38rem; margin: 1rem 0 0; color: #5b624f; font-size: .78rem; line-height: 1.5; }
+.value-worksheet__output { display: flex; flex-direction: column; min-width: 0; }
+.value-worksheet__result { padding: clamp(2.1rem, 4.2vw, 4.5rem) 0 1.5rem; }
+.value-worksheet__result-label { margin: 0; color: #4b6250; font-size: .9rem; font-weight: 650; }
+.value-worksheet__result-cost { margin: .3rem 0 .6rem; color: var(--vw-forest); font-family: Georgia, 'Times New Roman', serif; font-size: clamp(3.8rem, 9vw, 8.2rem); font-variant-numeric: lining-nums tabular-nums; letter-spacing: -.075em; line-height: .98; overflow-wrap: anywhere; }
+.value-worksheet__result-cost--empty { color: #829082; }
+.value-worksheet__hours { display: flex; align-items: baseline; gap: .7rem; color: #4a5d4c; }
+.value-worksheet__hours strong { color: #a06a23; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(1.7rem, 3.4vw, 2.7rem); font-weight: 400; font-variant-numeric: tabular-nums; }
+.value-worksheet__hours span { font-size: .9rem; }
+.value-worksheet__hours--empty strong { color: #829082; }
+.value-worksheet__result-note { max-width: 32rem; margin: 1rem 0 0; color: #586355; font-size: .78rem; line-height: 1.5; }
+.value-worksheet__live-message { min-height: 2.8rem; margin: 0 0 1.2rem; padding: .8rem 0 .8rem .9rem; border-left: 2px solid var(--vw-amber); color: #34483b; font-size: .84rem; line-height: 1.45; }
+.value-worksheet__formula, .value-worksheet__exclusions { padding: 1rem 0; border-top: 1px solid var(--vw-rule); }
+.value-worksheet__formula > span, .value-worksheet__exclusions > span { color: #936322; }
+.value-worksheet__formula p, .value-worksheet__exclusions p { margin: .5rem 0 0; color: #405245; font-size: .79rem; line-height: 1.5; }
+.value-worksheet__button--download { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: .7rem; background: #d9c8a5; color: #1b3328; text-align: left; }
+.value-worksheet__button--download:hover:not(:disabled) { background: #c9ad77; }
+.value-worksheet__button--download:disabled { cursor: not-allowed; opacity: .62; }
+.value-worksheet__button--download span { font-size: 1.25rem; }
+.value-worksheet__privacy { margin: .75rem 0 0; color: #596558; font-size: .75rem; line-height: 1.5; }
+
+@media (max-width: 760px) {
+  .value-worksheet { padding-inline: 1.25rem; }
+  .value-worksheet__intro { grid-template-columns: 1fr; grid-template-areas: 'title' 'disclaimer' 'boundary'; gap: 1.1rem; margin-bottom: 2.2rem; }
+  .value-worksheet__intro > div:first-child { grid-area: title; }
+  .value-worksheet__intro h2 { font-size: clamp(2.85rem, 12vw, 5rem); }
+  .value-worksheet__disclaimer { max-width: 38rem; }
+  .value-worksheet__workspace { grid-template-columns: 1fr; gap: 2.3rem; }
+  .value-worksheet__result { padding-top: 2rem; }
+  .value-worksheet__result-cost { font-size: clamp(3.5rem, 16vw, 6rem); }
+}
+
+@media (max-width: 420px) {
+  .value-worksheet__field { grid-template-columns: 1fr 7.2rem; column-gap: .55rem; }
+  .value-worksheet__field-name { font-size: .91rem; }
+  .value-worksheet__section-heading { font-size: .63rem; }
+  .value-worksheet__button { flex: 1 1 auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .value-worksheet__button { transition: none; }
+}

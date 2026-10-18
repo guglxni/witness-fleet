@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /
+# Local preview build; remove Disallow only after publication approval.

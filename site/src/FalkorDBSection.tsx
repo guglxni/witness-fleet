@@ -1,0 +1,70 @@
+import { useState } from 'react';
+import './falkordb-section.css';
+
+const sourceRoot = 'https://github.com/guglxni/witness-fleet/blob/51e789daf75fff7f8bb29b84523679813449aa7d/';
+
+const capabilities = [
+  {
+    id: 'graph', label: 'Property graph', eyebrow: '01 / CONNECTED RECORD',
+    title: 'A decision has branches, not just a log line.',
+    body: 'Typed nodes connect a Decision to its Restriction, accountable Owner and exact EvidenceSpan. The span points to an immutable Revision and Source. A Release can lift the restriction and identify its approving owner.',
+    codeLabel: 'CANONICAL RELATIONSHIPS',
+    code: 'Decision -[:IMPOSES]-> Restriction -[:APPLIES_TO]-> Corridor\nDecision -[:OWNED_BY]-> Owner\nDecision -[:SUPPORTED_BY]-> EvidenceSpan\nEvidenceSpan -[:IN_REVISION]-> Revision -[:REVISION_OF]-> Source\nRelease -[:LIFTS]-> Restriction',
+    source: 'src/witness_fleet/graph/store.py#L48-L96', sourceLabel: 'store.py · canonical graph schema', sourceHint: 'Typed-node and relationship allowlists',
+  },
+  {
+    id: 'reads', label: 'Cypher reads', eyebrow: '02 / OPERATOR INSPECTION',
+    title: 'Read the claim attached to a task.',
+    body: 'Parameterized Cypher reads expose which retained claim owns a task. The store sends reads through FalkorDB’s read-only ro_query path; identifiers and tenant scope are bound parameters.',
+    codeLabel: 'READ · READ-ONLY CLIENT PATH',
+    code: 'MATCH (c:Claim)-[:CLAIMS_TASK]->\n      (t:Task {id:$task_id,tenant_id:$tenant_id})\nRETURN properties(c) AS claim',
+    source: 'src/witness_fleet/graph/store.py#L551-L556', sourceLabel: 'store.py · read_task_claims', sourceHint: 'Query text; ro_query routing in _query at L159-L161',
+  },
+  {
+    id: 'fencing', label: 'Version-fenced writes', eyebrow: '03 / STALE-WRITE REJECTION',
+    title: 'The app checks the version before its graph write.',
+    body: 'A conditional graph mutation matches the expected FleetState graph_version, then advances it with the update. A lost compare-and-set returns no result. This is application logic in a single graph query, not a multi-query or robot-side transaction.',
+    codeLabel: 'WRITE · CONDITIONAL GRAPH MUTATION',
+    code: "MATCH (s:FleetState {id:'fleet', tenant_id:$tenant_id})\nWHERE s.graph_version=$expected_version\n...\nSET n += $attributes, s.graph_version=s.graph_version+1",
+    source: 'src/witness_fleet/graph/store.py#L298-L379', sourceLabel: 'store.py · atomic_update', sourceHint: 'Expected-version predicate and one conditional graph query',
+  },
+  {
+    id: 'fleet', label: 'Shared fleet context', eyebrow: '04 / TASK + RESOURCE CLAIMS',
+    title: 'Tasks, robots and shared resources meet in one tenant graph.',
+    body: 'The application selects a named wf:{tenant}:ops graph. Task claims link a Claim to a Task and Robot and reserve required Resources, so contention can be inspected in shared fleet context. Tenant predicates are application scoping, not a substitute for database ACLs.',
+    codeLabel: 'READ · RESOURCE RESERVATIONS',
+    code: 'MATCH (c:Claim)-[:RESERVES]->\n      (r:Resource {id:$resource_id,tenant_id:$tenant_id})\nRETURN properties(c) AS claim',
+    source: 'src/witness_fleet/graph/store.py#L558-L563', sourceLabel: 'store.py · read_resource_claims', sourceHint: 'Read-only reservation query; conditional claim_task write at L381-L443',
+  },
+] as const;
+
+function BranchingGraph() {
+  return <div className="fdb-graph-wrap">
+    <div className="fdb-graph-heading"><span>SCHEMA VIEW / BRANCHED PROVENANCE</span><span>NOT A LIVE GRAPH</span></div>
+    <div className="fdb-graph" role="img" aria-label="Schema diagram: Decision imposes a Restriction that applies to a Corridor, is owned by an Owner, and is supported by an EvidenceSpan in a Revision of a Source. A Release lifts the Restriction and is approved by an Owner.">
+      <div className="fdb-graph-root"><span className="fdb-node-type">POLICY EVENT</span><strong>Decision</strong></div>
+      <div className="fdb-graph-branches">
+        <div className="fdb-branch fdb-branch-place"><span className="fdb-edge">IMPOSES</span><div className="fdb-node"><strong>Restriction</strong></div><span className="fdb-edge">APPLIES_TO</span><div className="fdb-node fdb-node-muted"><strong>Corridor</strong></div></div>
+        <div className="fdb-branch"><span className="fdb-edge">OWNED_BY</span><div className="fdb-node"><strong>Owner</strong></div><span className="fdb-branch-note">accountability</span></div>
+        <div className="fdb-branch fdb-branch-source"><span className="fdb-edge">SUPPORTED_BY</span><div className="fdb-node"><strong>EvidenceSpan</strong></div><span className="fdb-edge">IN_REVISION</span><div className="fdb-node fdb-node-muted"><strong>Revision</strong></div><span className="fdb-edge">REVISION_OF</span><div className="fdb-node fdb-node-muted"><strong>Source</strong></div></div>
+      </div>
+      <div className="fdb-graph-release"><div className="fdb-node fdb-node-release"><strong>Release</strong></div><span className="fdb-edge">LIFTS → Restriction</span><span className="fdb-edge">APPROVED_BY → Owner</span></div>
+    </div>
+    <p className="fdb-graph-caption">Evidence is a decision input: the application validates scope, revision and freshness before an action can be allowed; missing, stale or conflicting support can hold the action. It is not just a post-event log.</p>
+  </div>;
+}
+
+export function FalkorDBSection() {
+  const [selected, setSelected] = useState<(typeof capabilities)[number]['id']>('graph');
+  const current = capabilities.find(item => item.id === selected)!;
+  return <section className="fdb-section" id="falkordb" aria-labelledby="fdb-title">
+    <div className="fdb-inner">
+      <div className="fdb-intro"><div><p className="section-kicker"><span className="kicker-rule"/> IMPLEMENTATION, NOT A LOGO DROP</p><h2 id="fdb-title">Why FalkorDB is in <br/><em>the execution path.</em></h2></div><p>Witness Fleet uses FalkorDB as the application’s operational property graph: connected fleet state and source-backed evidence are read to decide whether work can proceed or must hold.</p></div>
+      <div className="fdb-selector" role="group" aria-label="FalkorDB capabilities">{capabilities.map((item, index) => <button key={item.id} type="button" aria-pressed={selected === item.id} onClick={() => setSelected(item.id)}><span className="fdb-choice-number">0{index + 1}</span><span>{item.label}</span><span aria-hidden="true" className="fdb-choice-mark">{selected === item.id ? '↗' : '＋'}</span></button>)}</div>
+      <div className="fdb-capability" aria-live="polite" aria-atomic="true"><div className="fdb-capability-copy"><span className="fdb-eyebrow">{current.eyebrow}</span><h3>{current.title}</h3><p>{current.body}</p><a className="fdb-source" href={`${sourceRoot}${current.source}`} target="_blank" rel="noreferrer"><span>{current.sourceLabel}</span><span aria-hidden="true">↗</span></a><small className="fdb-source-hint">{current.sourceHint}</small></div><div className="fdb-code-panel"><div className="fdb-code-header"><span>{current.codeLabel}</span><span>{selected === 'fencing' ? 'APP CONDITIONAL WRITE' : selected === 'reads' || selected === 'fleet' ? 'APP READ PATH · ro_query' : 'APPLICATION SCHEMA'}</span></div><pre><code>{current.code}</code></pre><p className="fdb-code-note">Explanatory view only. Read excerpts use FalkorDB ro_query; no query runs from this page.</p></div></div>
+      <BranchingGraph/>
+      <div className="fdb-boundaries"><div><span className="fdb-boundary-label">USED IN THE APPLICATION</span><p>FalkorDB client, named per-tenant ops graphs, read-only Cypher reads, typed nodes/relationships, version-checked single-query writes, and per-label unique-id constraints with supporting range indexes.</p><a href={`${sourceRoot}src/witness_fleet/graph/migrations.py#L21-L60`} target="_blank" rel="noreferrer">migrations.py · schema constraints ↗</a></div><div><span className="fdb-boundary-label">PLATFORM CAPABILITY ≠ PRODUCT CLAIM</span><p>Vector and full-text indexes and graph algorithms are broader FalkorDB platform capabilities, not features claimed in this captured allow/hold path. FalkorDB’s sparse-matrix/GraphBLAS engine underlies the database; no project latency benchmark is claimed. The separate GraphRAG-SDK adapter is an isolated synthetic corpus lane, not a source of authority and not part of the recorded mission.</p><a href={`${sourceRoot}services/corpus/sdk_adapter.py#L21-L73`} target="_blank" rel="noreferrer">sdk_adapter.py · isolated corpus lane ↗</a><a className="fdb-platform-source" href="https://docs.falkordb.com/" target="_blank" rel="noreferrer">FalkorDB platform documentation ↗</a></div></div>
+      <p className="fdb-safety-note">FalkorDB stores connected evidence; Witness Fleet application code validates authority and enforces the hold boundary. This simulation research prototype is not a robot safety controller, and no physical deployment is claimed.</p>
+    </div>
+  </section>;
+}
