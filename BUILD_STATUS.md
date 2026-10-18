@@ -1,5 +1,9 @@
 # Verification status
 
+## GitHub CI verification
+
+On 18 October 2026, [Verification run 39103193098](https://github.com/guglxni/witness-fleet/actions/runs/39103193098) passed on commit `d0105b5f7324b17de5f19160873388d167ee7d5d`: **935 main + 10 corpus tests**, zero failures/errors/skips, and both frontend jobs (typechecking, unit tests, production builds and browser tests). Counts were read from downloaded JUnit artifacts, not inferred from the workflow badge. This supersedes the older local full-suite count below for that revision. Use the [live workflow page](https://github.com/guglxni/witness-fleet/actions/workflows/verify.yml) to check newer commits; this is not a claim that an untested newer revision has passed.
+
 ## Executed locally
 
 - Full partitioned regression after adding the hosted gateway: **932 main tests + 10 corpus tests**, no failures/errors/skips. Run occurred before the later process-lock ordering repair.
