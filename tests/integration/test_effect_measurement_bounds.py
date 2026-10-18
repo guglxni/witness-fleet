@@ -105,7 +105,9 @@ def _clear_corridor(service):
     """Run and check the real recovery actuator before travel/delivery fixtures."""
     event = recovery_command(service, deadline=2000)
     assert service.receive(event)['command_state'] == 'RUNNING'
-    service.advance(1200)
+    # The real controller needs its full bounded execution window on Linux
+    # MuJoCo; keep the command deadline and physical assertions unchanged.
+    service.advance(2000)
     receipt = service.command(event.id)
     assert receipt['state'] == 'CONTROLLER_DONE', receipt
     assert receipt['native']['contact_count'] > 0

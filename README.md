@@ -133,6 +133,8 @@ docs/diagrams/        editable draw.io, Mermaid, Excalidraw and rendered preview
 
 ## Media, licenses and publication
 
+The original application code is available under the [MIT License](LICENSE). Third-party components and media keep their own terms.
+
 The finished **86-second, 1080p narrated film** uses HyperFrames, recorded native MuJoCo footage, an OpenDesign Motion excerpt and ElevenLabs Sarah. [Watch/download the film](site/public/media/launch.mp4), inspect [sanitized provenance](site/public/media/provenance.json), or edit the [HTML motion project](media/launch/README.md). Original diagrams are explanatory, not fabricated sensor output.
 
 See [third-party notices](THIRD_PARTY.md) and [publication scope](PUBLICATION.md). FalkorDB server uses SSPL; GSAP uses its Standard License; ElevenLabs is a proprietary service. Do not label the entire stack OSI FOSS. Complete third-party papers/web captures, vendor clones, credentials, machine reports and retained databases are not redistributed.

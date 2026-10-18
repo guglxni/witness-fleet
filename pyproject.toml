@@ -5,6 +5,8 @@ build-backend = "hatchling.build"
 [project]
 name = "witness-fleet"
 version = "0.1.0"
+license = "MIT"
+license-files = ["LICENSE"]
 description = "Graph-grounded evidence and authority for a simulation-first robot fleet"
 requires-python = ">=3.12,<3.14"
 dependencies = ["fastapi>=0.115,<1", "uvicorn[standard]>=0.32,<1", "pydantic>=2.10,<3", "httpx>=0.28,<1", "falkordb>=1,<2", "numpy>=2,<3", "networkx>=3.4,<4", "scipy>=1.15,<2", "typer>=0.15,<1"]

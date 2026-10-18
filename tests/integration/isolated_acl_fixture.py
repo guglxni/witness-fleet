@@ -59,9 +59,9 @@ def isolated_acl_server() -> Generator[IsolatedAclServer, None, None]:
 
         deadline = time.monotonic() + 20
         while True:
-            store = GraphStore(host="127.0.0.1", port=port, username="wf_ops",
-                               socket_timeout=1)
             try:
+                store = GraphStore(host="127.0.0.1", port=port, username="wf_ops",
+                                   socket_timeout=1)
                 store.initialize()
                 break
             except Exception:

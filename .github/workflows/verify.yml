@@ -35,7 +35,9 @@ jobs:
       - name: Lint
         run: .venv/bin/ruff check src services scripts tests
       - name: Start the corpus role fixture on this ephemeral runner
-        run: docker compose up -d --wait graph
+        run: |
+          docker compose up -d --wait graph
+          docker compose exec -T graph redis-cli --user wf_corpus GRAPH.QUERY wf:demo:corpus 'RETURN 1'
       - name: Complete isolated test manifest
         run: .venv/bin/python scripts/test_all.py
       - name: Retain test evidence

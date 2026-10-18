@@ -73,7 +73,7 @@ def service(tmp_path):
 def test_fresh_admission_allows_bounded_native_recovery_beyond_sensor_ttl(service):
     event = recovery_command(service)
     assert service.receive(event)['command_state'] == 'RUNNING'
-    service.advance(1200)
+    service.advance(2000)
     receipt = service.command('recovery-command')
     assert receipt['state'] == 'CONTROLLER_DONE'
     assert receipt['native']['contact_count'] > 0

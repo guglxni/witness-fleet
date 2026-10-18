@@ -6,10 +6,10 @@ def test_recovery_physically_pushes_then_parks_outside_courier_path():
     try:
         initial = world.inspect("scout")["obstruction"]["observed_pose"]
         accepted = world.start_skill(
-            "recovery", "recover", {"target_displacement_m": 0.75, "timeout_ticks": 1200}
+            "recovery", "recover", {"target_displacement_m": 0.75, "timeout_ticks": 2000}
         )
         assert accepted["status"] == "accepted"
-        result = _run_skill(world, 1300)
+        result = _run_skill(world, 2100)
         assert result["status"] == "done"
         moved = world._object_position()
         recovery = world.poses()["recovery"]

@@ -12,6 +12,10 @@ def test_worker_exposes_typed_local_ingest_search_and_health(tmp_path):
     adapter = CorpusSDKAdapter(SourceStore(tmp_path / "retained"), fixture_root=Path("fixtures/sources"))
     client = TestClient(create_app(adapter))
 
+    # A clean corpus fixture has no graph key until first ingestion. Bootstrap
+    # through the real ingest endpoint before requiring graph-readiness health.
+    first = client.post("/ingest", json={"source_id": "restriction_decision_r1"})
+    assert first.status_code == 200
     health = client.get("/health")
     assert health.status_code == 200
     assert health.json()["status"] == "ok"

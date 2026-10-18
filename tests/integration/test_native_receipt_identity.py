@@ -19,17 +19,17 @@ def test_native_result_remains_bound_to_original_command_across_later_skill_and_
             'task_id': 'task', 'task_fence': 1, 'resource_fences': {'corridor': 1}}))
         event = recovery_command(service)
         service.receive(event)
-        service.advance(1200)
+        service.advance(2000)
         first = service.command(event.id)
         assert first['state'] == 'CONTROLLER_DONE'
         assert first['native']['kind'] == 'recover'
         later = event.model_dump(mode='json')
-        later.update(id='inspect-command', sequence=3, effective_world_tick=1200)
+        later.update(id='inspect-command', sequence=3, effective_world_tick=2000)
         command = later['payload']
-        command.update(command_id='inspect-command', dispatch_sequence=3, effective_world_tick=1200)
+        command.update(command_id='inspect-command', dispatch_sequence=3, effective_world_tick=2000)
         command['proposal'].update(id='inspect-proposal', kind='inspect', parameters={})
         command['payload_hash'] = canonical_json_hash(command['proposal'])
-        command['authorization'].update(action_payload_hash=command['payload_hash'], valid_until_tick=1300)
+        command['authorization'].update(action_payload_hash=command['payload_hash'], valid_until_tick=2100)
         later['payload_hash'] = canonical_json_hash(command)
         service.receive(DispatchEvent.model_validate(later))
         service.advance(1)

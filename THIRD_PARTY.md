@@ -1,6 +1,6 @@
 # Third-party software and media
 
-Witness Fleet is original application code. Public visibility is not itself an open-source license grant; no blanket license is assigned to all upstream material by this repository. Individual dependencies retain their licenses. Review full installed versions before redistribution or commercial operation.
+The original Witness Fleet application code is licensed under the [MIT License](LICENSE), as authorized by Aaryan Guglani. This grant does not relicense third-party dependencies, upstream assets, research publications, generated narration, or service terms. Those retain their own licenses and usage conditions. Review the exact installed versions before redistribution or commercial operation.
 
 ## Runtime and website
 
