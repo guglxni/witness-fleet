@@ -63,7 +63,7 @@ Python materializes and validates a bounded snapshot; it does not claim a server
 
 ## Product site and preserved media
 
-The product site uses original robot diagrams, Vanta, GSAP and Lenis with accessible motion controls. Recorded native footage is identified separately from illustration. These media files remain available in the repository:
+The product site pairs original robot diagrams with responsive editorial layouts, reduced-motion-aware section reveals, keyboard section search, an interactive schema explorer and a searchable recorded-evidence workbench. Full receipt identifiers remain available to inspect and copy; snapshot comparison never substitutes a live run. The only embedded film is the [FalkorDB cut on YouTube](https://youtu.be/v7P9KVyTrWY). Recorded native footage is identified separately from illustration. These media files remain available in the repository:
 
 - [Original 86-second narrated launch film](site/public/media/launch.mp4) · [sanitized provenance](site/public/media/provenance.json) · [editable motion project](media/launch/README.md)
 - [Campaign cut](site/public/media/campaign/product-ad.mp4) · [credits](site/public/media/campaign/CREDITS.md)

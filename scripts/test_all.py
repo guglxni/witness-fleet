@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CORPUS = {
     'tests/contract/test_sdk_pipeline.py',
     'tests/contract/test_corpus_worker.py',
+    'tests/contract/test_corpus_test_isolation.py',
     'tests/adversarial/test_corpus_boundary.py',
 }
 _GRAPH_MODULES = {'witness_fleet.graph', 'witness_fleet.graph.store'}

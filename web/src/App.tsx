@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Activity, AlertTriangle, ArrowDownRight, Box, Check, ChevronRight, CircleHelp, Clock3, Cpu, Download, ExternalLink, FileText, LockKeyhole, Pause, Play, Radio, RefreshCw, ShieldCheck, TriangleAlert, Wifi, WifiOff, X } from 'lucide-react';
+import { Activity, AlertTriangle, ArrowDownRight, Check, ChevronRight, CircleHelp, Clock3, Cpu, Download, ExternalLink, FileText, LockKeyhole, Pause, Play, Radio, RefreshCw, ShieldCheck, TriangleAlert, Wifi, WifiOff, X } from 'lucide-react';
+import { CoordinateSpace } from './CoordinateSpace';
 import type { FleetProjection, IncidentRequest, WitnessProjection } from '../api-contract';
 import { getHealth, getState, postControl, postIncident, type Health } from './api';
 import { acceptSnapshot, decisionStateTone, isFleetProjection, missionControlCapabilities } from './state';
@@ -52,6 +53,11 @@ export function App() {
   const [witnessError, setWitnessError] = useState<string | null>(null);
   const [witnessLoading, setWitnessLoading] = useState(false);
   const [replayIndex, setReplayIndex] = useState(0);
+  const [recordQuery, setRecordQuery] = useState('');
+  const [robotFilter, setRobotFilter] = useState('all');
+  const [eventTypeFilter, setEventTypeFilter] = useState('all');
+  const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
+  const [selectedCommandId, setSelectedCommandId] = useState<string | null>(null);
   const streamRef = useRef<EventSource | null>(null);
   const projectionRef = useRef<FleetProjection | null>(null);
   const streamStaleRef = useRef(false);
@@ -172,6 +178,19 @@ export function App() {
   const decisionIds = [...new Set([...eventDecisionIds, ...restrictionDecisionIds, ...(projection?.release_id ? [projection.release_id] : [])])];
   const replayEvents = projection?.events ?? [];
   const replayEvent = replayEvents[replayIndex];
+  const normalizedQuery = recordQuery.trim().toLowerCase();
+  const matchesQuery = (record: unknown) => !normalizedQuery || JSON.stringify(record).toLowerCase().includes(normalizedQuery);
+  const filteredTasks = (projection?.tasks ?? []).filter((task) => (robotFilter === 'all' || task.robot_id === robotFilter) && matchesQuery(task));
+  const filteredCommands = (projection?.commands ?? []).filter((command) => (robotFilter === 'all' || command.robot_id === robotFilter) && matchesQuery(command));
+  const filteredSources = sourceItems.filter(matchesQuery);
+  const filteredEvents = replayEvents.filter((event) => {
+    const value = asRecord(event);
+    const type = labelFor(value.type ?? value.event_type ?? value.kind, 'Observed event');
+    return (eventTypeFilter === 'all' || type.toLowerCase() === eventTypeFilter) && matchesQuery(event);
+  });
+  const selectedTask = projection?.tasks.find((task) => task.id === selectedTaskId) ?? null;
+  const selectedCommand = projection?.commands.find((command) => command.command_id === selectedCommandId) ?? null;
+  const eventTypes = [...new Set(replayEvents.map((event) => labelFor(asRecord(event).type ?? asRecord(event).event_type ?? asRecord(event).kind, 'Observed event').toLowerCase()))];
 
   const runAction = useCallback(async (label: string, operation: () => Promise<FleetProjection>, idempotencyKey?: string, rotateApprovalDraft = false, allowEpisodeChange = false) => {
     if (!writeEnabled) {
@@ -276,6 +295,7 @@ export function App() {
           <button className="icon-button refresh-button" type="button" onClick={() => void refresh()} aria-label="Refresh API state" title="Refresh API state"><RefreshCw size={17} /></button>
         </div>
       </header>
+      {projection && <nav className="workspace-nav" aria-label="Workspace sections"><a href="#facility-heading">Spatial view</a><a href="#tasks-heading">Tasks & commands</a><a href="#evidence-heading">Sources</a><a href="#timeline-heading">Events</a></nav>}
 
       {projection && (link === 'stale' || link === 'offline') && <div className="stale-banner" role="alert"><TriangleAlert size={18} /> {link === 'offline' ? 'API offline. ' : 'Live stream interrupted. '}Cached state is stale; Cached revision {projection.revision} · world tick {projection.world_tick}. Writes are disabled until a fresh snapshot arrives.</div>}
       {loadError && <div className="error-banner" role="alert"><AlertTriangle size={18} />{loadError}</div>}
@@ -306,40 +326,7 @@ export function App() {
         </section>
       ) : (
         <div className="dashboard-grid">
-          <section className="panel facility-panel" aria-labelledby="facility-heading">
-            <div className="panel-heading"><div><p className="eyebrow">LIVE PROJECTION · S0</p><h2 id="facility-heading">Robot pose projection</h2></div><span className="section-meta">{projection.robots.length} PROJECTED</span></div>
-            <div className="map-wrap">
-              {projection.robots.length === 0 ? <div className="empty-inline"><CircleHelp size={18} />No robot poses in this projection.</div> : <svg className="facility-map" viewBox="0 0 640 310" role="img" aria-label={`S0 pose chart with ${projection.robots.length} projected robot positions`}>
-                <defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="currentColor" strokeWidth="0.7" opacity=".6" /></pattern></defs>
-                <rect width="640" height="310" fill="url(#grid)" />
-                <line x1="22" y1="270" x2="618" y2="270" className="map-axis" /><line x1="22" y1="22" x2="22" y2="270" className="map-axis" />
-                <text x="30" y="292" className="map-label">X · metres</text><text x="31" y="36" className="map-label">Y · metres</text>
-                {projection.robots.map((robot) => {
-                  const xs = projection.robots.map((item) => item.pose.x);
-                  const ys = projection.robots.map((item) => item.pose.y);
-                  const spanX = Math.max(1, Math.max(...xs) - Math.min(...xs));
-                  const spanY = Math.max(1, Math.max(...ys) - Math.min(...ys));
-                  const x = 72 + (robot.pose.x - Math.min(...xs)) / spanX * 480;
-                  const y = 222 - (robot.pose.y - Math.min(...ys)) / spanY * 145;
-                  const roleColor = robot.role === 'scout' ? '#63D9C6' : robot.role === 'recovery' ? '#FFD580' : '#9FBAFF';
-                  return <g key={robot.id} transform={`translate(${x} ${y}) rotate(${-robot.pose.yaw * 180 / Math.PI})`}>
-                    <circle r="17" fill={roleColor} fillOpacity=".12" stroke={roleColor} strokeWidth="1.5" />
-                    <path d="M-9 -8H8L12 0 8 8H-9Z" fill={roleColor} stroke="#101722" strokeWidth="1.5" /><path d="M0 0h16" stroke="#101722" strokeWidth="2" />
-                    <text x="23" y="4" className="robot-map-label">{robot.id}</text>
-                  </g>;
-                })}
-              </svg>}
-              <div className="sensor-note"><span className="sensor-pill">S0</span> Backend-projected poses only · chart is auto-framed · no facility geometry inferred.</div>
-            </div>
-            <div className="robot-list" role="list" aria-label="Robots">
-              {projection.robots.map((robot) => <article className="robot-row" role="listitem" key={robot.id}>
-                <span className={`robot-glyph role-${robot.role}`} aria-hidden="true"><Box size={17} /></span>
-                <span className="robot-identity"><strong>{robot.id}</strong><small>{robot.role} · {robot.state.replaceAll('_', ' ')}</small></span>
-                <span className="robot-pose"><b>{robot.pose.x.toFixed(1)}, {robot.pose.y.toFixed(1)}</b><small>m · θ {robot.pose.yaw.toFixed(2)}</small></span>
-              </article>)}
-              {projection.robots.length === 0 && <p className="empty-copy">Robot roster is empty in the returned projection.</p>}
-            </div>
-          </section>
+          <CoordinateSpace robots={projection.robots} />
 
           <section className="panel reason-panel" aria-labelledby="reason-heading">
             <div className="panel-heading"><div><p className="eyebrow">CURRENT DECISION</p><h2 id="reason-heading">Why is motion gated?</h2></div><span className={`state-badge ${projection.dispatch_ready ? 'badge-clear' : 'badge-unknown'}`}>{projection.dispatch_ready ? <Check size={13} /> : <CircleHelp size={13} />}{projection.dispatch_ready ? 'DISPATCH READY' : 'NOT READY'}</span></div>
@@ -356,18 +343,20 @@ export function App() {
           </section>
 
           <section className="panel tasks-panel" aria-labelledby="tasks-heading">
-            <div className="panel-heading"><div><p className="eyebrow">DEPENDENCY QUEUE</p><h2 id="tasks-heading">Tasks & commands</h2></div><span className="section-meta">{projection.tasks.length} TASKS · {projection.commands.length} COMMANDS</span></div>
+            <div className="panel-heading"><div><p className="eyebrow">DEPENDENCY QUEUE</p><h2 id="tasks-heading">Tasks & commands</h2></div><span className="section-meta">{filteredTasks.length}/{projection.tasks.length} TASKS · {filteredCommands.length}/{projection.commands.length} COMMANDS</span></div>
+            <div className="record-filters" aria-label="Record filters"><label className="search-field"><span className="visually-hidden">Search records</span><input type="search" aria-label="Search records" placeholder="Search IDs, states, reasons, provenance…" value={recordQuery} onChange={(event) => setRecordQuery(event.target.value)} /></label><label className="filter-field"><span>Robot</span><select aria-label="Filter by robot" value={robotFilter} onChange={(event) => setRobotFilter(event.target.value)}><option value="all">All robots</option>{projection.robots.map((robot) => <option key={robot.id} value={robot.id}>{robot.id}</option>)}</select></label><button type="button" className="clear-filter" onClick={() => { setRecordQuery(''); setRobotFilter('all'); setEventTypeFilter('all'); }}>Clear filters</button></div>
             <div className="table-scroll"><table><thead><tr><th>Task</th><th>Dependency</th><th>State</th><th>Owner</th><th>Reason codes</th></tr></thead><tbody>
-              {projection.tasks.map((task) => <tr key={`task-${task.id}`}><td><strong>{task.id}</strong><small>{task.kind}</small></td><td>{task.depends_on.length ? task.depends_on.map((dependency) => <span className="dependency-chip" key={dependency}>{dependency}</span>) : <span className="muted">Root task</span>}</td><td><StatusTag value={task.state} /></td><td>{task.robot_id ?? 'Unassigned'}</td><td>{task.reason_codes.length ? task.reason_codes.join(', ') : '—'}</td></tr>)}
-              {!projection.tasks.length && <tr><td colSpan={5} className="empty-table">No task rows in this projection.</td></tr>}
+              {filteredTasks.map((task) => <tr key={`task-${task.id}`} className={selectedTaskId === task.id ? 'selected-record' : ''}><td><button type="button" className="record-select" aria-label={`Inspect task ${task.id}`} aria-pressed={selectedTaskId === task.id} onClick={() => setSelectedTaskId(selectedTaskId === task.id ? null : task.id)}><strong>{task.id}</strong><small>{task.kind}</small></button></td><td>{task.depends_on.length ? task.depends_on.map((dependency) => <span className="dependency-chip" key={dependency}>{dependency}</span>) : <span className="muted">Root task</span>}</td><td><StatusTag value={task.state} /></td><td>{task.robot_id ?? 'Unassigned'}</td><td>{task.reason_codes.length ? task.reason_codes.join(', ') : '—'}</td></tr>)}
+              {!filteredTasks.length && <tr><td colSpan={5} className="empty-table">No task rows match the current filters.</td></tr>}
             </tbody></table></div>
-            <div className="command-ledger"><div className="subsection-heading"><div><span className="eyebrow">COMMAND / RECEIPT LEDGER</span><strong>{projection.commands.length} projected commands</strong></div><span className="command-caveat">A controller receipt is not a verified physical outcome.</span></div>{projection.commands.length ? <div className="command-list">{projection.commands.map((command) => <article className="command-row" key={command.command_id}><div><strong>{command.command_id}</strong><small>{command.kind} · {command.robot_id} · tick {command.world_tick}</small></div><StatusTag value={command.state} /><span className="reconciliation">{command.reconciliation_state.replaceAll('_', ' ')}</span><span className="command-reason">{command.reason_codes.length ? command.reason_codes.join(', ') : 'No reason code'}</span><div className="outcome-unknown">Verified outcome <b>Not present in command projection</b></div></article>)}</div> : <p className="empty-copy">No command records returned.</p>}</div>
+            {selectedTask && <section className="record-inspector" aria-label="Selected task"><div><span className="eyebrow">TASK INSPECTOR</span><button className="close-inspector" type="button" onClick={() => setSelectedTaskId(null)} aria-label="Close task inspector">×</button></div><h3>{selectedTask.id}</h3><dl><div><dt>Kind</dt><dd>{selectedTask.kind}</dd></div><div><dt>State</dt><dd>{selectedTask.state}</dd></div><div><dt>Owner</dt><dd>{selectedTask.robot_id ?? 'Unassigned'}</dd></div><div><dt>Dependencies</dt><dd>{selectedTask.depends_on.join(', ') || 'None returned'}</dd></div><div><dt>Reason codes</dt><dd>{selectedTask.reason_codes.join(', ') || 'None returned'}</dd></div><div><dt>Last command</dt><dd>{selectedTask.last_command_id ?? 'Unknown'}</dd></div></dl></section>}
+            <div className="command-ledger"><div className="subsection-heading"><div><span className="eyebrow">COMMAND / RECEIPT LEDGER</span><strong>{filteredCommands.length} matching projected commands</strong></div><span className="command-caveat">A controller receipt is not a verified physical outcome.</span></div>{filteredCommands.length ? <div className="command-list">{filteredCommands.map((command) => <article className={`command-row${selectedCommandId === command.command_id ? ' selected-record' : ''}`} key={command.command_id}><button type="button" className="command-select" aria-label={`Inspect command ${command.command_id}`} aria-pressed={selectedCommandId === command.command_id} onClick={() => setSelectedCommandId(selectedCommandId === command.command_id ? null : command.command_id)}><strong>{command.command_id}</strong><small>{command.kind} · {command.robot_id} · tick {command.world_tick}</small></button><StatusTag value={command.state} /><span className="reconciliation">{command.reconciliation_state.replaceAll('_', ' ')}</span><span className="command-reason">{command.reason_codes.length ? command.reason_codes.join(', ') : 'No reason code'}</span><div className="outcome-unknown">Verified outcome <b>Not present in command projection</b></div></article>)}</div> : <p className="empty-copy">No command records match the current filters.</p>}{selectedCommand && <section className="record-inspector" aria-label="Selected command"><div><span className="eyebrow">COMMAND INSPECTOR</span><button className="close-inspector" type="button" onClick={() => setSelectedCommandId(null)} aria-label="Close command inspector">×</button></div><h3>{selectedCommand.command_id}</h3><dl><div><dt>Kind</dt><dd>{selectedCommand.kind}</dd></div><div><dt>Robot</dt><dd>{selectedCommand.robot_id}</dd></div><div><dt>State</dt><dd>{selectedCommand.state}</dd></div><div><dt>Last known state</dt><dd>{selectedCommand.last_known_state ?? 'Unknown'}</dd></div><div><dt>Reconciliation</dt><dd>{selectedCommand.reconciliation_state}</dd></div><div><dt>World tick</dt><dd>{selectedCommand.world_tick}</dd></div><div><dt>Reason codes</dt><dd>{selectedCommand.reason_codes.join(', ') || 'None returned'}</dd></div></dl></section>}</div>
             <p className="queue-caption"><CircleHelp size={14} /> Task dependencies are backend-declared; no missing edge or postcondition is reconstructed by the browser.</p>
           </section>
 
           <section className="panel evidence-panel" aria-labelledby="evidence-heading">
             <div className="panel-heading"><div><p className="eyebrow">PROVENANCE</p><h2 id="evidence-heading">Witness & retained sources</h2></div><span className="section-meta">GRAPH v{projection.graph_version}</span></div>
-            {sourceItems.length ? <div className="source-list">{sourceItems.map((raw, index) => <SourceCard key={JSON.stringify([projection.episode_id, asRecord(raw).revision_id ?? asRecord(raw).source_id ?? index])} source={asRecord(raw)} index={index} />)}</div> : <p className="empty-copy">No retained source records are present in this projection. No evidence chain is inferred.</p>}
+            {filteredSources.length ? <div className="source-list">{filteredSources.map((raw, index) => <SourceCard key={JSON.stringify([projection.episode_id, asRecord(raw).revision_id ?? asRecord(raw).source_id ?? index])} source={asRecord(raw)} index={index} />)}</div> : <p className="empty-copy">{sourceItems.length ? 'No retained source records match the current filters.' : 'No retained source records are present in this projection. No evidence chain is inferred.'}</p>}
             {decisionIds.map((decisionId) => <button type="button" className="witness-link" key={`witness-${decisionId}`} onClick={() => void loadWitness(decisionId)} disabled={witnessLoading}><FileText size={15} /> Open witness for {decisionId}<ChevronRight size={15} /></button>)}
             {witnessError && <p className="inline-error" role="alert">Witness unavailable: {witnessError}</p>}
             {witnessLoading && <p className="inline-status" role="status">Loading backend witness…</p>}
@@ -401,8 +390,9 @@ export function App() {
           </section>
 
           <section className="panel timeline-panel" aria-labelledby="timeline-heading">
-            <div className="panel-heading"><div><p className="eyebrow">OBSERVED EVENT LOG</p><h2 id="timeline-heading">Timeline</h2></div><span className="section-meta">{projection.events.length} EVENTS</span></div>
-            {projection.events.length ? <ol className="timeline">{projection.events.map((raw, index) => <TimelineEvent key={`event-${index}`} event={raw} />)}</ol> : <p className="empty-copy">No timeline events in the current backend projection.</p>}
+            <div className="panel-heading"><div><p className="eyebrow">OBSERVED EVENT LOG</p><h2 id="timeline-heading">Timeline</h2></div><span className="section-meta">{filteredEvents.length}/{projection.events.length} EVENTS</span></div>
+            <div className="record-filters event-filters"><label className="filter-field"><span>Event type</span><select aria-label="Filter by event type" value={eventTypeFilter} onChange={(event) => setEventTypeFilter(event.target.value)}><option value="all">All types</option>{eventTypes.map((type) => <option key={type} value={type}>{type.replaceAll('_', ' ')}</option>)}</select></label></div>
+            {filteredEvents.length ? <ol className="timeline">{filteredEvents.map((raw, index) => <TimelineEvent key={`event-${index}`} event={raw} />)}</ol> : <p className="empty-copy">{projection.events.length ? 'No timeline events match the current filters.' : 'No timeline events in the current backend projection.'}</p>}
           </section>
 
           <section className="panel replay-panel" aria-labelledby="replay-heading" aria-label="Replay inspector">

@@ -1,12 +1,61 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
-import { LaunchSite } from '../src/LaunchSite';
+import {describe,expect,it,vi} from 'vitest';
+import {LaunchSite} from '../src/LaunchSite';
+import {FalkorDBSection} from '../src/FalkorDBSection';
 
 describe('FalkorDB implementation story', () => {
   it('shows the official FalkorDB badge and a judge-focused execution-path section', () => {
     render(<LaunchSite />);
     expect(screen.getByRole('img', { name: /FalkorDB/i })).toHaveAttribute('src', '/media/falkordb/falkordb-logo-color.svg');
     expect(screen.getByRole('heading', { name: /why FalkorDB is in the execution path/i })).toBeInTheDocument();
+  });
+
+  it('selects semantic schema relationships and exposes exact edge direction and meaning',()=>{
+    render(<FalkorDBSection/>);
+    const edge=screen.getByRole('button',{name:/SUPPORTED_BY relationship/i});
+    fireEvent.click(edge);
+    expect(screen.getByRole('complementary',{name:/selected schema detail/i})).toHaveTextContent('Decision');
+    expect(screen.getByRole('complementary',{name:/selected schema detail/i})).toHaveTextContent('EvidenceSpan');
+    expect(screen.getByRole('complementary',{name:/selected schema detail/i})).toHaveTextContent('Decision → EvidenceSpan');
+  });
+
+  it('selects every semantic schema node and relationship by keyboard',()=>{
+    render(<FalkorDBSection/>);
+    const release=screen.getByRole('button',{name:/RELEASE EVENTRelease/});
+    release.focus();
+    expect(release).toHaveFocus();
+    fireEvent.click(release);
+    expect(release).toHaveAttribute('aria-pressed','true');
+    expect(screen.getByRole('complementary',{name:/selected schema detail/i})).toHaveTextContent('A release event that lifts a restriction');
+    const approved=screen.getByRole('button',{name:/APPROVED_BY relationship Release to Owner/i});
+    approved.focus();
+    expect(approved).toHaveFocus();
+    fireEvent.click(approved);
+    expect(approved).toHaveAttribute('aria-pressed','true');
+    const detail=screen.getByRole('complementary',{name:/selected schema detail/i});
+    expect(detail).toHaveTextContent('Release → Owner');
+    expect(detail).toHaveTextContent('The release identifies the approving owner.');
+    expect(within(detail).getByRole('link',{name:/view pinned schema source/i})).toHaveAttribute('href',expect.stringContaining('store.py#L48-L96'));
+    expect(screen.getByRole('button',{name:/IMPOSES relationship Decision to Restriction/i})).toBeInTheDocument();
+    expect(screen.getByRole('button',{name:/APPLIES_TO relationship Restriction to Corridor/i})).toBeInTheDocument();
+    expect(screen.getByRole('button',{name:/OWNED_BY relationship Decision to Owner/i})).toBeInTheDocument();
+    expect(screen.getByRole('button',{name:/SUPPORTED_BY relationship Decision to EvidenceSpan/i})).toBeInTheDocument();
+    expect(screen.getByRole('button',{name:/IN_REVISION relationship EvidenceSpan to Revision/i})).toBeInTheDocument();
+    expect(screen.getByRole('button',{name:/REVISION_OF relationship Revision to Source/i})).toBeInTheDocument();
+    expect(screen.getByRole('button',{name:/LIFTS relationship Release to Restriction/i})).toBeInTheDocument();
+  });
+
+  it('copies the source-pinned schema excerpt and toggles wrapped code without network access',async()=>{
+    render(<FalkorDBSection/>);
+    const writer=vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:writer}});
+    fireEvent.click(screen.getByRole('button',{name:/copy excerpt/i}));
+    expect(await screen.findByText(/copied schema excerpt/i)).toBeInTheDocument();
+    expect(writer).toHaveBeenCalledWith(expect.stringContaining('Decision -[:IMPOSES]-> Restriction'));
+    const wrap=screen.getByRole('button',{name:/wrap lines/i});
+    fireEvent.click(wrap);
+    expect(screen.getByRole('button',{name:/disable wrap/i})).toHaveAttribute('aria-pressed','true');
+    expect(document.querySelector('.fdb-code-window')).toHaveClass('is-wrapped');
   });
 
   it('switches a local explanation with keyboard-operable capability choices', () => {

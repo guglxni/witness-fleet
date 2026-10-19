@@ -5,7 +5,6 @@ import { ANATOMY_PART_COUNT, STORY_PHASES, type StoryPhaseKey, useFleetAnatomy }
 import { StorySequence } from './StorySequence';
 import { ProductFilmTheater } from './ProductFilmTheater';
 import { ValueWorksheet } from './ValueWorksheet';
-import { useVantaBackground } from './useVantaBackground';
 import { useSiteMotion } from './useSiteMotion';
 import { ProductApplications } from './ProductApplications';
 import { IndustryContext } from './IndustryContext';
@@ -13,6 +12,8 @@ import { ProductPathway } from './ProductPathway';
 import { FalkorDBSection } from './FalkorDBSection';
 import { JudgeStart } from './JudgeStart';
 import { RecordedEvidence } from './RecordedEvidence';
+import { SectionFinder } from './SectionFinder';
+import { useSectionProgress } from './useSectionProgress';
 import './style.css';
 import './product.css';
 import './integration.css';
@@ -25,10 +26,10 @@ export function LaunchSite() {
   const [stage, setStage] = useState(0);
   const [paused, setPaused] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(() => window.matchMedia('(max-width: 760px)').matches);
+  const [isMobile, setIsMobile] = useState(() => window.matchMedia('(max-width: 1180px)').matches);
   const menuToggle = useRef<HTMLButtonElement>(null);
+  const {activeSection,progressRef} = useSectionProgress();
   const anatomy = useFleetAnatomy();
-  const { hostRef } = useVantaBackground(!paused);
   useSiteMotion(paused);
   const active = STORY_PHASES[stage]!;
   const goTo = (index: number) => setStage((index + phases.length) % phases.length);
@@ -48,7 +49,7 @@ export function LaunchSite() {
   };
 
   useEffect(() => {
-    const media = window.matchMedia('(max-width: 760px)');
+    const media = window.matchMedia('(max-width: 1180px)');
     const update = () => setIsMobile(media.matches);
     update();
     media.addEventListener('change', update);
@@ -76,20 +77,22 @@ export function LaunchSite() {
   return <div className={`site-shell wf-site${paused ? ' motion-paused' : ''}`} id="top">
     <a className="skip-link" href="#main">Skip to content</a>
     <header className="site-header wf-header">
+      <div ref={progressRef} className="reading-progress" aria-hidden="true"/>
       <a className="wordmark" href="#top" onClick={closeMobile} aria-label="Witness Fleet home">
         <span className="wordmark-emblem" aria-hidden="true"><span/><span/><span/></span>
         <span>WITNESS<span className="wordmark-sep">/</span>FLEET</span>
       </a>
       <nav id="primary-links" hidden={isMobile && !mobileOpen} className={`primary-nav wf-nav${mobileOpen ? ' is-open' : ''}`} aria-label="Primary navigation">
-        <a href="#judge" onClick={closeMobile}>Start here</a>
-        <a href="#applications" onClick={closeMobile}>Applications</a>
-        <a href="#falkordb" onClick={closeMobile}>FalkorDB</a>
-        <a href="#evidence" onClick={closeMobile}>Evidence</a>
-        <a href="#film" onClick={closeMobile}>Product film</a>
-        <a href="#pilot" onClick={closeMobile}>Pilot path</a>
+        <a href="#judge" aria-current={activeSection === 'judge' ? 'location' : undefined} onClick={closeMobile}>Start here</a>
+        <a href="#applications" aria-current={activeSection === 'applications' ? 'location' : undefined} onClick={closeMobile}>Applications</a>
+        <a href="#falkordb" aria-current={activeSection === 'falkordb' ? 'location' : undefined} onClick={closeMobile}>FalkorDB</a>
+        <a href="#evidence" aria-current={activeSection === 'evidence' ? 'location' : undefined} onClick={closeMobile}>Evidence</a>
+        <a href="#film" aria-current={activeSection === 'film' ? 'location' : undefined} onClick={closeMobile}>Product film</a>
+        <a href="#pilot" aria-current={activeSection === 'pilot' ? 'location' : undefined} onClick={closeMobile}>Pilot path</a>
         <a className="nav-source" href={sourceUrl} target="_blank" rel="noreferrer" aria-label="View source on GitHub">Source <Github size={14}/><ArrowUpRight size={12}/></a>
       </nav>
       <div className="header-actions wf-header-actions">
+        <SectionFinder/>
         <button className="motion-switch wf-motion" type="button" aria-label={paused ? 'Resume ambient motion' : 'Pause ambient motion'} aria-pressed={paused} onClick={toggleMotion}>
           {paused ? <Play size={14}/> : <Pause size={14}/>}<span>{paused ? 'Resume ambient motion' : 'Pause ambient motion'}</span>
         </button>
@@ -100,7 +103,7 @@ export function LaunchSite() {
 
     <main id="main">
       <section className="hero wf-hero" aria-labelledby="hero-title">
-        <div className="vanta-surface" aria-hidden="true" ref={hostRef}/>
+        <div className="vanta-surface" aria-hidden="true"/>
         <div className="hero-inner wf-hero-inner">
           <div className="hero-copy wf-hero-copy">
             <p className="hero-overline"><span className="prototype-mark"/> RESEARCH PROTOTYPE <span className="overline-divider">/</span> MUJOCO SIMULATION</p>
@@ -116,7 +119,7 @@ export function LaunchSite() {
           </div>
           <div className="hero-visual" aria-label="Illustrative concept art and mechanism drawing">
             <div className="hero-visual-sky" aria-hidden="true"/>
-            <div className="hero-art-plane hero-art-background" aria-hidden="true"><img src="/media/campaign/hero.webp" srcSet="/media/campaign/hero-960.webp 960w, /media/campaign/hero.webp 1600w" sizes="(max-width: 760px) 640px, 900px" alt="" fetchPriority="high" width="1536" height="1024"/></div>
+            <div className="hero-art-plane hero-art-background" aria-hidden="true"><img src="/media/campaign/hero.webp" srcSet="/media/campaign/hero-960.webp 960w, /media/campaign/hero.webp 1600w" sizes="(max-width: 1180px) 640px, 900px" alt="" fetchPriority="high" width="1536" height="1024"/></div>
             <div className="hero-visual-index"><span>STUDY 01</span><span>EXCEPTION / RESPONSE</span></div>
               <div className="hero-visual-stamp" aria-hidden="true"><span>PROOF</span><b>≠</b><span>ASSUMPTION</span></div>
             <p className="illustration-note">Concept art · mechanism is an explanatory illustration, not telemetry</p>
@@ -152,9 +155,9 @@ export function LaunchSite() {
         <StorySequence phase={active.key} onPhase={changeStage} paused={paused}/>
         <div className="evidence-limits">
           <div className="limit-statement"><span className="limit-symbol" aria-hidden="true">≠</span><div><span className="section-kicker">SHOWN / NOT ESTABLISHED</span><p>The SC-001 recorded MuJoCo path and mission-controller task outcomes are demonstrated. FalkorDB holds the connected operational record; the application evaluates its evidence before allowing or holding an action. Physical deployment, human-authenticated approval, production readiness, certification and customer results are not established. A null value for unauthorized execution is unknown, not a measured zero.</p></div></div>
-          <RecordedEvidence/>
         </div>
       </section>
+      <RecordedEvidence/>
 
       <ProductFilmTheater/>
       <section className="capture-record" aria-label="Capture provenance">

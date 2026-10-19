@@ -1,5 +1,39 @@
 # Verification status
 
+## Scientific-interface candidate
+
+The scientific-interface revision is locally verified, not yet represented here as
+published. Its release checks are:
+
+| Surface | Verification |
+| --- | --- |
+| Python runtime + corpus | 970 tests: 959 main + 11 isolated corpus; zero failures, errors or skips |
+| Public website | 64 unit/component tests + 48 Chromium browser tests; typecheck and production build pass |
+| Hosted workbench | 25 unit/component tests + 9 Chromium browser tests; typecheck and production build pass |
+| Local operator console | 77 unit/component tests + 12 Chromium browser tests; typecheck and production build pass |
+| Native hosted path | Fresh isolated FalkorDB + native MuJoCo via actual HTTPS/UI: seven verified tasks and commands, explicit release gate, one delivery |
+
+The native path was checked at eleven viewport sizes including short landscape:
+no document/body horizontal overflow, no application page errors or failed assets,
+and no WCAG A/AA violations in the checked completed desktop state. Viewport
+emulation is not physical-device testing. The fixture-driven browser suites and
+native end-to-end mission are distinct checks, not interchangeable evidence.
+
+The screenshot repairs include uniform dark code panels, native-size scrollable
+schema labels, full-ID receipt inspection/copying and responsive receipt layout.
+The hosted workbench rejects incomplete scenes, labels 2D approximations, disables
+unsupported fallback modes, and excludes hidden layers from scene selection.
+All ambiguous mutation outcomes still fail closed; history is read-only.
+
+The runtime container was built and its packaged JS/CSS/fonts were exercised over
+container-local HTTP. The scan identified inherited base-image/tooling findings,
+including high/critical entries; independent bounded comparison found no new
+candidate vulnerability entries. This is **not a zero-vulnerability claim**.
+Unpatched dependencies remain a disclosed risk. See the interface and deployment
+guides for the authority boundary and exact-revision publication requirements.
+
+The records below remain historical proofs; their counts are not the current suite.
+
 ## Pinned core proof
 
 [Verification run 39104896235](https://github.com/guglxni/witness-fleet/actions/runs/39104896235) passed on source commit [`51e789daf75fff7f8bb29b84523679813449aa7d`](https://github.com/guglxni/witness-fleet/commit/51e789daf75fff7f8bb29b84523679813449aa7d). The isolated Python job reported **935 main tests + 10 corpus tests**, with zero failures, errors or skips. Ruff passed. Both frontend jobs passed their typecheck, unit-test, production-build and Playwright steps on that same commit.

@@ -5,6 +5,7 @@ test('FalkorDB selector is explanatory only and leaves the mission story unchang
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
 
+  const section = page.locator('#falkordb');
   const activePhase = page.locator('.sequence-list button[aria-current="step"]');
   const phaseBefore = await activePhase.innerText();
   const startUrl = page.url();
@@ -17,7 +18,7 @@ test('FalkorDB selector is explanatory only and leaves the mission story unchang
 
   const versionFenced = selector.getByRole('button', { name: /Version-fenced writes/i });
   await expect(versionFenced).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('#falkordb h3')).toContainText('version before its graph write');
+  await expect(section.locator('.fdb-capability-copy h3')).toContainText('version before its graph write');
   await expect(activePhase).toHaveText(phaseBefore, { useInnerText: true });
   expect(page.url()).toBe(startUrl);
   await expect(page.locator('#falkordb')).toContainText(/no query runs from this page/i);

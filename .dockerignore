@@ -7,6 +7,12 @@
 !services/**
 !deploy/
 !deploy/Dockerfile
+!demo/
+!demo/**
+src/witness_fleet/hosting/static/**
+demo/test-results/**
+demo/playwright-report/**
+demo/dist/**
 **/.venv/**
 **/__pycache__/**
 **/*.pyc

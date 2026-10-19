@@ -657,6 +657,14 @@ class SimulatorService:
                     'poses': self.world.poses() if self.world else {},
                     'checkpoint_available': (self.root / 'snapshot.json').exists()}
 
+    def scene_snapshot(self):
+        """Return a detached, read-only scene DTO under the native owner lock."""
+        with self._lock:
+            if self.world is None:
+                return {'status': 'unavailable'}
+            from services.simulator.visualization import project_scene_snapshot
+            return project_scene_snapshot(self.world)
+
     def observations(self):
         with self._lock:
             if self.world is None:

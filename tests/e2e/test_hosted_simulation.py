@@ -15,7 +15,9 @@ def test_hosted_simulation_executes_real_seven_task_chain(isolated_runtime_graph
     with TestClient(app, base_url=ORIGIN) as client:
         assert client.get("/healthz").json() == {
             "process": "healthy", "simulation_only": True, "revision": "test-revision"}
-        assert "Simulation floor" in client.get("/demo").text
+        page = client.get("/demo")
+        assert page.status_code == 200
+        assert 'id="root"' in page.text and '/demo/assets/' in page.text
         boot = client.get("/demo/v1/bootstrap")
         assert boot.status_code == 200
         bootstrap_csrf = boot.json()["csrf_token"]

@@ -66,17 +66,37 @@ test('synthetic connected projection keeps tasks, receipts, and source evidence 
   await page.goto('/');
   await expect(page.getByText('episode-synthetic-e2e')).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Robot pose projection' })).toBeVisible();
-  await expect(page.getByLabel('Robots').getByRole('listitem')).toHaveCount(3);
+  const robots = page.getByLabel('Robots');
+  await expect(robots.locator('.robot-select')).toHaveCount(3);
   await expect(page.getByText('task-recovery-test')).toBeVisible();
   await expect(page.getByRole('table').getByText('SOURCE_SCOPE_UNKNOWN')).toBeVisible();
   await expect(page.getByRole('button', { name: /Open witness for decision-test/i })).toBeVisible();
   await expect(page.getByText('CONTROLLER DONE', { exact: false }).first()).toBeVisible();
   await expect(page.getByText('Not present in command projection')).toBeVisible();
   await expect(page.getByText('Loaded couriers remain restricted until release.')).toBeVisible();
-  await expect(page.getByRole('button', { name: /Open witness for revision-test/i })).toHaveCount(0);
+  await expect(robots.getByRole('button', { name: /Select scout-test/i })).toBeVisible();
+  await robots.getByRole('button', { name: /Select recovery-test/i }).click();
+  await expect(page.getByRole('region', { name: /Selected robot/i })).toContainText('recovery-test');
+  await expect(page.getByRole('region', { name: /Selected robot/i })).toContainText('0');
+  await page.getByRole('button', { name: /2D accessible view/i }).click();
+  await expect(page.locator('svg.coordinate-plot')).toBeVisible();
+  await page.getByRole('button', { name: /Inspect task task-deliver-test/i }).click();
+  await expect(page.getByRole('region', { name: /Selected task/i })).toContainText('SOURCE_SCOPE_UNKNOWN');
+  await page.getByRole('button', { name: /Inspect command command-test/i }).click();
+  await expect(page.getByRole('region', { name: /Selected command/i })).toContainText('awaiting_observation');
+  await page.getByRole('combobox', { name: /Filter by event type/i }).selectOption('command recorded');
+  await expect(page.locator('.timeline-item')).toHaveCount(1);
+  await expect(page.getByRole('combobox', { name: /Filter by event type/i })).toHaveValue('command recorded');
   await expect(page.getByRole('button', { name: /Open witness for decision-test/i })).toBeVisible();
-  await assertNoHorizontalOverflow(page);
-  await page.screenshot({ path: testInfo.outputPath('synthetic-connected-projection.png'), fullPage: true });
+  await expect(page.getByRole('button', { name: /Open witness for revision-test/i })).toHaveCount(0);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  for (const width of [320, 390, 768, 1440]) {
+    await page.setViewportSize({ width, height: width < 500 ? 800 : 960 });
+    await expect(page.getByRole('heading', { name: 'Robot pose projection' })).toBeVisible();
+    await assertNoHorizontalOverflow(page);
+    await page.screenshot({ path: testInfo.outputPath(`operator-console-${width}-reduced-motion.png`), fullPage: true });
+  }
+  await expect(page.getByRole('button', { name: /Open witness for decision-test/i })).toBeVisible();
 });
 
 test('main reason and evidence metadata meet readable minimums at 320px', async ({ page }, testInfo) => {

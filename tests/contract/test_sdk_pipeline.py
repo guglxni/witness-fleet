@@ -1,3 +1,7 @@
+# pytest_plugins must precede imports so pytest owns the real ACL fixture.
+# ruff: noqa: E402
+pytest_plugins = ["isolated_acl_fixture"]
+
 from pathlib import Path
 
 import pytest
@@ -6,10 +10,10 @@ from services.corpus.sdk_adapter import SDK_PIN, CorpusSDKAdapter
 from witness_fleet.ingestion import SourceStore
 
 
-def test_pinned_sdk_ingests_synthetic_source_as_real_queryable_span(tmp_path):
+def test_pinned_sdk_ingests_synthetic_source_as_real_queryable_span(tmp_path, isolated_acl_server):
     source = Path("fixtures/sources/restriction_decision_r1.json").read_bytes()
     store = SourceStore(tmp_path / "retained")
-    adapter = CorpusSDKAdapter(store)
+    adapter = CorpusSDKAdapter(store, host=isolated_acl_server.host, port=isolated_acl_server.port)
 
     with pytest.raises(ValueError, match="allowlist"):
         adapter.ingest_source("test-restriction", source)
@@ -28,8 +32,9 @@ def test_pinned_sdk_ingests_synthetic_source_as_real_queryable_span(tmp_path):
     assert any(item["source_id"] == "restriction_decision_r1" for item in candidates)
 
 
-def test_sdk_adapter_has_no_delete_or_model_finalize_surface(tmp_path):
-    adapter = CorpusSDKAdapter(SourceStore(tmp_path / "retained"))
+def test_sdk_adapter_has_no_delete_or_model_finalize_surface(tmp_path, isolated_acl_server):
+    adapter = CorpusSDKAdapter(SourceStore(tmp_path / "retained"), host=isolated_acl_server.host,
+                               port=isolated_acl_server.port)
     assert not hasattr(adapter, "delete_graph")
     assert not hasattr(adapter, "finalize")
 
@@ -43,20 +48,23 @@ def test_row_spans_locate_every_occurrence_without_reusing_first_offset():
     assert all(text[int(row["start"]):int(row["end"])] == row["quote"] for row in rows)
 
 
-def test_adapter_rejects_non_corpus_graph(tmp_path):
+def test_adapter_rejects_non_corpus_graph(tmp_path, isolated_acl_server):
     with pytest.raises(ValueError, match="synthetic tenant corpus graph"):
-        CorpusSDKAdapter(SourceStore(tmp_path / "retained"), graph_name="wf:demo:ops")
+        CorpusSDKAdapter(SourceStore(tmp_path / "retained"), host=isolated_acl_server.host,
+                         port=isolated_acl_server.port, graph_name="wf:demo:ops")
     with pytest.raises(ValueError, match="least-privilege corpus role"):
-        CorpusSDKAdapter(SourceStore(tmp_path / "retained"), username="admin")
+        CorpusSDKAdapter(SourceStore(tmp_path / "retained"), host=isolated_acl_server.host,
+                         port=isolated_acl_server.port, username="admin")
 
 
-def test_adapter_path_rejects_symlinked_fixture(tmp_path):
+def test_adapter_path_rejects_symlinked_fixture(tmp_path, isolated_acl_server):
     fixtures = tmp_path / "fixtures"
     fixtures.mkdir()
     outside = tmp_path / "outside.json"
     outside.write_bytes(b'{"quote": "untrusted"}')
     (fixtures / "restriction_decision_r1.json").symlink_to(outside)
-    adapter = CorpusSDKAdapter(SourceStore(tmp_path / "retained"), fixture_root=fixtures)
+    adapter = CorpusSDKAdapter(SourceStore(tmp_path / "retained"), fixture_root=fixtures,
+                               host=isolated_acl_server.host, port=isolated_acl_server.port)
 
     with pytest.raises(ValueError, match="beneath fixture root"):
         adapter.ingest_path("restriction_decision_r1")

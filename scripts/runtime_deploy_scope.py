@@ -35,7 +35,7 @@ def paths_require_runtime_deploy(paths: list[str] | tuple[str, ...] | set[str]) 
         normalized = path.replace("\\", "/").removeprefix("./")
         if normalized in _RUNTIME_FILES:
             return True
-        if normalized.startswith("src/"):
+        if normalized.startswith(("src/", "demo/")):
             return True
         if normalized.startswith("services/") and not normalized.startswith("services/corpus/"):
             return True

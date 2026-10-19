@@ -6,7 +6,19 @@
 - Interactive simulation: https://witness-fleet-guglxni.eastus.cloudapp.azure.com/demo
 - Minimal process health: https://witness-fleet-guglxni.eastus.cloudapp.azure.com/healthz
 
-## Exact-revision acceptance — 18 October 2026
+## Scientific-interface release status
+
+The scientific-interface candidate passed its local native mission, responsive
+browser suites, production builds and container packaging checks. The authoritative
+local counts are in [verification status](../../BUILD_STATUS.md). These are local
+results, not evidence that either live endpoint already runs the candidate.
+
+Publication requires a signed commit, its successful CI and exact GitHub/Vercel/Azure
+revision read-back. Before replacement, the retained production graph identity,
+graph-name digests and six prior session-directory hashes were captured. A release
+must preserve those records; a new isolated validation session is additive.
+
+## Historical exact-revision acceptance
 
 Commit `5f0a4c44cc54d3d372a4f09a419c7903f4525ed7` passed [Verification](https://github.com/guglxni/witness-fleet/actions/runs/39103988777): 935 main + 10 corpus tests with zero failures/errors/skips; 73 console + 8 site unit tests; 12 console + 7 site browser tests; both typechecks and production builds. Counts were read from JUnit artifacts and completed job logs.
 

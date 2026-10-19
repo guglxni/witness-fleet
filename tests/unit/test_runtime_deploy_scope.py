@@ -30,6 +30,8 @@ def test_runtime_inputs_trigger_deployment_but_site_docs_and_retained_corpus_do_
     assert paths_require_runtime_deploy(["services/simulator/runner.py"]) is True
     assert paths_require_runtime_deploy(["deploy/Dockerfile", ".dockerignore"]) is True
     assert paths_require_runtime_deploy(["deploy/azure/deploy-runtime.sh"]) is True
+    assert paths_require_runtime_deploy(["demo/src/App.tsx"]) is True
+    assert paths_require_runtime_deploy(["demo/package-lock.json"]) is True
     assert paths_require_runtime_deploy(["services/corpus/incident.jsonl"]) is False
     assert paths_require_runtime_deploy(
         ["site/src/LaunchSite.tsx", "docs/guide/deployment.md"]

@@ -10,10 +10,10 @@ The original Witness Fleet application code is licensed under the [MIT License](
 | MuJoCo | Native robot simulation | [MuJoCo](https://github.com/google-deepmind/mujoco), Apache-2.0 |
 | FastAPI | API | [FastAPI](https://github.com/fastapi/fastapi), MIT |
 | React | Website and console | [React](https://github.com/facebook/react), MIT |
-| Vanta | Optional ambient WebGL background | [Vanta](https://github.com/tengbao/vanta), MIT |
+| Vanta | Retained legacy dependency; not active in the current product-page background | [Vanta](https://github.com/tengbao/vanta), MIT |
 | Lenis | Optional smooth scroll | [Lenis](https://github.com/darkroomengineering/lenis), MIT |
 | GSAP | Deterministic animation | [GSAP](https://github.com/greensock/GSAP), Standard License. Free use is not the same as an OSI license. Read [current terms](https://gsap.com/standard-license/). |
-| Three.js | Vanta renderer | [Three.js](https://github.com/mrdoob/three.js), MIT |
+| Three.js | Native-scene visualization in the hosted demo and coordinate-space visualization in the local console; legacy Vanta dependency | [Three.js](https://github.com/mrdoob/three.js), MIT |
 | Lucide | Interface icons | [Lucide](https://github.com/lucide-icons/lucide), ISC |
 | Caddy | HTTPS reverse proxy | [Caddy](https://github.com/caddyserver/caddy), Apache-2.0 |
 

@@ -32,6 +32,13 @@ jobs:
         run: |
           uv sync --frozen --extra dev --extra simulator --python 3.12
           uv sync --frozen --python 3.12 --project services/corpus
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: demo/package-lock.json
+      - name: Build packaged hosted interface
+        run: npm ci --prefix demo && npm run build --prefix demo
       - name: Lint
         run: .venv/bin/ruff check src services scripts tests
       - name: Start the corpus role fixture on this ephemeral runner
@@ -53,7 +60,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        directory: [web, site]
+        directory: [web, site, demo]
     defaults:
       run:
         working-directory: ${{ matrix.directory }}

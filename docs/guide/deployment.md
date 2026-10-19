@@ -13,7 +13,7 @@ The [deployment runbook](../../deploy/azure/README.md) documents infrastructure,
 
 ## Hosted API boundary
 
-The [hosted gateway](../../src/witness_fleet/hosting/__init__.py) has strict request DTOs, exact Origin/Host checks, Secure HttpOnly SameSite session cookies, separate CSRF protection, server-selected actors and graph namespaces, rate limits and durable resource limits. Its projection excludes internal paths, source text, raw graph data and local owner identity. It has no arbitrary command, reset, graph query, source upload or HOLD-clear route.
+The [hosted gateway](../../src/witness_fleet/hosting/__init__.py) has strict request DTOs, exact Origin/Host checks, Secure HttpOnly SameSite session cookies, separate CSRF protection, server-selected actors and graph namespaces, rate limits and durable resource limits. Its projection excludes internal paths, source text, raw graph data and local owner identity. The authenticated read-only `GET /demo/v1/scene` adds bounded, allowlisted native MuJoCo primitives and sites; it does not advance physics. The hosted React interface and its Three.js renderer are packaged as same-origin static assets in the application image, not loaded from a third-party script CDN. It has no arbitrary command, reset, graph query, source upload or HOLD-clear route.
 
 A visitor confirms a synthetic demo release. That is **not** an authenticated production resource-owner identity. Uncertain outcomes do not grant authority to replay work.
 

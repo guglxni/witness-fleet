@@ -32,3 +32,6 @@ integration-*/
 *.db
 *.db-*
 *.log
+*.tsbuildinfo
+.hypothesis/
+src/witness_fleet/hosting/static/

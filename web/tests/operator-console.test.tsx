@@ -96,6 +96,86 @@ describe('operator console live-state boundary', () => {
     expect(screen.getByRole('button', { name: /Create incident/i })).toBeDisabled();
   });
 
+  it('offers coordinate view modes and lets an operator select a projected robot', async () => {
+    const state = { ...liveState, robots: [
+      liveState.robots[0]!,
+      { id: 'recovery-2', role: 'recovery' as const, pose: { x: -1.25, y: 3.5, yaw: 1.2 }, state: 'paused', footprint_m: 0.8, last_observation_tick: null },
+    ] };
+    vi.stubGlobal('fetch', vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify({ process: 'healthy', dispatch_ready: false }), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(state), { status: 200 })));
+    render(<App />);
+
+    expect(await screen.findByRole('heading', { name: /Robot pose projection/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /2D accessible view/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Top view/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Reset view/i })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /2D accessible view/i }));
+    expect(screen.getByRole('img', { name: /2D coordinate plot/i })).toBeInTheDocument();
+    fireEvent.click(screen.getAllByRole('button', { name: /Select recovery-2/i }).at(-1)!);
+    expect(screen.getByRole('region', { name: /Selected robot/i })).toHaveTextContent('recovery-2');
+    expect(screen.getByRole('region', { name: /Selected robot/i })).toHaveTextContent('-1.25');
+    expect(screen.getByRole('region', { name: /Selected robot/i })).toHaveTextContent('3.5');
+    expect(screen.getByText(/No facility geometry is supplied/i)).toBeInTheDocument();
+  });
+
+  it('filters projected tasks, commands, sources, and events by a shared record query', async () => {
+    const state: FleetProjection = {
+      ...liveState,
+      tasks: [
+        { id: 'task-target-record', kind: 'inspect', state: 'PENDING', robot_id: null, depends_on: [], reason_codes: [], last_command_id: null },
+        { id: 'task-other', kind: 'wait', state: 'PENDING', robot_id: null, depends_on: [], reason_codes: [], last_command_id: null },
+      ],
+      commands: [
+        { command_id: 'command-target-record', robot_id: 'courier-1', kind: 'inspect', state: 'ACCEPTED', last_known_state: null, reconciliation_state: 'pending', world_tick: 18, reason_codes: [] },
+        { command_id: 'command-other', robot_id: 'courier-1', kind: 'wait', state: 'ACCEPTED', last_known_state: null, reconciliation_state: 'pending', world_tick: 18, reason_codes: [] },
+      ],
+      sources: [{ source_id: 'source-target-record', text: 'retained synthetic test source' }, { source_id: 'source-other' }],
+      events: [{ event_id: 'event-target-record', type: 'TARGET_RECORD' }, { event_id: 'event-other', type: 'OTHER_EVENT' }],
+    };
+    vi.stubGlobal('fetch', vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify({ process: 'healthy', dispatch_ready: false }), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(state), { status: 200 })));
+    render(<App />);
+
+    expect(await screen.findByText('task-target-record')).toBeInTheDocument();
+    fireEvent.change(screen.getByRole('searchbox', { name: /Search records/i }), { target: { value: 'target-record' } });
+    expect(screen.getByText('task-target-record')).toBeInTheDocument();
+    expect(screen.queryByText('task-other')).not.toBeInTheDocument();
+    expect(screen.getByText('command-target-record')).toBeInTheDocument();
+    expect(screen.queryByText('command-other')).not.toBeInTheDocument();
+    expect(screen.getByText('source-target-record')).toBeInTheDocument();
+    expect(screen.queryByText('source-other')).not.toBeInTheDocument();
+    expect(screen.getAllByText('TARGET RECORD').length).toBeGreaterThan(0);
+    expect(screen.queryByText('OTHER EVENT')).not.toBeInTheDocument();
+  });
+
+  it('filters tasks and commands by robot ownership', async () => {
+    const state: FleetProjection = {
+      ...liveState,
+      robots: [...liveState.robots, { id: 'recovery-2', role: 'recovery', pose: { x: 0, y: 0, yaw: 0 }, state: 'idle', footprint_m: 0.8, last_observation_tick: null }],
+      tasks: [
+        { id: 'task-courier', kind: 'deliver', state: 'PENDING', robot_id: 'courier-1', depends_on: [], reason_codes: [], last_command_id: null },
+        { id: 'task-recovery', kind: 'recover', state: 'PENDING', robot_id: 'recovery-2', depends_on: [], reason_codes: [], last_command_id: null },
+      ],
+      commands: [
+        { command_id: 'command-courier', robot_id: 'courier-1', kind: 'deliver', state: 'ACCEPTED', last_known_state: null, reconciliation_state: 'pending', world_tick: 18, reason_codes: [] },
+        { command_id: 'command-recovery', robot_id: 'recovery-2', kind: 'recover', state: 'ACCEPTED', last_known_state: null, reconciliation_state: 'pending', world_tick: 18, reason_codes: [] },
+      ],
+    };
+    vi.stubGlobal('fetch', vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify({ process: 'healthy', dispatch_ready: false }), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(state), { status: 200 })));
+    render(<App />);
+
+    await screen.findByText('task-courier');
+    fireEvent.change(screen.getByRole('combobox', { name: /Filter by robot/i }), { target: { value: 'recovery-2' } });
+    expect(screen.getByText('task-recovery')).toBeInTheDocument();
+    expect(screen.queryByText('task-courier')).not.toBeInTheDocument();
+    expect(screen.getByText('command-recovery')).toBeInTheDocument();
+    expect(screen.queryByText('command-courier')).not.toBeInTheDocument();
+  });
+
   it('renders only backend-projected robot and tick values when state exists', async () => {
     const fetchMock = vi.fn()
       .mockResolvedValueOnce(new Response(JSON.stringify({ process: 'healthy', dispatch_ready: false }), { status: 200 }))
@@ -103,7 +183,7 @@ describe('operator console live-state boundary', () => {
     vi.stubGlobal('fetch', fetchMock);
     render(<App />);
     expect((await screen.findAllByText('courier-1')).length).toBeGreaterThan(0);
-    expect(screen.getByText('18')).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: /Fleet overview/i }).querySelector('.overview-stat:nth-child(3) strong')).toHaveTextContent('18');
     expect(screen.queryByText(/Waiting for incident\/backend state/i)).not.toBeInTheDocument();
   });
 
@@ -149,8 +229,7 @@ describe('operator console live-state boundary', () => {
     const approve = await screen.findByRole('button', { name: /Submit local demo-owner release request for release-denied/i });
     fireEvent.click(await screen.findByRole('checkbox', { name: /I explicitly request the local demo-owner release/i }));
     fireEvent.click(approve);
-    expect(await screen.findByRole('status')).toHaveTextContent('NOT_AUTHORIZED');
-    expect(screen.getByRole('status')).toHaveTextContent('HTTP 403');
+    expect(await screen.findByText(/NOT_AUTHORIZED/i, { selector: '.action-result' })).toHaveTextContent('HTTP 403');
   });
 
   it('resets approval confirmation and identity only when release or policy epoch changes', async () => {

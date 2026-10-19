@@ -1,6 +1,6 @@
 # Witness Fleet engineering guide
 
-> **Current scope:** a local, synthetic, simulation-first robotics workflow. The repository contains working graph-authorized SC-001 mission code and a native MuJoCo simulator. It is not a physical fleet controller, certification, hosted product, or proof that every aspirational scenario is implemented.
+> **Current scope:** a synthetic, simulation-first robotics workflow with a local operator console and a separately isolated hosted demonstration. The repository contains graph-authorized SC-001 mission code and a native MuJoCo simulator. It is not a physical fleet controller, safety certification, or proof that every aspirational scenario is implemented.
 
 This guide explains the executable slice from source, distinguishes it from planned integrations, and links each important behavior to its implementation. Start with the [architecture](architecture.md), then follow the [SC-001 walkthrough](sc-001-mission.md). The [diagram index](../diagrams/README.md) provides editable sources and reproducible render commands.
 
@@ -15,7 +15,8 @@ This guide explains the executable slice from source, distinguishes it from plan
 | [Security and safety boundaries](security.md) | Threat model, HOLD behavior, what this local demo does not guarantee |
 | [Local setup and operator runbook](operations.md) | Prerequisites, launch, inspect, hold, preserve and recover local runs |
 | [Evidence and verification](evidence.md) | Provenance, statuses, test/evidence interpretation |
-| [Deployment status](deployment.md) | Current localhost topology, Azure Bicep source presence, and explicitly unverified hosting gateway/deployment status |
+| [Interface guide](interfaces.md) | Recorded evidence, schema exploration, sampled native scenes and local operator inspection |
+| [Deployment status](deployment.md) | Separate local/hosted boundaries, Azure/Vercel delivery and exact-revision verification |
 
 ## Source-of-truth order
 
@@ -25,4 +26,4 @@ This guide explains the executable slice from source, distinguishes it from plan
 - Simulator assumptions: [`services/simulator/world.py`](../../services/simulator/world.py), [`sensors.py`](../../services/simulator/sensors.py), and [`facility.xml`](../../services/simulator/assets/facility.xml).
 - Local setup and tested command history: [`README.md`](../../README.md), [`BUILD.md`](../../BUILD.md), [`RUNBOOK.md`](../../RUNBOOK.md), and retained reports. These documents may contain different workflow generations; prefer the specific launcher and current executable for the flow being described.
 
-Proposed architecture and unimplemented deployment details are labeled **planned** or **pending**. A diagram is not a substitute for runtime verification. No tests, cloud deployment, model inference, or real-robot operation are claimed by this documentation work.
+Proposed architecture and unimplemented details are labeled **planned** or **pending**. A diagram is not a substitute for runtime verification. Consult [verification status](../../BUILD_STATUS.md) and [deployment evidence](deployment-evidence.md) for the exact tested revision; documentation alone does not establish a new test run, cloud deployment, model inference, or real-robot operation.

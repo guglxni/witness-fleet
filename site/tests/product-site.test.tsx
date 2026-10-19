@@ -5,7 +5,7 @@ import { LaunchSite } from '../src/LaunchSite';
 beforeEach(() => {
   import.meta.env.VITE_DEMO_URL = 'https://witness-fleet-guglxni.eastus.cloudapp.azure.com/demo';
   import.meta.env.VITE_GITHUB_URL = 'https://github.com/guglxni/witness-fleet';
-  window.matchMedia = vi.fn((query: string) => ({ matches: query.includes('max-width: 760px') || query.includes('reduced-motion'), media: query, onchange: null, addEventListener: vi.fn(), removeEventListener: vi.fn(), addListener: vi.fn(), removeListener: vi.fn(), dispatchEvent: vi.fn(() => true) })) as unknown as typeof window.matchMedia;
+  window.matchMedia = vi.fn((query: string) => ({ matches: query.includes('max-width: 1180px') || query.includes('reduced-motion'), media: query, onchange: null, addEventListener: vi.fn(), removeEventListener: vi.fn(), addListener: vi.fn(), removeListener: vi.fn(), dispatchEvent: vi.fn(() => true) })) as unknown as typeof window.matchMedia;
 });
 
 describe('Witness Fleet product-site behaviors', () => {

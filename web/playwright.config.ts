@@ -6,6 +6,8 @@ export default defineConfig({
   testDir: './e2e',
   testMatch: '**/*.spec.ts',
   fullyParallel: true,
+  reporter: process.env.CI ? 'line' : 'list',
+  outputDir: process.env.PW_OUTPUT_DIR || 'test-results',
   use: { baseURL: `http://127.0.0.1:${webPort}`, trace: 'retain-on-failure' },
   webServer: [
     {command:`../.venv/bin/python -m uvicorn witness_fleet.api.app:create_app --factory --host 127.0.0.1 --port ${apiPort}`,url:`http://127.0.0.1:${apiPort}/api/health`,reuseExistingServer:!process.env.CI,timeout:90000},
