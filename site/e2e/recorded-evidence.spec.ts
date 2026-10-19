@@ -3,6 +3,11 @@ import {readFileSync} from 'node:fs';
 const receipt=JSON.parse(readFileSync(new URL('../public/media/recorded-evidence.json',import.meta.url),'utf8'));
 for(const width of [320,360,375,390,414,430,768,1024,1165,1440]){
  test(`recorded evidence readable and exact at ${width}`,async({page,request},testInfo)=>{
+  // Isolate only the third-party video document; keep all app/runtime requests observable.
+  // Real YouTube playback is verified separately against production.
+  await page.route('https://www.youtube-nocookie.com/embed/**', route => route.fulfill({
+    status: 200, contentType: 'text/html', body: '<!doctype html><title>YouTube transport isolated for static-control test</title>',
+  }));
   await page.setViewportSize({width,height:width===768?430:900});
   await page.emulateMedia({reducedMotion:'reduce'});
   const mutations:string[]=[];page.on('request',r=>{if(!['GET','HEAD'].includes(r.method()))mutations.push(r.url());});

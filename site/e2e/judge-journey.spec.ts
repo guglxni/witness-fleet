@@ -1,6 +1,11 @@
 import { expect, test } from '@playwright/test';
 
 test('judge journey prioritizes proof, keeps explanations static, and fits 320px', async ({ page }) => {
+  // Isolate only the third-party video document; keep all app/runtime requests observable.
+  // Real YouTube playback is verified separately against production.
+  await page.route('https://www.youtube-nocookie.com/embed/**', route => route.fulfill({
+    status: 200, contentType: 'text/html', body: '<!doctype html><title>YouTube transport isolated for static-control test</title>',
+  }));
   const mutations: string[] = [];
   page.on('request', request => {
     if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(request.method())) mutations.push(request.url());
