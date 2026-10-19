@@ -48,7 +48,9 @@ for(const width of [320,360,390,768,1024,1440]){
   expect(measurements.fonts.filter(x=>x.font<12)).toEqual([]);
   expect(measurements.buttons.every(h=>h>=44)).toBe(true);
   expect(mutations).toEqual([]);
-  expect(await section.locator('.rw-full-id').evaluateAll(ids=>ids.filter(id=>id.getBoundingClientRect().width>0).every(id=>getComputedStyle(id).overflowWrap==='anywhere'&&id.scrollWidth<=id.clientWidth+1))).toBe(true);
+  const visibleIds=await section.locator('.rw-full-id').evaluateAll(ids=>ids.filter(id=>id.getBoundingClientRect().width>0).map(id=>({text:id.textContent,width:id.getBoundingClientRect().width,wrap:getComputedStyle(id).overflowWrap,scroll:id.scrollWidth,client:id.clientWidth})));
+  expect(visibleIds.filter(id=>id.width<100),'Every full identifier needs a readable column, not one character per line').toEqual([]);
+  expect(visibleIds.every(id=>id.wrap==='anywhere'&&id.scroll<=id.client+1)).toBe(true);
   await testInfo.attach(`evidence-${width}`,{body:JSON.stringify(measurements),contentType:'application/json'});
   await section.screenshot({path:testInfo.outputPath(`evidence-${width}.png`)});
   if(width===390||width===1440)await section.screenshot({path:`../qa/recorded-evidence-${width}.png`});

@@ -8,7 +8,7 @@ Witness Fleet makes robot actions conditional on current, source-backed graph au
 
 ![Local system, trust boundaries, and future-deployment placeholder](../diagrams/system-boundaries.png)
 
-The editable source for this system diagram is [`system-boundaries.drawio`](../diagrams/system-boundaries.drawio). Its solid boundary is the current local path; the dashed cloud boundary is intentionally an unconfigured future placeholder.
+The editable source for this local-path diagram is [`system-boundaries.drawio`](../diagrams/system-boundaries.drawio). Its solid boundary describes local execution. The dashed cloud area is an earlier design placeholder, not the current hosting topology; use [deployment status](deployment.md) and [exact-revision evidence](deployment-evidence.md) for the hosted simulation.
 
 ### Components and ownership
 
@@ -46,4 +46,4 @@ The deterministic authorizer requires compatible positive permission and checks 
 
 The opt-in local mission launcher creates a uniquely named, loopback-published disposable FalkorDB container and a retained volume, then starts the app on loopback. The CLI creates an isolated graph namespace and retained source/simulator data beneath the selected new run directory. It does not run a public endpoint or require cloud services. A separate [`compose.yaml`](../../compose.yaml) defines local graph service profiles, but it is not the mission launcher's ephemeral container mechanism.
 
-A candidate Azure VM/network template exists at [`deploy/azure/main.bicep`](../../deploy/azure/main.bicep), but source presence is not a live or verified deployment. The separate hosting gateway is in progress in parent-owned work. Identity, tenant provisioning, remote simulator ingress, managed data stores, network policy, observability and end-to-end deployment readiness remain unverified. The dashed area in the architecture graphic marks that integration boundary, not an available endpoint. See [deployment status](deployment.md).
+The bounded hosted simulation uses the separate [`hosting`](../../src/witness_fleet/hosting/__init__.py) gateway and [`Azure deployment`](../../deploy/azure/deploy-runtime.sh): Caddy terminates HTTPS and proxies the host-network application on `127.0.0.1:8080`; FalkorDB and session files are retained. [`main.bicep`](../../deploy/azure/main.bicep) describes the dedicated VM/network infrastructure. The public gateway exposes only bounded visitor-session routes, not the local operator API or hardware ingress. This is not a general production identity, managed-database, or physical-robot deployment. See [deployment status](deployment.md) and [exact-revision evidence](deployment-evidence.md), rather than treating an architecture diagram as proof of a live release.

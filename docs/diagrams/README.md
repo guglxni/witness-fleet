@@ -8,7 +8,7 @@ Three complementary, editable diagrams are checked in with real render workflows
 | Command and evidence sequence / unknown HOLD | [`command-evidence-sequence.mmd`](command-evidence-sequence.mmd) | [`command-evidence-sequence.svg`](command-evidence-sequence.svg) | Graph authorization, sequenced delivery, native receipt vs. verified outcome, unknown-state branch |
 | SC-001 robotics top view | [`sc-001-robotics.excalidraw`](sc-001-robotics.excalidraw) | [`sc-001-robotics.svg`](sc-001-robotics.svg) · [`sc-001-robotics.png`](sc-001-robotics.png) | Corridor layout, relative actor footprints, sensor cone, obstacle/recovery bay/delivery and separate gate |
 
-The architecture graph includes a dashed hosting boundary because a candidate Azure VM/network Bicep source exists at `deploy/azure/main.bicep`, while the separate hosting gateway is in progress in parent-owned work. Neither the source nor the boundary demonstrates a running cloud deployment or available endpoint. Robotics geometry is explanatory and not a simulator screenshot or hardware drawing.
+The architecture graph preserves the original local-path design and its dashed future-hosting placeholder. It is not a current cloud topology diagram. The bounded Azure simulation gateway is implemented separately; [deployment status](../guide/deployment.md) and [exact-revision evidence](../guide/deployment-evidence.md) describe that path and its verified releases. The diagram itself is not deployment evidence. Robotics geometry is explanatory and not a simulator screenshot or hardware drawing.
 
 ## Re-render reproducibly
 

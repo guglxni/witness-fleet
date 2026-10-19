@@ -21,9 +21,7 @@ witness-fleet = "witness_fleet.cli:app"
 [tool.hatch.build.targets.wheel]
 packages = ["src/witness_fleet", "services"]
 exclude = ["services/corpus/**"]
-
-[tool.hatch.build.targets.wheel.force-include]
-"src/witness_fleet/hosting/static" = "witness_fleet/hosting/static"
+artifacts = ["src/witness_fleet/hosting/static/**"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
