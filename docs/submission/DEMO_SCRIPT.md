@@ -1,65 +1,53 @@
-# Recording script — current truthful demo only
+# Three-minute judge demo script
 
-**Working document, not a statement that a recording exists.** The previously authored `DEMO.md` is a future acceptance/story outline, not the script for the currently accepted full fleet mission. This recording plan is deliberately scoped to the inspection-only local showcase documented on 17 October 2026. Refresh state, app, and evidence before recording; if the screen differs, narrate what is actually present.
+This is a spoken walkthrough plan, not a claim that a new recording exists. It uses the hosted simulation and repository evidence. Show the actual UI state; do not splice, fast-forward, or narrate an action that did not occur. The timings below pace the narration to a three-minute slot. If the interactive simulation takes longer, let it finish rather than speeding up or implying the timed narration is a measured system benchmark.
 
-## Preconditions — stop if any fail
+## 0:00–0:25 | Set the boundary
 
-1. The recording machine has the intended project checkout, local showcase services, and a retained synthetic showcase incident. Do not reset, delete, restart, or replace the retained incident to make footage look cleaner.
-2. Open the existing console at `http://127.0.0.1:8094` as documented in `docs/SHOWCASE_CURRENT.md`. Do not start a second owner against `artifacts/showcase-20261017`.
-3. Confirm the visible status remains inspection-only: simulation/S0; `dispatch_ready: false`; `model_mode: disabled`; no completed recovery, owner release, courier sensing, or delivery. If current status is different, stop and rewrite this script based on fresh verified state.
-4. Hide private desktop material, tokens, local usernames/passwords, unrelated notifications, and non-public content. Use only the synthetic sources packaged for this demo.
-5. Decide the tracks after checking the actual recorded sequence. Current safe candidate: Company Brain (partial); any Agents That Act on Connected Data claim must be tightly bounded to graph-backed inspection/dependency evidence.
+**Show:** the [hosted simulation](https://witness-fleet-guglxni.eastus.cloudapp.azure.com/demo), then the declared three-robot mission state.
 
-No runtime command is prescribed here to mutate or seed the retained run. The showcase documentation says it already exists and its event identity is retained; use the read-only inspection path and preserve it.
+**Say:** “This is Witness Fleet, a deterministic three-robot MuJoCo simulation. Its decision is not just whether a corridor looks clear. A task also needs current company authority, fresh evidence, and an outcome that the simulator actually verifies. This is not a hardware controller.”
 
-## Suggested narration and shots
+## 0:25–0:55 | Run to the gate
 
-### 1. Project and boundary
+**Show:** start one session and run the initial tasks. Keep the visible pause and task states on screen. Wait for the real result.
 
-**Show:** project name and the actual console, including its simulation/S0 and inspection-only status badges.
+**Say:** “The scout observes, the recovery robot attempts bounded clearance, and the system checks the physical result. The courier is still held. Recovery does not grant permission, and the first four tasks finish before the owner gate.”
 
-**Say:** “This is Witness Fleet, a local simulation-first prototype. This recording shows the inspection console and a synthetic policy/evidence graph. It is not a completed autonomous fleet mission.”
+**Evidence to point out:** `awaiting_owner_release`, recovery verification, no courier command yet, and delivery still incomplete. Do not infer success from a button click or controller receipt.
 
-### 2. Physical scene versus authority
+## 0:55–1:20 | Trace the authority
 
-**Show:** current three robot poses and task/dependency view. Keep `dispatch_ready: false` visible if shown. Do not click a motion/approval control or imply that a robot has moved as part of this scene.
+**Show:** the actual restriction/decision, owner, evidence span and revision links, plus a task dependency if the UI exposes them. Use synthetic records only.
 
-**Say:** “The product question is whether a task is physically supportable and policy-authorized. Those are separate checks. Here I am inspecting retained state, not executing a mission.”
+**Say:** “FalkorDB stores the connected operational records: the policy relationship, its scope and source provenance, and the mission dependencies. Python reads and validates that graph snapshot. The graph is not a picture that authorizes motion by itself.”
 
-### 3. FalkorDB doing real work
+**Evidence to point out:** the actual displayed edge directions and retained source span. A content hash links bytes; it does not prove that the source is true. A staged release record is not an approval.
 
-**Show:** a graph-backed task dependency and the displayed dependent/prerequisite edges. If the UI offers a graph witness, open the restriction witness and follow actual stored links: `IMPOSES`, `OWNED_BY`, `SUPPORTED_BY`, `IN_REVISION`, and `REVISION_OF`. Show the exact synthetic source excerpt and revision/hash only if the app exposes them accurately.
+## 1:20–1:45 | Make the release explicit
 
-**Say:** “FalkorDB is the canonical operational graph in this build. These directed relationships connect the restriction to its owner and retained source evidence; the dependency edges connect tasks. This graph is more than a visual decoration, although the complete graph-authorized mission is still unfinished.”
+**Show:** the release gate and the real confirm action. Submit the configured synthetic demo-owner release, then show the phase change. Do not obscure that the owner is configured rather than authenticated.
 
-If the graph pane is unavailable or query text cannot be shown safely, show the inspected Cypher from `artifacts/showcase-20261017/falkordb-queries.json` in a source editor, with no credentials visible. These queries are read-only showcase reads.
+**Say:** “This is an explicit local demo-owner action checked against the current policy epoch and scope. It is not a human identity check. The release changes what is permitted; it does not substitute for new physical evidence.”
 
-### 4. Provenance and limits
+## 1:45–2:20 | Let the courier prove its own path
 
-**Show:** label synthetic policy and source material as synthetic. Show the staged release record only with its actual `staged` status. Do not represent bootstrap data, an `ApprovalEvent` fixture or a staged release as real human approval.
+**Show:** run the courier phase and keep the actual status transitions visible. Do not cut from release straight to a fabricated final screen.
 
-**Say:** “The evidence here is synthetic lab data. The release is staged, not an actual human approval. The design requires a valid owner release and fresh, courier-owned sensing; that complete sequence is not accepted in this build.”
+**Say:** “Now the courier obtains its own fresh sensing and passes the current authorization checks before travel. Scout clearance cannot be reused as courier evidence. MuJoCo advances the synthetic scene; Python coordinates the tasks and validates the returned evidence.”
 
-### 5. Honest close
+## 2:20–2:45 | Inspect the final outcome
 
-**Show:** actual status panel; optionally the relevant README/setup entry and the status note in `docs/HACKATHON_STATUS_20261017.md`.
+**Show:** all task/command states and, where exposed, the native delivery postcondition.
 
-**Say:** “The verified scope is inspection plus one passing graph-policy-native inspection tracer test. Recovery, fresh post-recovery verification, owner release followed by courier sensing and delivery, and process-kill resume remain unverified. The model lane is disabled. This is the behavior shown, not a claim that the planned full mission is done.”
+**Say:** “The completion claim is seven verified tasks and seven outcome-verified commands. The delivery receipt is backed by the native `payload_in_delivery_zone` postcondition. A transport acknowledgment alone would not establish that. The separate unauthorized-execution metric is still unknown, not zero.”
 
-## Do not record as if completed
+## 2:45–3:00 | Name the contribution and limits
 
-Do not record a fabricated or scripted courier motion, policy release, fresh clearance observation, delivery receipt, successful restart, model inference, timing benchmark, live deployment, or clean-machine setup. Do not show old component captures as if they came from the current retained showcase; identify their separate scope and date if used at all. Do not splice a passing unit test into apparent live operation.
+**Show:** the [source-linked execution map](RUNTIME_QUERIES.md) and [submission brief](SUBMISSION_BRIEF.md).
 
-## Final video QA / metadata to capture
+**Say:** “Track 01 is primary: connected data changes what this agent can do. Track 02 is scoped to central coordination; Track 03 is scoped to synthetic policy provenance. The mission is deterministic, simulation-only, and uses no live model inference. The linked brief discloses the AI and third-party work.”
 
-After recording, fill this from the actual file and exact local run; do not guess:
+## If the live path is unavailable
 
-- Local file path: `[fill after recording]`
-- Final share URL (only after authorized upload): `[fill after upload and playback check]`
-- Duration / resolution / frame rate / audio: `[inspect actual file]`
-- Repository commit or exact source snapshot: `[record after review; current tree is dirty/uncommitted]`
-- Run/episode identity and graph build: `[read from actual run]`
-- What the footage proves: `[describe only visible, verified behaviors]`
-- What remains out of scope: full mission, genuine human approval, live model use, and restart recovery unless each is newly completed and independently verified.
-
-This script does not create, publish, upload, or verify a video. The file/URL fields remain blank until actual media exists.
+Use the preserved [launch film](../../site/public/media/launch.mp4) and its [sanitized provenance](../../site/public/media/provenance.json), or the [preserved campaign cuts and credits](../../README.md#product-site-and-preserved-media). Label recorded MuJoCo footage as simulation and explanatory diagrams/animation as designed explanation. Do not describe film footage as a fresh live session, or splice a passing test into apparent runtime footage.

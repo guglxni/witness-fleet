@@ -1,0 +1,17 @@
+Robots move things. Businesses need the whole job to happen.
+
+In a warehouse, a blocked aisle can hold up an order. On a factory floor, a missing parts tray can interrupt the next step. And in a hospital's service corridor, even a routine supply run needs the right access.
+
+Witness Fleet is being built for the moments between, "something went wrong," and, "we know what happens next."
+
+See what stopped the job. See what evidence is missing. Keep the next move on hold until the required release, and keep a record of the result.
+
+Not another robot. An accountability layer around the work.
+
+Today, that idea runs in a real simulation. Three robots inspect, recover, and deliver. The release in this demo is scripted. The delivery evidence is measured.
+
+The commercial starting point? One site. One recurring exception. Measure the investigation time and operator effort. Test the value before scaling.
+
+The proposed business: a site subscription, with integration and support. Start with a focused evaluation. Grow only where the evidence supports it.
+
+Witness Fleet. Every next move should have a reason.
