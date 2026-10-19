@@ -10,7 +10,7 @@ These are proofs for the linked runtime commit, not an evergreen green light. La
 
 ## Website verification
 
-The proof-first website was exercised locally with **49 component/unit tests and 32 browser tests**, zero failures or skips. Browser coverage includes the recorded-evidence inspector at ten viewport widths, keyboard access, WCAG checks, all five preserved film choices and static-control non-mutation checks. Typechecking and the production build passed. The retained receipt was checked against the original capture manifest; all 602 tokens of the formatted claim query match the source literal. These are frontend and document checks, not a fresh full runtime certification.
+The proof-first website was exercised locally with **50 component/unit tests and 33 browser tests**, zero failures or skips. Browser coverage includes the recorded-evidence inspector at ten viewport widths, keyboard access, WCAG checks, the single YouTube player, archived-media hashes, favicon assets and static-control non-mutation checks. Typechecking and the production build passed. The retained receipt was checked against the original capture manifest; all 602 tokens of the formatted claim query match the source literal. These are frontend and document checks, not a fresh full runtime certification.
 
 The runtime deployment workflow compares the successful CI revision with the healthy live runtime's exact commit. Site/docs-only changes skip the Azure replacement; changes to runtime inputs still require the existing deployment and public-revision verification. Unknown comparison or health state stops the job rather than guessing.
 

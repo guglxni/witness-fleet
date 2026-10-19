@@ -15,7 +15,7 @@ Keep technical readiness separate from organizer submission. A verified reposito
 ### Verification for an integrated revision
 
 - [ ] Check the Verification run attached to the source commit. The pinned runtime CI above does not replace verification of later revisions.
-- [x] The proof-first site passed local typechecking, 49 component/unit tests, its production build, and 32 browser tests. These checks are frontend-scoped, not a replacement for full runtime CI.
+- [x] The proof-first site passed local typechecking, 50 component/unit tests, its production build, and 33 browser tests. These checks are frontend-scoped, not a replacement for full runtime CI.
 - [ ] For a production update, verify the deployed revision and read back the live assets and interactive page.
 - [x] The sanitized receipt matches the retained manifest and its source hash; the displayed query preserves all 602 executable tokens. Media credits and prior films remain attached to their artifacts.
 
