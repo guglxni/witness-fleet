@@ -1,13 +1,19 @@
 # Verification status
 
-## Scientific-interface candidate
+## Scientific-interface release
 
-The scientific-interface revision is locally verified, not yet represented here as
-published. Its release checks are:
+The scientific interface is published. Runtime commit
+[`289489c`](https://github.com/guglxni/witness-fleet/commit/289489ca4adff91177c6faeaec1bbdcb1b49c91c)
+passed [Linux Verification](https://github.com/guglxni/witness-fleet/actions/runs/39239468093)
+and [Azure deployment](https://github.com/guglxni/witness-fleet/actions/runs/39240476155).
+The live Azure health revision matched; a fresh public browser session completed
+seven verified tasks/commands and one delivery, with no courier before the explicit
+synthetic release. Subsequent site/docs-only commits do not replace this runtime.
+Its release checks are:
 
 | Surface | Verification |
 | --- | --- |
-| Python runtime + corpus | 970 tests: 959 main + 11 isolated corpus; zero failures, errors or skips |
+| Python runtime + corpus | 972 tests: 961 main + 11 isolated corpus; zero failures, errors or skips |
 | Public website | 64 unit/component tests + 48 Chromium browser tests; typecheck and production build pass |
 | Hosted workbench | 25 unit/component tests + 9 Chromium browser tests; typecheck and production build pass |
 | Local operator console | 77 unit/component tests + 12 Chromium browser tests; typecheck and production build pass |

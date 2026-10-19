@@ -1,5 +1,6 @@
 import {test,expect} from '@playwright/test';
 import {readFileSync} from 'node:fs';
+import AxeBuilder from '@axe-core/playwright';
 const receipt=JSON.parse(readFileSync(new URL('../public/media/recorded-evidence.json',import.meta.url),'utf8'));
 for(const width of [320,360,390,768,1024,1440]){
  test(`recorded evidence readable and exact at ${width}`,async({page,request,context},testInfo)=>{
@@ -51,6 +52,8 @@ for(const width of [320,360,390,768,1024,1440]){
   const visibleIds=await section.locator('.rw-full-id').evaluateAll(ids=>ids.filter(id=>id.getBoundingClientRect().width>0).map(id=>({text:id.textContent,width:id.getBoundingClientRect().width,wrap:getComputedStyle(id).overflowWrap,scroll:id.scrollWidth,client:id.clientWidth})));
   expect(visibleIds.filter(id=>id.width<100),'Every full identifier needs a readable column, not one character per line').toEqual([]);
   expect(visibleIds.every(id=>id.wrap==='anywhere'&&id.scroll<=id.client+1)).toBe(true);
+  const accessibility=await new AxeBuilder({page}).include('#recorded-evidence').withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa']).analyze();
+  expect(accessibility.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))).toEqual([]);
   await testInfo.attach(`evidence-${width}`,{body:JSON.stringify(measurements),contentType:'application/json'});
   await section.screenshot({path:testInfo.outputPath(`evidence-${width}.png`)});
   if(width===390||width===1440)await section.screenshot({path:`../qa/recorded-evidence-${width}.png`});

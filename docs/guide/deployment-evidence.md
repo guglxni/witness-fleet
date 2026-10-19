@@ -8,15 +8,30 @@
 
 ## Scientific-interface release status
 
-The scientific-interface candidate passed its local native mission, responsive
-browser suites, production builds and container packaging checks. The authoritative
-local counts are in [verification status](../../BUILD_STATUS.md). These are local
-results, not evidence that either live endpoint already runs the candidate.
+Signed source commit `289489ca4adff91177c6faeaec1bbdcb1b49c91c` passed
+[Verification](https://github.com/guglxni/witness-fleet/actions/runs/39239468093)
+and [Azure deployment](https://github.com/guglxni/witness-fleet/actions/runs/39240476155).
+Linux JUnit reports 961 main + 11 corpus tests, with zero failures/errors/skips.
+All three frontend jobs passed unit, typecheck, production build and browser checks.
+Vercel production Git metadata and Azure `/healthz` both matched that commit.
+Later site/docs-only revisions leave this runtime in place by design.
 
-Publication requires a signed commit, its successful CI and exact GitHub/Vercel/Azure
-revision read-back. Before replacement, the retained production graph identity,
-graph-name digests and six prior session-directory hashes were captured. A release
-must preserve those records; a new isolated validation session is additive.
+A real public `/demo` browser session then completed seven `VERIFIED` tasks and seven
+`OUTCOME_VERIFIED` commands. Four commands completed before the explicit synthetic
+release gate; none was a courier command. After confirmation, native delivery
+reported `payload_in_delivery_zone=true`, `delivery_completed=1` and
+`recovery_verified=1`; `unauthorized_executed` remains null. Eleven viewport checks
+passed with no horizontal document overflow, page errors or failed assets. The
+completed desktop state had no detected WCAG A/AA violations. These are simulation
+and browser-emulation results, not physical-device or hardware-safety validation.
+
+The deployment retained the same FalkorDB container, mount and six graph names, and
+left other running containers unchanged. Session directories were retained. Raw
+file hashes changed for two open SQLite journals across shutdown, consistent with
+SQLite WAL checkpointing; byte-for-byte equality across shutdown is not claimed.
+All seven journals (six retained plus the new validation session) passed SQLite
+integrity checks and retained their command/checkpoint records. See the verification
+status for test scope and remaining dependency-scan limitations.
 
 ## Historical exact-revision acceptance
 
