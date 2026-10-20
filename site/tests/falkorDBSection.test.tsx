@@ -4,9 +4,25 @@ import {LaunchSite} from '../src/LaunchSite';
 import {FalkorDBSection} from '../src/FalkorDBSection';
 
 describe('FalkorDB implementation story', () => {
+  it('presents the property schema as a connected diagram instead of a primary code block',()=>{
+    render(<FalkorDBSection/>);
+    expect(screen.getAllByRole('group',{name:'Canonical FalkorDB schema diagram'})).toHaveLength(1);
+    expect(document.querySelector('.fdb-capability .fdb-code-panel')).not.toBeInTheDocument();
+    const diagram=document.querySelector('.fdb-diagram-desktop')!;
+    expect(diagram.querySelectorAll('[data-node-id]')).toHaveLength(8);
+    const paths=[...diagram.querySelectorAll('path[data-edge-id]')];
+    expect(paths).toHaveLength(8);
+    expect(paths.map(path=>`${path.getAttribute('data-from')}:${path.getAttribute('data-edge-id')}:${path.getAttribute('data-to')}`)).toEqual([
+      'Decision:IMPOSES:Restriction','Restriction:APPLIES_TO:Corridor','Decision:OWNED_BY:Owner',
+      'Decision:SUPPORTED_BY:EvidenceSpan','EvidenceSpan:IN_REVISION:Revision','Revision:REVISION_OF:Source',
+      'Release:LIFTS:Restriction','Release:APPROVED_BY:Owner',
+    ]);
+    expect(paths.every(path=>path.hasAttribute('marker-end'))).toBe(true);
+    expect(screen.getByText('Schema excerpt').closest('details')).not.toHaveAttribute('open');
+  });
   it('shows the official FalkorDB badge and a judge-focused execution-path section', () => {
     render(<LaunchSite />);
-    expect(screen.getByRole('img', { name: /FalkorDB/i })).toHaveAttribute('src', '/media/falkordb/falkordb-logo-color.svg');
+    expect(screen.getByRole('img', { name: 'FalkorDB' })).toHaveAttribute('src', '/media/falkordb/falkordb-logo-color.svg');
     expect(screen.getByRole('heading', { name: /why FalkorDB is in the execution path/i })).toBeInTheDocument();
   });
 
@@ -21,7 +37,7 @@ describe('FalkorDB implementation story', () => {
 
   it('selects every semantic schema node and relationship by keyboard',()=>{
     render(<FalkorDBSection/>);
-    const release=screen.getByRole('button',{name:/RELEASE EVENTRelease/});
+    const release=screen.getByRole('button',{name:/Release event.*Release/});
     release.focus();
     expect(release).toHaveFocus();
     fireEvent.click(release);
